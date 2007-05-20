@@ -1,0 +1,45 @@
+<div id="main-content">
+
+
+		<h2>Mailing Lists</h2>
+
+		<h3>irssi-users</h3>
+<ul>
+<li><a href="mailto:irssi-users-request@dragoncat.net?subject=subscribe">Subscribe</a> sending mail to <strong>irssi-users-request@dragoncat.net</strong> with subject<br />
+
+<strong>subscribe</strong>.</li>
+<li><a href="mailto:irssi-users-request@dragoncat.net?subject=unsubscribe">Unsubscribe</a> with subject <strong>unsubscribe</strong> (same email as above).</li>
+<li><a href="mailto:irssi-users@dragoncat.net">Send</a> mails to <strong>irssi-users@dragoncat.net</strong></li>
+</ul>
+<h3>irssi-dev</h3>
+
+<ul>
+<li><a href="mailto:irssi-dev-request@dragoncat.net?subject=subscribe">Subscribe</a> sending mail to <strong>irssi-dev-request@dragoncat.net</strong> with subject<br />
+<strong>subscribe</strong>.</li>
+<li><a href="mailto:irssi-dev-request@dragoncat.net?subject=unsubscribe">Unsubscribe</a> with subject <strong>unsubscribe</strong> (same email as above).</li>
+
+<li><a href="mailto:irssi-dev@dragoncat.net">Send</a> mails to <strong>irssi-dev@dragoncat.net</strong></li>
+</ul>
+<h3>irssi-scripts</h3>
+<ul>
+<li><a href="mailto:irssi-scripts-subscribe@scripts.irssi.org">Subscribe</a> sending mail to <strong>irssi-scripts-subscribe@scripts.irssi.org</strong>.</li>
+<li><a href="mailto:irssi-scripts-unsubscribe@scripts.irssi.org">Unsubscribe</a> sending mail to <strong>irssi-scripts-unsubscribe@scripts.irssi.org</strong>.</li>
+
+<li><a href="mailto:irssi-scripts@scripts.irssi.org">Send</a> mails to <strong>irssi-scripts@scripts.irssi.org</strong></li>
+</ul>
+<h3>irssi-de (german-only)</h3>
+<ul>
+<li><a href="mailto:irssi-request@lists.2305.net?subject=subscribe">Subscribe</a> sending mail to <strong>irssi-request@lists.2305.net</strong> with subject <strong>subscribe.</strong></li>
+
+<li><a href="mailto:irssi-request@lists.2305.net?subject=unsubscribe">Unsubscribe</a> with subject <strong>unsubscribe</strong> (same email as above).</li>
+<li><a href="mailto:irssi@lists.2305.net">Send</a> mails to <strong>irssi@lists.2305.net</strong></li>
+</ul>
+<h3>Archives</h3>
+<ul>
+<li><a href="http://www.dragoncat.net/lists/irssi-users">irssi-users</a></li>
+
+<li><a href="http://www.dragoncat.net/lists/irssi-dev">irssi-dev</a></li>
+</ul>
+
+<?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>
+

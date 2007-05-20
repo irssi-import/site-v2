@@ -1,0 +1,175 @@
+<div id="main-content">
+
+
+		<h2>Tips &#038; Tricks</h2>
+
+		<h4>zsh completion for irssi options.</h4>
+<p>You can download/see it <a href="http://cvs.sourceforge.net/viewcvs.py/*checkout*/zsh/zsh/Completion/Unix/Command/_irssi?rev=HEAD">here</a></p>
+<p>the extensions in included in default zsh distribution since 2002-03-07 (should be version 4.0.1)</p>
+<h4>hide aliases</h4>
+
+<p>sometimes i found it quite useful to have a much more quiet irssi <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+<pre><kbd>/alias  hideadd          eval set activity_hide_targets $activity_hide_targets $-
+/alias  hideclear        set -c activity_hide_targets
+/alias  hidelevels.clear set -c activity_hide_level
+/alias  hidelevels.set   set activity_hide_level parts joins quits nicks modes
+/alias  hidelist         set activity_hide_targets
+/alias  hideset          set activity_hide_targets $-</kbd></pre>
+<p>I have replaced the aliases with a simple script. see <a href="http://scripts.irssi.de/scripts/hide.pl">hide.pl</a> (<a href="http://scripts.irssi.de/html/hide.pl.html">source</a>)</p>
+<h4>mIRC-like flashing with putty</h4>
+<p>to get notified off activities, while im working, i use the following setup:</p>
+<dl>
+
+<dt>irssi</dt>
+<dd>
+<pre><kbd>/set beep_when_window_active ON
+/set beep_when_away ON
+/set beep_msg_level MSGS NOTICES DCC DCCMSGS HILIGHT
+/set bell_beeps ON</kbd></pre>
+</dd>
+<dt>screen</dt>
+<dd>Audible bell (switch Ctrl+a Ctrl+g)</dd>
+<dt>putty</dt>
+<dd>- no bell and steady on bell</dd>
+</dl>
+<h4>right aligned nicks</h4>
+
+<pre><kbd>/format own_msg {ownmsgnick $2 {ownnick $[-9]0}}$1
+/format own_msg_channel {ownmsgnick $3 {ownnick $[-9]0}{msgchannel $1}}$2
+/format pubmsg_me {pubmsgmenick $2 {menick $[-9]0}}$1
+/format pubmsg_me_channel {pubmsgmenick $3 {menick $[-9]0}{msgchannel $1}}$2
+/format pubmsg_hilight {pubmsghinick $0 $3 $[-9]1}$2
+/format pubmsg_hilight_channel {pubmsghinick $0 $4 $[-9]1{msgchannel $2}}$3
+/format pubmsg {pubmsgnick $2 {pubnick $[-9]0}}$1
+/format pubmsg_channel {pubmsgnick $3 {pubnick $[-9]0}{msgchannel $1}}$2</kbd></pre>
+<p><a href="http://irccrew.org/%7Ecras/format.txt">http://irccrew.org/~cras/format.txt</a></p>
+<h4>uptime alias</h4>
+<p>put it in your .irssi/config in the alias section as one line:</p>
+<p><code>UPTIME = "eval exec - expr `date +%s` - \\$F | awk '{print \"Irssi uptime: \"int(\\\\\\$1/3600/24)\"d \"int(\\\\\\$1/3600%24)\"h \"int(\\\\\\$1/60%60)\"m \"int(\\\\\\$1%60)\"s\" }'";</code></p>
+<h4>ssh/telnet alias</h4>
+<pre><kbd>/alias TELNET window new hidden;window name telnet;exec -name telnet -nosh -interactive -window telnet $-
+/alias SSH window new hidden;window name ssh;exec -name ssh -nosh -interactive -window ssh $-</kbd></pre>
+<p>happy mudding, telnetting <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+
+<h4>icq client in irssi?:)</h4>
+<pre><kbd>/alias MICQ window new hidden;window name micq;exec -name micq -nosh -interactive -window micq $-</kbd></pre>
+<p>but you could also try the <a href="http://real.irssi.org/files/plugins/icq/">icq module for irssi</a></p>
+<h4>news reader in irssi?:)</h4>
+<p>no problem:<br />
+<kbd>/alias NNTP window new hide;window name news;exec printf 'article &lt;$0&gt;\\nquit\\n'|nc news.helsinki.fi nntp|tr -d '\\r'</kbd></p>
+<p>hmm now there is a script for this purpose too. checkout <a href="http://scripts.irssi.de/scripts/news.pl">news.pl</a> (<a href="http://scripts.irssi.de/html/news.pl.html">source</a>)</p>
+
+<h4>autocorrect feature in irssi?</h4>
+<p><strong>Of course. <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_wink.gif' alt=';)' class='wp-smiley' /> </strong></p>
+<pre><code>replaces = (
+{ text = ".)"; replace = ":)"; },
+{ text = ":9"; replace = ":)"; }
+);</code></pre>
+<p>These replaces would be replaced on pressing space or return. But you can add some bindings for it.</p>
+<pre><kbd>/bind , multi check_replaces;insert_text ,
+/bind . multi check_replaces;insert_text .</kbd></pre>
+<p>Now pressing <kbd>.</kbd> or <kbd>,</kbd> will replace it too.</p>
+
+<h4>completions for often used words</h4>
+<pre><code>completions = (
+{ short = "sid"; long = "http://scripts.irssi.de/"; },
+{ short = "wid"; long = "http://www.irssi.de./"; },
+{ short = "ios"; long = "http://irssi.org/scripts/"; }
+);</code></pre>
+<p>Write <kbd>wid</kbd> press <kbd>tab key</kbd> and it will be replaced with <code>http://www.irssi.de./</code>.</p>
+<h4>Where are my completions/replaces gone?</h4>
+<p>With latest irssi cvs the format changed a bit. cras merged replaces and completions</p>
+
+<pre><code>completions = {
+wid = { value = ""; };
+sid = { value = "http://scripts.irssi.de/"; };
+ios = { value = "http://irssi.org/scripts/"; };
+":9" = { value = ":)"; auto = "yes"; };
+};</code></pre>
+<p>And there is now a command to maintain the completions:</p>
+<pre><kbd>/completion [-auto] &lt;key&gt; &lt;value&gt;
+/completion -delete &lt;key&gt;</kbd></pre>
+<p>To get the replaces like behavior add the completion with <kbd>-auto</kbd> to the commandline.</p>
+
+<h4>/ame &amp; /asay</h4>
+<pre><kbd>/alias AME foreach channel /me $-; foreach query /me $T $-
+/alias ASAY foreach channel /eval msg $$C $$-; foreach query /eval msg $$T $$-</kbd></pre>
+<p>for latest CVS you could use (cvs from 2002-10-14.18:24 or later)</p>
+<pre><kbd>/alias AME foreach channel ${k}me $-; foreach query ${k}me $-
+/alias ASAY foreach channel ${k}msg * $-; foreach query ${k}msg * $-</kbd></pre>
+<p>the alias is command char independed now.</p>
+<h4>Automatically updating the changed date in vim.</h4>
+<pre><code>&lt;Geert&gt; For editing Irssi scripts with vim auto-change timestamp on closing
+
+&lt;Geert&gt; autocmd BufWrite *.pl %s/changed     =&gt; '.*/="changed     =&gt; '" . strftime("%c") . "',"/e
+&lt;Geert&gt; on the .vimrc</code></pre>
+<h4>How to dump irssi perl variables for debugging?</h4>
+<pre><kbd>/alias dump script exec use Data::Dumper; print Data::Dumper-&gt;new([\$0-])-&gt;Dump</kbd></pre>
+
+<h4>how to send messages without showing up in scrollback/log?</h4>
+<p>i use <kbd>/alias QMSG quote privmsg $0 :$1-</kbd> for this purpose. it has the advantage over <kbd>/^msg</kbd> that it works with command char &#8220;^&#8221;.</p>
+<p>if you want to auth against some service like Q/Chanserv you now can use:</p>
+<pre><kbd>/ircnet add -autosendcmd "qmsg Q@CServe.quakenet.org AUTH nick pass" Quakenet</kbd></pre>
+<h4>How to protect irssi from being closed accidently?</h4>
+
+<pre><kbd>/alias quit echo dont do this at home</kbd></pre>
+<p>if you like to close irssi for some reason use <kbd>//quit</kbd>.</p>
+<h4>my anti annoyance filters <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_wink.gif' alt=';)' class='wp-smiley' /> </h4>
+<pre><kbd>/ignore -channels #chan1,#chan2,#chan3 * JOINS PARTS QUITS NICKS
+/ignore -channels #chan1,#chan2,#chan3 -regexp -pattern (away|gone|back|playin|weg|wech|returned) * ACTIONS</kbd></pre>
+<p><em>Disclaimer: of course you will miss some stuff with this ignores. but for me it makes it more readable.</em></p>
+<p>Another way to get rid of some message levels is <a href="http://www.irssi.org/scripts/scripts/crapbuster.pl">crapbuster.pl</a></p>
+<p>i use: <kbd>/set crapbuster_levels JOINS PARTS QUITS NICKS CLIENTCRAP CRAP MODE TOPICS KICKS</kbd>.</p>
+
+<h4>How to update all irssi scripts at once?</h4>
+<p>i use: <code>alias uis='rsync -avz main.irssi.org::irssiweb/scripts/scripts/\*.pl ~/.irssi/scripts/official'</code></p>
+<p>(note: this is a shell alias! not an irssi alias. to use it from irssi use:</p>
+<p><kbd>/alias uis exec - rsync -avz main.irssi.org::irssiweb/scripts/scripts/\*.pl ~/.irssi/scripts/official</kbd>)</p>
+<p>To update only the scripts you already have, use the &#8211;existing switch in rsync: <kbd>rsync -avz --existing main.irssi.org::irssiweb/scripts/scripts/ ~/.irssi/scripts/</kbd>.</p>
+<p>for autorun just link the scripts from <code>~/.irssi/scripts/official</code> to <code>~/.irssi/scripts/autorun/</code></p>
+
+<h4>How to use different formats for the statusbar clock and the timestamp in scrollback?</h4>
+<dl>
+<dt>To set the scrollback format use:</dt>
+<dd>
+<pre><kbd>/format timestamp {timestamp %%H:%%M:%%S }</kbd></pre>
+</dd>
+<dd>(default: <kbd>/format timestamp {timestamp $Z})</kbd></dd>
+<dt>To set the statusbar clock format use:</dt>
+<dd>
+<pre><kbd>/set timestamp_format %H:%M:00</kbd></pre>
+
+</dd>
+</dl>
+<h4>How to toggle between 2 windows?</h4>
+<pre><kbd>/bind meta-x command window last</kbd></pre>
+<p>now pressing meta/alt+x toggles between 2 windows.</p>
+<h4>The fastest way to close a query is&#8230;?</h4>
+<p>just type <kbd>/q</kbd> (without any parameters) in the query window.</p>
+<h4>How to show the prompt in the active split window?</h4>
+
+<p>first make it only visible in the active window with</p>
+<pre><kbd>/statusbar prompt visible active</kbd></pre>
+<p>Then make it a window-statusbar</p>
+<pre><kbd>/statusbar prompt type window</kbd></pre>
+<h4>How can i change the timezone of the clock in irssi?</h4>
+<pre><kbd>/script exec $ENV{'TZ'}='&lt;nameofyourtimezone&gt;'<strong>;</strong></kbd></pre>
+<p>e.g. <kbd>/script exec $ENV{'TZ'}='UTC'<strong>;</strong></kbd> to run the clock in irssi on UTC while your system is maybe using CET.</p>
+
+<h4>How can i add all my open channels to the irssi channel list? </h4>
+<p><kbd>/alias ADDALLCHANNELS script exec foreach my \$channel (Irssi::channels()) { Irssi::command("channel add -auto \$channel-&gt;{name} \$channel-&gt;{server}-&gt;{tag} \$channel-&gt;{key}")\;}</kbd></p>
+<p>this adds all your channels with auto join enabled. if you just wanna add them remove the <code>-auto</code>.</p>
+<p>thanks to Valentin Batz (senneth) for the alias.</p>
+<h4>how can i disable snotes in the statuswindow again?</h4>
+<pre><kbd>/window level ALL -snotes
+/window new hidden
+/window level +snotes</kbd></pre>
+
+<h4>How can i force irssi to redraw the whole screen?</h4>
+<p>you can use <kbd>/redraw</kbd>. on most terminals pressing <kbd>ctrl+l</kbd> (in screen <kbd>ctrl+a l</kbd>) should do the same.<br />
+of course you can bind it in irssi aswell: <kbd>/bind ^L redraw</kbd>.</p>
+
+
+
+<?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>
+

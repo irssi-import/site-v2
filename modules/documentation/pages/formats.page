@@ -1,0 +1,301 @@
+<div id="main-content">
+
+
+		<h2>Color Formats</h2>
+
+		<p>Irssi&#8217;s colors that you can use in text formats, hilights, etc.:</p>
+<table class="data">
+<thead>
+<tr>
+<th style="width: 15%">&nbsp;</th>
+<th style="width: 15%">&nbsp;</th>
+<th style="width: 15%">&nbsp;</th>
+<th>Text</th>
+
+<th>Text</th>
+<th>Background</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%k</td>
+<td>%K</td>
+<td>%0</td>
+<td>black</td>
+<td>dark grey</td>
+
+<td>black</td>
+</tr>
+<tr>
+<td>%r</td>
+<td>%R</td>
+<td>%1</td>
+<td>red</td>
+<td>bold red</td>
+<td>red</td>
+</tr>
+
+<tr>
+<td>%g</td>
+<td>%G</td>
+<td>%2</td>
+<td>green</td>
+<td>bold green</td>
+<td>green</td>
+</tr>
+<tr>
+<td>%y</td>
+
+<td>%Y</td>
+<td>%3</td>
+<td>yellow</td>
+<td>bold yellow</td>
+<td>yellow</td>
+</tr>
+<tr>
+<td>%b</td>
+<td>%B</td>
+<td>%4</td>
+
+<td>blue</td>
+<td>bold blue</td>
+<td>blue</td>
+</tr>
+<tr>
+<td>%m</td>
+<td>%M</td>
+<td>%5</td>
+<td>magenta</td>
+<td>bold magenta</td>
+
+<td>magenta</td>
+</tr>
+<tr>
+<td>%p</td>
+<td>%P</td>
+<td>&nbsp;</td>
+<td>magenta (think: purple)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>%c</td>
+
+<td>%C</td>
+<td>%6</td>
+<td>cyan</td>
+<td>bold cyan</td>
+<td>cyan</td>
+</tr>
+<tr>
+<td>%w</td>
+<td>%W</td>
+<td>%7</td>
+
+<td>white</td>
+<td>bold white</td>
+<td>white</td>
+</tr>
+<tr>
+<td>%n</td>
+<td>%N</td>
+<td>&nbsp;</td>
+<td colspan="3">Changes the color to &#8220;default color&#8221;, removing all other coloring and formatting. %N is always the terminal&#8217;s default color. %n is usually too, except in themes it changes to &#8220;previous color&#8221;, ie. hello = &#8220;%Rhello%n&#8221; and &#8220;%G{hello} world&#8221; would print hello in red, and %n would turn back into %G making world green.
+
+</td>
+</tr>
+<tr>
+<td>%F</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td colspan="3">Blinking on/off (think: flash)</td>
+</tr>
+<tr>
+<td>%U</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td colspan="3">Underline on/off</td>
+
+</tr>
+<tr>
+<td>%8</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td colspan="3">Reverse on/off</td>
+</tr>
+<tr>
+<td>%9</td>
+<td>%_</td>
+<td>&nbsp;</td>
+<td colspan="3">Bold on/off</td>
+
+</tr>
+<tr>
+<td>%:</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td colspan="3">Insert newline</td>
+</tr>
+<tr>
+<td>%|</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td colspan="3">Marks the indentation position</td>
+</tr>
+
+<tr>
+<td>%#</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td colspan="3">Monospace font on/off (useful with lists and GUI)</td>
+</tr>
+<tr>
+<td>%%</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td colspan="3">A single %</td>
+</tr>
+</tbody>
+
+</table>
+<p>In .theme files %n works a bit differently. See default.theme for more information.</p>
+<p>MIRC colors that you can use when writing text to channel:</p>
+<table class="data">
+<thead>
+<tr>
+<th>&nbsp;</th>
+<th>foreground (fg)</th>
+<th>background (bg)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+
+<td>0</td>
+<td>white</td>
+<td>light gray + blinking fg</td>
+</tr>
+<tr>
+<td>1</td>
+<td>black</td>
+<td>black</td>
+</tr>
+<tr>
+<td>2</td>
+
+<td>blue</td>
+<td>blue</td>
+</tr>
+<tr>
+<td>3</td>
+<td>green</td>
+<td>green</td>
+</tr>
+<tr>
+<td>4</td>
+<td>light red</td>
+
+<td>red + blinking fg</td>
+</tr>
+<tr>
+<td>5</td>
+<td>red</td>
+<td>red</td>
+</tr>
+<tr>
+<td>6</td>
+<td>magenta (purple)</td>
+<td>magenta</td>
+
+</tr>
+<tr>
+<td>7</td>
+<td>orange</td>
+<td>orange</td>
+</tr>
+<tr>
+<td>8</td>
+<td>yellow</td>
+<td>orange + blinking fg</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>light green</td>
+<td>green        + blinking fg</td>
+</tr>
+<tr>
+<td>10</td>
+<td>cyan</td>
+<td>cyan</td>
+</tr>
+<tr>
+
+<td>11</td>
+<td>light cyan</td>
+<td>cyan + blinking fg</td>
+</tr>
+<tr>
+<td>12</td>
+<td>light blue </td>
+<td>blue + blinking fg</td>
+</tr>
+<tr>
+<td>13</td>
+
+<td>light magenta</td>
+<td>magenta + blinking fg</td>
+</tr>
+<tr>
+<td>14</td>
+<td>gray</td>
+<td>black + blinking fg</td>
+</tr>
+<tr>
+<td>15</td>
+<td>light gray</td>
+
+<td>light gray</td>
+</tr>
+</tbody>
+</table>
+<p>These colors may differ depending on your terminal. In particular the meaning for background may be the same as for the foreground (bright colors, no blinking), and orange often looks like brown or dark yellow.</p>
+<p>How to use these colors (&#8217;#&#8217; means a number as MIRC color code):</p>
+<table class="data">
+<tbody>
+<tr>
+<td>&lt;Ctrl&gt;-b</td>
+
+<td>Set bold</td>
+</tr>
+<tr>
+<td>&lt;Ctrl&gt;-c#[,#]</td>
+<td>Set foreground and optionally background color</td>
+</tr>
+<tr>
+<td>&lt;Ctrl&gt;-o</td>
+<td>Reset all formats to plain text</td>
+</tr>
+
+<tr>
+<td>&lt;Ctrl&gt;-v</td>
+<td>Set inverted color mode</td>
+</tr>
+<tr>
+<td>&lt;Ctrl&gt;-_</td>
+<td>Set underline</td>
+</tr>
+<tr>
+<td>&lt;Ctrl&gt;-7</td>
+
+<td>Same as &lt;Ctrl&gt;-_</td>
+</tr>
+</tbody>
+</table>
+<p>To reset a mode set it again, f.e.</p>
+<p>&lt;Ctrl-C&gt;3&lt;Ctrl-V&gt;FOO&lt;Ctrl-V&gt;BAR</p>
+<p>creates black on green FOO followed by a green on black BAR.</p>
+
+
+<?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>
+

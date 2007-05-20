@@ -1,0 +1,320 @@
+<div id="main-content">
+
+
+		<h2>Special Variables</h2>
+
+		<p>NOTE: This is just a slightly modified file taken from EPIC&#8217;s help.</p>
+<h3>Special Variables and Expandos</h3>
+<p>Irssi supports a number of reserved, dynamic variables, sometimes referred to as expandos.  They are special in that the client is constantly updating their values automatically.  There are also numerous variable modifiers available.</p>
+<table class="data">
+<thead>
+<tr>
+
+<th>Modifier</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$variable</code></td>
+<td>A normal variable, expanding to the first match of:<br/>
+
+<ol>
+<li>an internal SET variable</li>
+<li>an environment variable</li>
+
+</ol>
+</td>
+</tr>
+<tr>
+<td><code>$[num]variable</code></td>
+<td>Expands to the variables value, with &#8216;num&#8217; width.  If<br />
+the number is negative, the value is right-aligned. The value is padded to meet the width with the character given after number (default is space). The value is truncated to specified width unless &#8216;!&#8217; character precedes the number. If &#8216;.&#8217; character precedes the number the value isn&#8217;t padded, just truncated.</td>
+
+</tr>
+<tr>
+<td><code>$[num]variable</code></td>
+<td>Expands to the variables value, with &#8216;num&#8217; width.  If the number is negative, the value is right-aligned. The value is padded to meet the width with the<br />
+character given after number (default is space). The value is truncated to specified width unless &#8216;!&#8217; character precedes the number. If &#8216;.&#8217; character precedes the number the value isn&#8217;t padded, just truncated.</td>
+
+</tr>
+<tr>
+<td><code>$#variable</code></td>
+<td>Expands to the number of words in $variable. If $variable is omitted, it assumes $*</td>
+</tr>
+<tr>
+<td><code>$@variable</code></td>
+<td>Expands to the number of characters in $variable. if $variable is omitted, it assumes $*</td>
+</tr>
+<tr>
+<td><code>$($subvariable)</code></td>
+<td>This is somewhat similar to a pointer, in that the value of $subvar is taken as the name of the variable to expand to.  Nesting is allowed.</td>
+
+</tr>
+<tr>
+<td><code>${expression}</code></td>
+<td>Permits the value to be embedded in another string unambiguously.</td>
+</tr>
+<tr>
+<td><code>$!history!</code></td>
+<td>Expands to a matching entry in the client&#8217;s command history, wildcards allowed.</td>
+</tr>
+</tbody>
+</table>
+<p>Whenever an alias is called, these expandos are set to the arguments passed to it.  If none of these expandos are used in the alias, or the $() form shown above, any arguments passed will automatically be appended to the last command in the alias.</p>
+
+<table class="data">
+<thead>
+<tr>
+<th>Expando</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$*</code></td>
+<td>expands to all arguments passed to an alias</td>
+</tr>
+<tr>
+
+<td><code>$n</code></td>
+<td>expands to argument &#8216;n&#8217; passed to an alias (counting from zero)</td>
+</tr>
+<tr>
+<td><code>$n-m</code></td>
+<td>expands to arguments &#8216;n&#8217; through &#8216;m&#8217; passed to an alias</td>
+
+</tr>
+<tr>
+<td><code>$n-</code></td>
+<td>expands to all arguments from &#8216;n&#8217; on passed to an alias</td>
+</tr>
+<tr>
+<td><code>$-m</code></td>
+<td>expands to all arguments up to &#8216;m&#8217; passed to an alias</td>
+
+</tr>
+<tr>
+<td><code>$~</code></td>
+<td>expands to the last argument passed to an alias</td>
+</tr>
+</tbody>
+</table>
+<p>These variables are set and updated dynamically by the client.  The case of $A .. $Z is important.</p>
+<table class="data">
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$,</code></td>
+<td>last person who sent you a MSG</td>
+</tr>
+<tr>
+<td><code>$.</code></td>
+<td>last person to whom you sent a MSG</td>
+</tr>
+<tr>
+<td><code>$:</code></td>
+
+<td>last person to join a channel you are on</td>
+</tr>
+<tr>
+<td><code>$;</code></td>
+<td>last person to send a public message to a channel you are on</td>
+</tr>
+<tr>
+<td><code>$A</code></td>
+<td>text of your AWAY message, if any</td>
+</tr>
+<tr>
+<td><code>$B</code></td>
+
+<td>body of last MSG you sent</td>
+</tr>
+<tr>
+<td><code>$C</code></td>
+<td>current channel</td>
+</tr>
+<tr>
+<td><code>$D</code></td>
+<td>last person that NOTIFY detected a signon for</td>
+</tr>
+<tr>
+<td><code>$E</code></td>
+
+<td>idle time</td>
+</tr>
+<tr>
+<td><code>$F</code></td>
+<td>time client was started, $time() format</td>
+</tr>
+<tr>
+<td><code>$H</code></td>
+<td>current server numeric being processed</td>
+</tr>
+<tr>
+<td><code>$I</code></td>
+
+<td>channel you were last INVITEd to</td>
+</tr>
+<tr>
+<td><code>$J</code></td>
+<td>client version text string</td>
+</tr>
+<tr>
+<td><code>$K</code></td>
+<td>current value of CMDCHARS</td>
+</tr>
+<tr>
+<td><code>$k</code></td>
+
+<td>first character in CMDCHARS</td>
+</tr>
+<tr>
+<td><code>$L</code></td>
+<td>current contents of the input line</td>
+</tr>
+<tr>
+<td><code>$M</code></td>
+<td>modes of current channel, if any</td>
+</tr>
+<tr>
+<td><code>$N</code></td>
+
+<td>current nickname</td>
+</tr>
+<tr>
+<td><code>$O</code></td>
+<td>value of STATUS_OPER if you are an irc operator</td>
+</tr>
+<tr>
+<td><code>$P</code></td>
+<td>if you are a channel operator in $C, expands to a &#8216;@&#8217;</td>
+</tr>
+<tr>
+
+<td><code>$Q</code></td>
+<td>nickname of whomever you are QUERYing</td>
+</tr>
+<tr>
+<td><code>$R</code></td>
+<td>version of current server</td>
+</tr>
+<tr>
+<td><code>$S</code></td>
+<td>current server name</td>
+</tr>
+
+<tr>
+<td><code>$T</code></td>
+<td>target of current input (channel or nick of query)</td>
+</tr>
+<tr>
+<td><code>$U</code></td>
+<td>value of cutbuffer</td>
+</tr>
+<tr>
+<td><code>$V</code></td>
+<td>client release date (format YYYYMMDD)</td>
+
+</tr>
+<tr>
+<td><code>$W</code></td>
+<td>current working directory</td>
+</tr>
+<tr>
+<td><code>$X</code></td>
+<td>your /userhost $N address (user@host)</td>
+</tr>
+<tr>
+<td><code>$Y</code></td>
+<td>value of REALNAME</td>
+
+</tr>
+<tr>
+<td><code>$Z</code></td>
+<td>time of day (hh:mm, can be changed with /SET timestamp_format)</td>
+</tr>
+<tr>
+<td><code>$$</code></td>
+<td>a literal &#8216;$&#8217;</td>
+</tr>
+<tr>
+<td><code>$versiontime</code></td>
+
+<td>prints time of the irssi version in HHMM format</td>
+</tr>
+<tr>
+<td><code>$sysname</code></td>
+<td>system name (eg. Linux)</td>
+</tr>
+<tr>
+<td><code>$sysrelease</code></td>
+<td>system release (eg. 2.2.18)</td>
+</tr>
+<tr>
+<td><code>$sysarch</code></td>
+
+<td>system architecture (eg. i686)</td>
+</tr>
+<tr>
+<td><code>$topic</code></td>
+<td>channel topic</td>
+</tr>
+<tr>
+<td><code>$usermode</code></td>
+<td>user mode</td>
+</tr>
+<tr>
+<td><code>$cumode</code></td>
+
+<td>own channel user mode</td>
+</tr>
+<tr>
+<td><code>$cumode_space</code></td>
+<td>like $cumode, but gives space if there&#8217;s no mode.</td>
+</tr>
+<tr>
+<td><code>$tag</code></td>
+<td>server tag</td>
+</tr>
+<tr>
+
+<td><code>$chatnet</code></td>
+<td>chat network of server</td>
+</tr>
+<tr>
+<td><code>$winref</code></td>
+<td>window reference number</td>
+</tr>
+<tr>
+<td><code>$winname</code></td>
+<td>window name</td>
+</tr>
+
+<tr>
+<td><code>$itemname</code></td>
+<td>like $T, but use item&#8217;s visible_name which may be different (eg. $T = !12345chan, $itemname = !chan)</td>
+</tr>
+</tbody>
+</table>
+<p>For example, assume you have the following alias:</p>
+<pre><code>alias blah msg $D Hi there!</code></pre>
+<p>If /blah is passed any arguments, they will automatically be appended to the MSG text.</p>
+<p>For example:</p>
+
+<pre><code>/blah oops                          /* command as entered */
+&quot;Hi there! oops&quot;                    /* text sent to $D */</code></pre>
+<p>Another useful form is ${}.  In general, variables can be embedded inside strings without problems, assuming the surrounding text could not be misinterpreted as part of the variable name.  This form guarantees that surrounding text will not affect the expression&#8217;s return value.</p>
+<pre><code>/eval echo foo$Nfoo                 /* breaks, looks for $nfoo */
+/eval echo foo${N}foo               /* ${N} returns current nickname */
+fooYourNickfoo                      /* returned by above command */</code></pre>
+
+
+<?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>
+

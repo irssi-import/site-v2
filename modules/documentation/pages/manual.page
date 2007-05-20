@@ -1,0 +1,723 @@
+<div id="main-content">
+
+
+		<h2>Manual</h2>
+
+		<p>Copyright(c) 2000 Timo Sirainen &lt;<a href="mailto:cras@irssi.org">cras@irssi.org</a>&gt;</p>
+<h3>Index</h3>
+<ol>
+<li value="0"><a href="#manual-0">Generic babbling</a></li>
+<li value="1"><a href="#manual-1">Installation</a></li>
+
+<li value="2"><a href="#manual-2">Message levels</a></li>
+<li value="3"><a href="#manual-3">Flood protection</a></li>
+<li value="4"><a href="#manual-4">Configuration</a></li>
+<li value="5"><a href="#manual-5">Servers</a></li>
+<li value="6"><a href="#manual-6">Channels</a></li>
+<li value="7"><a href="#manual-7">IRC commands and features</a></li>
+<li value="8"><a href="#manual-8">Notify list</a></li>
+<li value="9"><a href="#manual-9">Text highlighting</a></li>
+<li value="10"><a href="#manual-10">Ignoring</a></li>
+
+<li value="11"><a href="#manual-11">Logging</a></li>
+</ol>
+<p>( not written yet: )</p>
+<ol>
+<li value="12">Aliases</li>
+<li value="13">Themes</li>
+<li value="14">Last log (currently text version only)</li>
+<li value="15">Nick and word completion</li>
+<li value="16">Translation tables</li>
+<li value="17">Windowing system (text version)</li>
+
+<li value="18">Keyboard (text version)</li>
+<li value="19">Perl scripting</li>
+</ol>
+<h3 id="manual-0">0. Generic babbling</h3>
+<h4>0.1 History</h4>
+<p>Hello. I&#8217;m Timo Sirainen aka. cras, and I&#8217;m an IRC addict. <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+<p>I&#8217;m actually quite new in IRC, I got my first internet connection sometimes around fall 1997 and I started actively IRCing around christmas. I used EPIC and BitchX mostly at the start, but soon found some nice KDE IRC client which name I can&#8217;t remember anymore. It&#8217;s author however stopped developing it after I had been using it a few months. And since it had bugs and all, I wanted another nice GUI IRC client. I didn&#8217;t find any. </p>
+
+<p>Since I&#8217;ve always been a coder and do-it-yourself guy (my own offline reader and BBS software in the BBS ages), I started my own IRC client at spring 1998. I called it yagIRC standing for &#8220;Yet another GTK IRC client&#8221;. GTK was in around version 1.0 back then, and it had a lot of features/bugs which I found all the time as I tried to do some &#8220;different&#8221; things than other people. These sometimes prevented me of doing something some feature I wanted.  </p>
+<p>So, in summer 1998 I went to army and I passed development of yagIRC to two guys, they did a few new features and released a version or two, but finally (in summer 1999?) they put a message to web page which told that they finally had stopped developing it entirely, also saying that my code was a total mess <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> (yes, it was a mess)</p>
+<p>I got out of the army 1.1.1999. I promised to myself that I wouldn&#8217;t do another IRC client, but after trying to use BitchX a while, I started dreaming about an IRC client which would have an excellent look and feel. After trying various things, I only came up with the GNOME panel applet which people still tell me that it&#8217;s a great feature. I was more like thinking some pretty little icons in some corner telling me about new messages and other stuff..</p>
+<p>I thought that I would keep Irssi a small project, just doing a few little features that *I* wanted, nothing for others. But after few versions and few interested people, I started coding it more and more generic&#8230;</p>
+
+<p>Finally, after releasing version 0.6.0 (february, 1999) I realized that things were getting into a big mess again. I started a rewrite, I organized the code into irc-base, irc-extra, user interface and GUI directories, created the signalling system for letting them communicate themselves easily and released 0.7.0. This was the base for the rest of the 0.7.x releases, and it did work pretty well. The signalling system was excellent, for example creating text mode version was really easy and you didn&#8217;t need tens of (empty) <code>gui_xxx()</code> functions like in the yagIRC days. Maintaining the text and GTK versions separately was really easy too.</p>
+<p>About a year later after releasing Irssi 0.7.0, I started having dreams about an IRC client that would be extremely modular, like you could upgrade the client to newer version ON THE FLY without needing to even disconnect from the servers. I started a project codenamed i2k, I took the code from Irssi, split it into more directories and changed quite a lot of the code to work a bit differently.</p>
+<p>I developed i2k quite a long, until I finally gave up with it since it could do only some basic things, and Irssi 0.7 really needed maintaining. After a while I got an idea, maybe I could merge the code from the i2k to Irssi more easily than rewriting the whole client. This was more easier than I thought. It&#8217;s now been two months since I started it, and Irssi 0.8 is looking absolutely<br />
+excellent.</p>
+<h4>0.2 Irssi 0.8</h4>
+<p>Irssi 0.8 is my fourth try to create the perfect IRC client. This time I&#8217;m concentrating to the code. I try to avoid kludges, I try to make as simple code as I can, and I try to provide enough easy to use functions so that extending Irssi is as simple as possible. I also try to keep the &#8220;bloat&#8221; features in scripts or modules instead of build-in.</p>
+
+<p>I think I&#8217;m succeeded with these goals pretty well, there&#8217;s some small problems but everything in the big picture looks great. </p>
+<h4>0.3 Future</h4>
+<p>What about Irssi 1.0, what will it look like?</p>
+<p>I was thinking about the Linux kernel versioning and keeping Irssi 0.8 a stable version all the time while developing new features only to Irssi 0.9. After 0.9 is finished, it will be called 0.10 or 1.0 depending if I think it&#8217;s ready to be called 1.0.</p>
+<p>1.0&#8217;s goal is that it has all the possible features anyone will ever need. If not build-in, then in scripts or loadable modules. Not very small goal <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+<h4>0.4 This documentation</h4>
+
+<p>Strange, I just created the index list and started writing this. I&#8217;ve never been too good at documentation and I usually don&#8217;t like writing it, but after coding so much recently and seeing that the NEWS file was getting *SO* large, I thought that I had to put all these features down somewhere so people (and me!) would find them.</p>
+<h3 id="manual-1">1. Installation</h3>
+<h4>1.1 Configuration</h4>
+<p>configure script accepts these parameters:</p>
+<table class="data">
+<tbody>
+<tr>
+<td><code>--enable-ipv6</code></td>
+<td>Enable IPv6 support</td>
+
+</tr>
+<tr>
+<td><code>--disable-curses-windows</code></td>
+<td>Don&#8217;t use curses windows. Use this if screen drawing seems too slow for some reason. This option may not work properly with all curseses (solaris8).</td>
+</tr>
+<tr>
+<td><code>--enable-memdebug</code></td>
+<td>Enable memory debugging, great for finding memory leaks</td>
+</tr>
+<tr>
+<td><code>--with-perl=static</code></td>
+
+<td>Build Perl support statically to irssi binary (default is to build a module)</td>
+</tr>
+<tr>
+<td><code>--with-perl-lib=[site|vendor|DIR]</code></td>
+<td>Specify installation dir for Perl libraries. Site is the default (usually /usr/local/lib/perl/&#8230;), vendor uses the path where the base of the perl is installed (/usr/lib/perl/&#8230;), or DIR specifies exactly where you want to install it.</td>
+</tr>
+<tr>
+<td><code>--without-perl</code></td>
+<td>Disable Perl support</td>
+</tr>
+
+<tr>
+<td><code>--with-socks</code></td>
+<td>Build with socks library</td>
+</tr>
+<tr>
+<td><code>--with-bot</code></td>
+<td>Build irssi-bot</td>
+</tr>
+<tr>
+<td><code>--with-proxy</code></td>
+<td>Build irssi-proxy module</td>
+
+</tr>
+<tr>
+<td><code>--without-textui</code></td>
+<td>Build without text frontend</td>
+</tr>
+<tr>
+<td><code>--with-servertest</code></td>
+<td>Build test irc server which you can use to try crash irc clients</td>
+</tr>
+</tbody>
+</table>
+<p>In short:</p>
+
+<pre><kbd>./configure
+make
+make install</kbd></pre>
+<p>1.2 Command line parameters:</p>
+<table class="data">
+<tbody>
+<tr>
+<td>&#8211;connect -c &lt;server&gt;</td>
+<td>Connect to server at startup</td>
+</tr>
+<tr>
+<td>&#8211;port -p &lt;port&gt;</td>
+
+<td>specify port</td>
+</tr>
+<tr>
+<td>&#8211;noconnect -!</td>
+<td>Don&#8217;t autoconnect to any servers at startup</td>
+</tr>
+<tr>
+<td>&#8211;nick -n</td>
+<td>Specify what nick to use</td>
+</tr>
+<tr>
+
+<td>&#8211;hostname -h</td>
+<td>Specify what host name to use</td>
+</tr>
+</tbody>
+</table>
+<h3 id="manual-2">2. Message levels</h3>
+<p>Message levels (or in short, levels) are used almost everywhere. They describe what kind of messages we&#8217;re dealing with. Here&#8217;s a list of them all:</p>
+<table class="data">
+<tbody>
+<tr>
+<td><code>CRAP</code></td>
+
+<td>Can be almost anything</td>
+</tr>
+<tr>
+<td><code>MSGS</code></td>
+<td>Private messages</td>
+</tr>
+<tr>
+<td><code>PUBLIC</code></td>
+<td>Public messages in channel</td>
+</tr>
+<tr>
+<td><code>NOTICES</code></td>
+
+<td>Notices</td>
+</tr>
+<tr>
+<td><code>SNOTES</code></td>
+<td>Server notices</td>
+</tr>
+<tr>
+<td><code>CTCPS</code></td>
+<td>CTCP messages</td>
+</tr>
+<tr>
+<td><code>ACTIONS</code></td>
+
+<td>Actions (/me) - usually ORed with PUBLIC or MSGS</td>
+</tr>
+<tr>
+<td><code>JOINS</code></td>
+<td>Someone joins a channel</td>
+</tr>
+<tr>
+<td><code>PARTS</code></td>
+<td>Someone parts a channel</td>
+</tr>
+<tr>
+<td><code>QUITS</code></td>
+
+<td>Someone quits IRC</td>
+</tr>
+<tr>
+<td><code>KICKS</code></td>
+<td>Someone gets kicked from channel</td>
+</tr>
+<tr>
+<td><code>MODES</code></td>
+<td>Channel mode is changed</td>
+</tr>
+<tr>
+<td><code>TOPICS</code></td>
+
+<td>Channel topic is changed</td>
+</tr>
+<tr>
+<td><code>WALLOPS</code></td>
+<td>Wallop is received</td>
+</tr>
+<tr>
+<td><code>INVITES</code></td>
+<td>Invite is received</td>
+</tr>
+<tr>
+<td><code>NICKS</code></td>
+
+<td>Someone changes nick</td>
+</tr>
+<tr>
+<td><code>DCC</code></td>
+<td>DCC related messages</td>
+</tr>
+<tr>
+<td><code>DCCMSGS</code></td>
+<td>DCC chat messages</td>
+</tr>
+<tr>
+<td><code>CLIENTNOTICES</code></td>
+
+<td>Irssi&#8217;s notices</td>
+</tr>
+<tr>
+<td><code>CLIENTERRORS</code></td>
+<td>Irssi&#8217;s error messages</td>
+</tr>
+<tr>
+<td><code>CLIENTCRAP</code></td>
+<td>Some other messages from Irssi</td>
+</tr>
+
+</tbody>
+</table>
+<p>And a few special ones that could be included with the levels above:</p>
+<table class="data">
+<tbody>
+<tr>
+<td><code>HILIGHT</code></td>
+<td>Text is highlighted</td>
+</tr>
+<tr>
+<td><code>NOHILIGHT</code></td>
+<td>Don&#8217;t check highlighting for this message</td>
+
+</tr>
+<tr>
+<td><code>NO_ACT</code></td>
+<td>Don&#8217;t trigger channel activity when printing this message</td>
+</tr>
+<tr>
+<td><code>NEVER</code></td>
+<td>Never ignore or log this message</td>
+</tr>
+</tbody>
+</table>
+<h3 id="manual-3">3. Flood protection</h3>
+
+<h4>3.1 Command flood protection</h4>
+<p>Most (all?) IRC servers&#8217; flood protection works like this (from RFC 1459):</p>
+<pre>
+--------
+* check to see if client's `message timer' is less than
+current time (set to be equal if it is);
+
+* read any data present from the client;
+
+* while the timer is less than ten seconds ahead of the current
+time, parse any present messages and penalize the client by
+2 seconds for each message;
+
+which in essence means that the client may send 1 message every 2
+seconds without being adversely affected.
+--------
+</pre>
+<p>Irssi&#8217;s flood protection works the same way, except it penalizes 2.2 seconds by default for each message (helps with some servers). You can change it with <code>/SET cmd_queue_speed &lt;milliseconds&gt;</code>. You can also change the number of commands before flood protection activates (ie. the burst count) with /SET cmd_max_at_once &lt;count&gt;.</p>
+
+<p>IRC servers also have an input buffer where the client&#8217;s commands are saved before processed. It&#8217;s size is server specific (can be as low as 1k!) If it gets full, the server kicks you out (the &#8220;Excess flood&#8221; quit message). Irssi&#8217;s flood protecion protects this pretty well with small commands, but if you send many big commands (like &gt;400 char long messages) fast, you could get easily kicked out. Normally this isn&#8217;t problem, but if you have scripts sending long messages, you should remember this. I&#8217;m not sure how much you should wait between the long messages, but 2 seconds isn&#8217;t enough.</p>
+<p>This protection is used with all commands sent to server, so you don&#8217;t need to worry about it with your scripts.</p>
+<h4>3.2 CTCP flood protection</h4>
+
+<p>Other people can pretty easily flood you with CTCP requests, and even if you wouldn&#8217;t get kicked out from the server, they could easily grow your command queue. So, Irssi&#8217;s CTCP flood protection<br />
+works like this:</p>
+<p>First it checks how big the CTCP reply queue is, if it&#8217;s longer than &#8216;<code>max_ctcp_queue</code>&#8216;, the CTCP is ignored. You can change it with <code>/SET max_ctcp_queue &lt;count&gt;</code> (default is 5).</p>
+<p>After this the CTCP reply is placed to server&#8217;s &#8220;idle queue&#8221;, so the reply is sent &#8220;when there&#8217;s extra time&#8221;, this means that if you are busy sending other commands, it might take a while before the reply is sent.</p>
+
+<h4>3.3 Detecting floods</h4>
+<p>Irssi is all the time automatically checking different flooding, when flood is noticed, it sends &#8220;flood&#8221; signal. This can be easily used for example to create a script for kicking channel flooders. Autoignore uses this also, see section 10.2.</p>
+<p>Flood is detected when more than &#8216;<code>flood_max_msgs</code>&#8216; same kind of messages arrives in `flood_timecheck&#8217; seconds to same target (channel or private msg) so it isn&#8217;t flooding if same user sends a message to 10 different channels you are on, but it is flooding if 10 messages are sent to same channel by the same user. </p>
+<p>Currently only messages, notices and ctcps are checked for flooding.</p>
+
+<pre><code>/SET flood_max_msgs = &lt;count&gt;, default is 4
+/SET flood_timecheck = &lt;seconds&gt;, default is 5 seconds</code></pre>
+<p>If either of these is 0, the flood checking is disabled.</p>
+<h3 id="manual-4">4. Configuration</h3>
+<h4>4.1 Configuration files</h4>
+<p>The configuration is saved to ~/.irssi/config file. You can edit it with text editor if you want, you can also add comments to it and they stay there even if <code>/SAVE</code> is used. Comments are the lines starting with # character. Any errors in config file are displayed at startup.</p>
+
+<p>Irssi uses it&#8217;s own config library for handling the config file. The format is pretty much the same as in libPropList and should be easily understandable.</p>
+<p>You can reload the config file on the fly with <code>/RELOAD</code> command, you can also read a different config file with <code>/RELOAD &lt;filename&gt;</code>.</p>
+<p>If you change any settings, they aren&#8217;t saved to file until you use <code>/SAVE</code>. You can save the config file to different place with <code>/SAVE &lt;filename&gt;</code>.</p>
+
+<p>4.2 Settings</p>
+<p>You can view or change the settings with <code>/SET</code> command.</p>
+<p><code>/SET</code> without any arguments displays all the settings. <code>/SET &lt;key&gt;</code> displays settings which key (partly) matches <code>&lt;key&gt; /SET &lt;key&gt; &lt;value&gt; sets &lt;key&gt; to &lt;value&gt;</code></p>
+
+<p>Boolean settings accepts only values <code>ON</code>, <code>OFF</code> and <code>TOGGLE</code>. You can also use <code>/TOGGLE</code> command to change them, so <code>/TOGGLE &lt;key&gt;</code> behaves like <code>/SET &lt;key&gt; TOGGLE</code>. <code>/TOGGLE</code> also accepts arguments <code>ON</code> and <code>OFF</code> when <code>/TOGGLE</code> behaves exactly like <code>/SET</code>.</p>
+
+<p>Remember that changes are not saved until you use /SAVE!</p>
+<h3 id="manual-5">5. Servers</h3>
+<h4>5.1 Generic</h4>
+<p>Irssi is multi-server friendly. You can be connected to multiple different servers, or the same server multiple times. Most of the settings that let you specify the channel, let you also specify IRC network.</p>
+<p>Servers are referenced by a &#8220;server tag&#8221;. If the server is known to belong to some IRC network, the tag is the IRC network&#8217;s name, like &#8220;IRCnet&#8221;. If the IRC network is unknown, the tag is created from the server&#8217;s name, like <code>irc.funet.fi -&gt; funet</code>. If the tag already exists, a number is added to the end of it and raised until unused tag is found.</p>
+
+<p>Quit messages have a small problem if there&#8217;s already a few commands in server&#8217;s input command queue. If the server&#8217;s socket is disconnected immediately after <code>QUIT</code> message is sent, it is possible that the server didn&#8217;t yet process the quit command and your quit message will be &#8220;broken pipe&#8221; or something similiar. The right thing to do is to let the server disconnect you, but what if the connection to server is broken and the server never disconnects you? I solved the problem by waiting a few seconds to see if the server disconnects us. If it didn&#8217;t, force the disconnect. This explains the (a bit annoying) &#8220;waiting for servers to close connections&#8221; message when quiting Irssi. Most IRC clients just ignore this whole problem, but I hate it if my quit message isn&#8217;t displayed right.</p>
+
+<h4>5.2 IRC networks</h4>
+<p>Different IRC networks behave a bit differently, and to be as efficient as possible, Irssi needs to know a few things about them or the safe defaults will be used. The default configuration file contains the settings for the biggest IRC networks.</p>
+<pre><code>/NETWORK ADD [-kicks &lt;count&gt;] [-msgs &lt;count&gt;] [-modes &lt;count&gt;]
+		[-whois &lt;count&gt;] [-cmdspeed &lt;ms&gt;] [-cmdmax &lt;count&gt;]
+		[-nick &lt;nick&gt;] [-user &lt;user&gt;] [-realname &lt;name&gt;]
+		[-host &lt;host&gt;] [-autosendcmd &lt;cmd&gt;] &lt;name&gt;</code></pre>
+
+<table class="data">
+<tr>
+<td><code>-kicks</code></td>
+<td>Maximum number of nicks in one <code>/KICK</code> command</td>
+</tr>
+<tr>
+<td><code>-msgs</code></td>
+<td>Maximum number of nicks in one <code>/MSG</code> command</td>
+
+</tr>
+<tr>
+<td><code>-modes</code></td>
+<td>Maximum number of mode changes in one <code>/MODE</code> command</td>
+</tr>
+<tr>
+<td><code>-whois</code></td>
+<td>Maximum number of nicks in one <code>/WHOIS</code> command</td>
+
+</tr>
+<tr>
+<td><code>-cmdspeed</code></td>
+<td>Same as <code>/SET cmd_queue_speed</code>, see section 3.1</td>
+</tr>
+<tr>
+<td><code>-cmdmax</code></td>
+<td>Same as <code>/SET cmd_max_at_once</code>, see section 3.1</td>
+</tr>
+
+<tr>
+<td><code>-nick, -user, -realname</code></td>
+<td>Specify what nick/user/name to use</td>
+</tr>
+<tr>
+<td><code>-host</code></td>
+<td>Specify what host name to use, if you have multiple</td>
+</tr>
+<tr>
+<td><code>-autosendcmd</code></td>
+<td>Command to send after connecting to a server</td>
+
+</tr>
+</table>
+<p>With -autosendcmd argument you can automatically run any commands after connecting to the network. This is useful for automatically  identifying yourself to NickServ, for example</p>
+<pre><code>
+/NETWORK ADD -autosendcmd "/msg NickServ identify secret" freenode
+
+/NETWORK REMOVE &lt;name&gt;</code></pre>
+<h4>5.3 Manually connecting and disconnecting</h4>
+<p>To connect to a new server, use:</p>
+<pre><code>/CONNECT [-network &lt;network&gt;] [-host &lt;hostname&gt;] &lt;address&gt;|&lt;network&gt;
+
+	 [&lt;port&gt; [&lt;password&gt; [&lt;nick&gt;]]]</code></pre>
+<p>If there&#8217;s no password, set it to -. You can directly connect to IRC server in specified address, or you can connect to some IRC network and Irssi will pick the server for you.</p>
+<p>You don&#8217;t need to specify the IRC network, password, nick, etc. if you setup the server using <code>/SERVER ADD</code> (see next section). If the settings can&#8217;t be found there either, Irssi will use the defaults:</p>
+
+<ul>
+<li><code>/SET default_nick = &lt;nick&gt;</code>, defaults to user_name</li>
+<li><code>/SET alternate_nick = &lt;nick&gt;</code>, defaults to <code>&lt;default_nick&gt;_</code></li>
+<li><code>/SET user_name = &lt;user&gt;</code>, defaults to your login name</li>
+<li><code>/SET real_name = &lt;name&gt;</code>, taken from /etc/passwd by default</li>
+
+<li><code>/SET hostname = &lt;host&gt;</code>, what host name to use when connecting</li>
+<li><code>/SET skip_motd ON|OFF|TOGGLE</code> - Don&#8217;t show server&#8217;s MOTD</li>
+</ul>
+<p>NOTE: <code>/CONNECT</code> is also a command for IRC operators to connect IRC servers to other IRC servers. If you want to use it, use <code>/SCONNECT</code> instead.</p>
+
+<p>You can disconnect from the server with:</p>
+<pre><code>/DISCONNECT *|&lt;tag&gt; [message]</code></pre>
+<p>If message isn&#8217;t given, Irssi will use the default quit message. You can set it with <code>/SET quit_message &lt;message&gt;</code>, default is &#8220;leaving&#8221;. </p>
+<p><code>/SERVER</code> disconnects the server in active window and connects to new one. It will take the same arguments as <code>/CONNECT</code>. If you prefix the address with + character, Irssi won&#8217;t disconnect the active server, and it will create a new window where the server is connected (ie. /window new hide;/connect address)</p>
+
+<p><code>/SERVER</code> without any arguments displays list of connected servers.</p>
+<h4>5.4 Server settings</h4>
+<pre><code>/SERVER ADD [-auto | -noauto] [-network &lt;network&gt;] [-host &lt;hostname&gt;]
+		[-cmdspeed &lt;ms&gt;] [-cmdmax &lt;count&gt;] [-port &lt;port&gt;]
+		&lt;address&gt; [&lt;port&gt; [&lt;password&gt;]]</code></pre>
+
+<ul>
+<li><code>-auto</code>: Automatically connect to server at startup -noauto: Don&#8217;t connect to server at startup (default) -network: Specify what IRC network this server belongs to</li>
+<li><code>-ircnet</code>: Same as -network. Deprecated. Do not use.</li>
+<li><code>-host</code>: Specify what host name to use, if you have multiple</li>
+<li><code>-cmdspeed</code>: Same as /SET cmd_queue_speed, see section 3.1</li>
+<li><code>-cmdmax</code>: Same as /SET cmd_max_at_once, see section 3.1</li>
+
+<li><code>-port</code>: This is pretty much like the port argument later, except this can be used to modify existing server&#8217;s port.</li>
+</ul>
+<pre><code>
+/SERVER REMOVE &lt;address&gt; [&lt;port&gt;]
+
+/SERVER LIST</code></pre>
+<p>Servers are identified by their name and port. You can have multiple entries for the same server name but in different ports. This is useful for IRC proxies, in one port you could have IRCNet proxy, another port would have EFNet, etc.</p>
+<p>If you wish to change existing server&#8217;s port to something else, use <code>-port</code> command. For example if you had irc.server.org in port 6667 and you wanted to change it to port 6668, use command:</p>
+
+<pre><code>/SERVER ADD -port 6668 irc.server.org 6667</code></pre>
+<p>If you want to remove some settings from existing server, for example hostname, just give <code>-host ""</code> parameters to it.</p>
+<p>After connected to server, Irssi can automatically change your user mode. You can set it with <code>/SET usermode &lt;mode&gt;</code>, default is +i.</p>
+<h4>5.5 Automatic reconnecting</h4>
+<p>If you get disconnected from server, Irssi will try to reconnect back to some of the servers in the same IRC network. To prevent flooding the server that doesn&#8217;t let you in (and avoiding K-lines), Irssi won&#8217;t try to reconnect to the same server more often than once in &#8216;<code>server_reconnect_time</code>&#8216; seconds. You can change it with <code>/SET server_reconnect_time &lt;seconds&gt;</code>, default is 5 minutes.</p>
+
+<p>After reconnected to server, Irssi will re-set your user mode, away message and will join you back to the same channels where you were before the connection was lost.</p>
+<p>You can see list of the reconnections with <code>/SERVER</code>. The servers that have tag as RECON-n are the reconnections. You can remove them with <code>/DISCONNECT &lt;tag&gt;</code>, and you can reconnect to them immediately with <code>/RECONNECT &lt;n&gt;</code>. <code>/RECONNECT</code> without any arguments will disconnect from the active server and reconnect back immediately.</p>
+<h4>5.6 Command redirections</h4>
+
+<p><code>FIXME</code></p>
+<h4>5.7 Server idle command queue</h4>
+<p>There&#8217;s some situations when you want to ask something from the server which isn&#8217;t really important. For example when connected to server and you didn&#8217;t get your nick, Irssi asks with /WHOIS who has your nick and displays it. But if you already have a lot of commands in buffer, like you just autojoined to many channels, you&#8217;d rather first let the JOIN commands to be sent to server</p>
+<p>This is where server idle queue gets into picture. Commands in idle queue are sent to server when there&#8217;s nothing else in the normal command queue.</p>
+<p>Idle queue works with server redirections, so you can ask something from server when it has time and your function is called when the reply is received.</p>
+<h4>5.8 Net splits</h4>
+
+<p>Irssi keeps track of people who were lost in net splits. You can get a list of them with <code>/NETSPLIT</code> command.</p>
+<p>Another use for this is with bots. Channel master can op anyone in the channel and the bot happily accepts it. But if the opped user is lost behind a net split and in netjoin the server gives ops for the user, the bot should decide if the user (who isn&#8217;t in bot&#8217;s user database) is a malicious attacker who should be deopped, or if he/she/it is just some user that already had ops before the net split.</p>
+<p><code>/SET hide_netsplit_quits</code> - If ON, hide all netsplit quit messages  and display only &#8220;<code>Netsplit host1 host2: nicks</code>&#8220;.</p>
+<p><code>/SET netsplit_max_nicks</code> - If non-zero, limit the number of nicks  printed in netsplit message and add &#8220;<code>(+&lt;n&gt; more, use /NETSPLIT  to show all of them)</code>&#8221; text.</p>
+
+<h4>5.9 Lag checking</h4>
+<p>Irssi will constantly check how big the lag to the server is. It&#8217;s done by sending <code>IRSSILAG CTCP</code> replies to ourself. Using <code>PING</code> command for this would seem more reasonable, but there was too many problems with it - some servers didn&#8217;t even know the whole <code>PING</code> command!</p>
+<p>If the lag is too big, Irssi will reconnect to different IRC server. This is sometimes useful if the connection has been stuck for 30 minutes but it still hasn&#8217;t been closed.</p>
+
+<ul>
+<li><code>/SET lag_check_time &lt;seconds&gt;</code> - Specifies how often to check the  lag. If it is set to 0, the lag detection is disabled. Default  is 30 seconds.</li>
+<li><code>/SET lag_max_before_disconnect &lt;seconds&gt;</code> - Specifies how big the lag can be before reconnecting to another server. Default is 5 minutes.</li>
+<li><code>/SET lag_min_show &lt;100th seconds&gt;</code> - Specifies the minimum lag to display in status bar. Default is 1 second.</li>
+</ul>
+
+<h4>5.10 Raw log</h4>
+<p>All data that is received or sent to server is kept in a raw log buffer for a while. Also event redirections are kept there. This is very useful for debugging purposes.</p>
+<ul>
+<li><code>/RAWLOG SAVE &lt;filename&gt;</code> - Save the current raw log buffer to file</li>
+<li><code>/RAWLOG OPEN &lt;filename&gt;</code> - Like /RAWLOG SAVE, but keep the log file open and write all new log to it.</li>
+<li><code>/RAWLOG CLOSE</code> - Close the open raw log</li>
+
+<li><code>/SET rawlog_lines &lt;count&gt;</code> - Specify the number of raw log lines to keep in memory.</li>
+</ul>
+<h3 id="manual-6">6. Channels</h3>
+<h4>6.1 Generic</h4>
+<p>There&#8217;s several types of channels you can join, here&#8217;s a list of the ones that Irssi supports:</p>
+<table class="data">
+<tr>
+<td><code>#channel</code></td>
+
+<td>Normal channels, most commonly used</td>
+</tr>
+<tr>
+<td><code>+channel</code></td>
+<td>Modeless channels, channel has no modes, no channel operators and no topic. This way no-one is above others and there&#8217;s no operator-wars etc. But on the other hand, you can&#8217;t kick any troublemakers..</td>
+</tr>
+<tr>
+<td><code>&amp;channel</code></td>
+<td>Local channels, these channels aren&#8217;t distributed outside the IRC server. IRCNet has replaced server notices with several different &#038;channels (&#038;ERRORS, &#038;NOTICES, etc.)</td>
+
+</tr>
+<tr>
+<td><code>!channel</code></td>
+<td>New channels, currently supported only by IRCNet. These channels are designed so that they can&#8217;t be taken over with net splits. /JOIN !channel joins to existing !channel, /JOIN !!channel creates a new channel.</td>
+</tr>
+</table>
+<p>Most of the commands that take channel name as parameter, can also accept * as the channel name, which means the active channel.</p>
+<h4>6.2 Joining, parting</h4>
+<p>Channels can be joined with <code>/JOIN</code> command. You can join to multiple channels with one <code>/JOIN</code> by giving it a comma-separated list of channels, like <code>/JOIN #channel1,#channel2</code>. If you don&#8217;t give the channel mode character (<code>#+&amp;!</code>) before the channel name, Irssi automatically uses <code>#</code> channels.</p>
+
+<p>Channel name may contain any characters except <code>SPACE</code>, <code>BELL</code>, <code>NUL</code>, <code>CR</code>, <code>LF</code> or comma (&#8217;,'). You can also restrict the channel to only certain users by adding the hostmask to the end of the channel name separated with a &#8216;:&#8217; character, like <code>#channel:*!*@*.fi</code> lets only people from .fi domain join the channel. This doesn&#8217;t work with all IRC servers and it&#8217;s pretty difficult to use, since everyone will have to always join the <code>#channel:*!*@*.fi</code> channel, <code>#channel</code> or <code>#channel:*!*@*.se</code> channels are different channels. Ban exceptions (+e) and especially invite lists (+I) replace this functionality pretty well, see section 6.5.</p>
+
+<p>If channel has a password (aka. key), you can join it with <code>/JOIN #channel pass</code>, or multiple channels with passwords with </p>
+<pre><code>/JOIN #secret1,#public,#secret2 pass1,x,pass2</code></pre>
+<p><code>#public</code> didn&#8217;t have any password, so we used &#8220;x&#8221; as it&#8217;s password. It doesn&#8217;t really matter what password you send with channels that don&#8217;t have passwords.</p>
+
+<p>If you want to join to channel in different server than active one in window, you can do it with <code>/JOIN -&lt;server tag&gt; #channel</code>, like <code>/JOIN -efnet #irssi</code>.</p>
+<p>You can leave channels with <code>/PART [&lt;channels&gt;] [&lt;part message&gt;]</code>. For example &#8220;<code>/PART byebye all</code>&#8221; leaves the active channel with &#8220;byebye all&#8221; message, or <code>/PART #chan1,#chan2</code> leaves those channels.</p>
+
+<p>NOTE: Sending <code>JOIN 0</code> directly to server (<code>/quote join 0</code>) leaves all the channels you are joined. There&#8217;s been some jokes about joining for example to #2000,0 where the server actually leaves you from all channels. With Irssi this isn&#8217;t really a problem, since irssi would happily join to channels #2000 and #0.</p>
+<h4>6.3 Automatic joining</h4>
+<p>Irssi can automatically join to specified channels in specified IRC networks. It can also automatically send the password when manually joining to channel without specifying the password.</p>
+<pre><code>/CHANNEL ADD [-auto | -noauto] [-bots &lt;masks&gt;] [-botcmd &lt;command&gt;]
+	 &lt;channel&gt; &lt;network&gt; [&lt;password&gt;]</code></pre>
+
+<p>With -bots and -botcmd arguments you can automatically send commands to someone in channel. This is useful for automatically getting ops for channels, for example</p>
+<pre><code>/CHANNEL ADD -auto -bots "*!bot@bothost.org bot*!*@host2.org"
+	 -botcmd "msg $0 op mypass" #channel ircnet</code></pre>
+<p>You can also use the -botcmd without -bots argument. The command is then sent whenever you join the channel.</p>
+<p>If you want to remove some settings from existing channel record, for example bots, just give the -bots &#8220;&#8221; parameters to it. Password can be removed by setting it to - (or actually, &#8220;&#8221; works too).</p>
+<p>You can remove the channels with</p>
+<pre><code>/CHANNEL REMOVE &lt;channel&gt; &lt;network&gt;</code></pre>
+
+<p><code>/CHANNEL LIST</code> displays list of channels with settings.</p>
+<p><code>/CHANNEL</code> without any arguments displays list of channels you have joined. You can also use <code>/CHANNEL</code> to join to channels just as with <code>/JOIN</code>, like <code>/CHANNEL #a</code>.</p>
+<h4>6.4 After-join automation</h4>
+
+<p>When joined to channel, Irssi asks some information about it. After it has got all of it, it prints the &#8220;Channel synchronized&#8221; text. The following information is asked:</p>
+<ul>
+<li>Channel mode</li>
+<li><code>WHO</code> list to get nicks&#8217; hosts - useful for <code>/BAN</code> for example</li>
+
+<li>Ban list - useful for allowing <code>/UNBAN</code> to use wildcards</li>
+<li>Exception list, Invite list - these are asked only from servers that support +I and +e modes, mostly just IRCNet and some EFNet servers. These aren&#8217;t really needed for anything currenty, except <code>/INVITELIST</code> and <code>/BANS</code> uses them to display the lists.</li>
+</ul>
+<p>If you have joined many channels at once, Irssi tries to optimize the commands it sends to server. Instead of sending two commands to ask two channels&#8217; mode, it just sends <code>MODE #a,#b</code>. Same thing with <code>WHO</code> list and ban/except/invite lists. Some servers do not support this and they reply with different kinds of error messages, Irssi tries to deal with them all right and resend the commands again separately. However, some strange servers sometimes use some weird error replies that Irssi doesn&#8217;t know about, and the channel never gets synchronized. If this happens with some server you know, please let the Irssi&#8217;s author know about it.</p>
+
+<h4>6.5 Channel modes</h4>
+<p>Irssi knows these channel modes:</p>
+<p>i - Invite only - People can&#8217;t join to channel without being /INVITEd, or being in invite list (+I, see below).<br />
+m - Moderated - People who don&#8217;t have voices (+v) can&#8217;t send messages to channel<br />
+p - Private - People who aren&#8217;t joined to channel can&#8217;t see it for example with /WHOISing people who are in channel.<br />
+s - Secret - Like private, but the channel isn&#8217;t displayed in /LIST&#8217;s output.<br />
+
+n - No external msgs - Without this mode, anyone can send messages to channel without even being joined.<br />
+t - Topic can be changed only by channel operators.<br />
+k &lt;key&gt; - Channel password (aka. key) - The channel can&#8217;t be joined without specifying the channel key (see section 6.2).</p>
+<p>l &lt;count&gt; - User limit - No more than &lt;count&gt; people can join to channel. This can be overridden with /INVITE with some	servers. This is usually used for protecting channel from join flooding, like some bot allows max. 5 users to join in one minute or so.</p>
+
+<p>a - Anonymous - No-one&#8217;s nick name, host or anything else can be seen. All messages, joins, parts, modes, etc. are seen as coming from nick &#8220;anonymous&#8221;, this could be pretty confusing but nice feature if you want total anonymity. This mode can only be set, never unset. This mode isn&#8217;t supported by all servers.</p>
+<p>NOTE: there is/was one bug <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> Channel operators can guess if some nick might be in the channel and try to kick it. If nick was in channel, everyone will see the nick that was kicked.</p>
+<p>r - Re-op - If channel becomes opless for longer than 45 (?) minutes, op everyone in the channel. This works only in !channels. This mode can only be set, not unset by channel creator.</p>
+<p>b - Set/remove ban. For example MODE #channel +b *!*@*.org bans everyone from .org domain.</p>
+<p>If someone from .org domain was already in channel before the ban was set, he/she couldn&#8217;t be able to write any messages to channel (doesn&#8217;t work with all servers).</p>
+
+<p>Ban can also be overridden with /INVITE, although many stupid IRC clients automatically kick the user out because they see the ban and think that because of it the user shouldn&#8217;t be in the channel (doesn&#8217;t work with all servers).</p>
+<p>e - Ban exceptions. You could for example ban everyone from *!*@*.org but set ban exception to *!*@*.host.org - works only in IRCnet/EFnet servers.</p>
+<p>I - Invite list. If channel is invite only (+i), people in this list can join it without being /INVITEd - works only in IRCnet/EFnet servers.</p>
+<p>This is excellent for in-country channels that don&#8217;t want foreigners (spammers!) to join the channel, for example setting channel&#8217;s mode to +i and +I *!*@*.fi allows only finnish people to join the channel. In addition to this, there&#8217;s usually a bot in the channels and sending /MSG bot invite command to it /INVITEs you to the channel.</p>
+<p>The &#8216;:&#8217; feature in channel modes is quite similiar, see section 6.2.</p>
+
+<p>O - Channel owner, the nick who creates a !channel receives this mode. It isn&#8217;t displayed anywhere, you can&#8217;t pass it to anyone else and you can&#8217;t regain it again. This is needed for setting +r mode in channel when it&#8217;s first created.</p>
+<p>o &lt;nick&gt; - Grant or revoke channel operator status from nick<br />
+v &lt;nick&gt; - Grant or revoke voice status from nick, only people with +v (or +o) can talk to channel when it&#8217;s moderated (+m).</p>
+
+<p>You can send multiple mode changes with one mode command:</p>
+<pre><code>/MODE #channel +nto-o+v nick1,nick2,nick3</code></pre>
+<p>This would set channel&#8217;s mode to +nt, give ops to nick1, take ops from nick2 and give voices to nick3.</p>
+<p>You can set only limited number of modes that requires argument in one command. In IRCnet it&#8217;s 3, in EFnet it&#8217;s 4 and in many others it&#8217;s 6. If it&#8217;s not known, Irssi defaults to 3. Irssi will also automatically split them, so you can use /MODE +oooooo n1,n2,.. command to op 6 people and Irssi will split it to two commands in IRCnet/EFnet.</p>
+<p>Instead of manually setting o, v and b modes you probably want to use <code>/OP</code>, <code>/DEOP</code>, <code>/VOICE</code>, <code>/DEVOICE</code>, <code>/BAN</code> and <code>/UNBAN</code> commands.</p>
+
+<p><code>/OP</code>, <code>/DEOP</code>, <code>/VOICE</code> and <code>/DEVOICE</code> commands allows wildcards as their argument. So /OP ni* will op all non-opped people whose nick start with &#8220;ni&#8221;. <code>/DEOP *</code> will deop everyone else except you. <code>/VOICE</code> and <code>/DEVOICE</code> work the same way.</p>
+
+<h4>6.6 Bans</h4>
+<p>You can give <code>/BAN</code> a list of nicks or whole ban masks. <code>/UNBAN</code> accepts wildcards, so if you have <code>ban nick!user@reallylonghost.org</code>, you can simply unban it with <code>/UNBAN</code> *really*</p>
+<p>Using <code>/BAN &lt;nicks&gt;</code>, Irssi will automatically create the mask. You can change the way it&#8217;s created with <code>/BANTYPE</code> command:</p>
+
+<pre><code>/BANTYPE normal|host|domain|custom
+
+Normal - *!user@*.domain.net
+Host   - *!*@host.domain.net
+Domain - *!*@*.domain.net
+Custom [nick] [user] [host] [domain]
+   eg. /bantype custom nick domain - nick!*@*.domain.net
+   eg. /bantype custom user host - *!user@host.domain.net</code></pre>
+<p>Irssi has also a couple of commands to help banning people:</p>
+<ul>
+<li><code>/KICKBAN [&lt;channel&gt;] &lt;nick&gt; &lt;reason&gt;</code> - ban and kick the nick</li>
+<li><code>/KNOCKOUT [&lt;seconds&gt;] &lt;nick&gt; &lt;reason&gt;</code> - kickban the nick, unban after waiting &lt;seconds&gt;, default is 5 minutes.</li>
+
+</ul>
+<h4>6.7 Massjoins</h4>
+<p>Automatic opping the nick right after joined to channel is a pretty commonly used. What mostly irritates me with this is that the nick may be opped multiple times by different people, or after netsplits when the people join back, the server will op them, but still the bots op the people again, even if it was just done by the server. </p>
+<p>Irssi has this feature that it sends a &#8220;massjoin&#8221; signal a while after the real join. If someone has already opped the nick, you can easily check it in the massjoin signal handler.</p>
+<p>The default is to report maximum of 5 joins in one massjoin signal. If the 5 joins don&#8217;t come in 5 seconds, the signal is sent anyway. You can change these with <code>/SET massjoin_max_wait &lt;milliseconds&gt;</code> and <code>/SET massjoin_max_joins &lt;count&gt;</code>.</p>
+
+<h3 id="manual-7">7. IRC commands and features (FIXME)</h3>
+<h4>7.x Basic commands</h4>
+<h4>7.x IRC operator commands</h4>
+<h4>7.x Away features</h4>
+<h3 id="manual-8">8. Notify list</h3>
+<p>Notify list is generally used for knowing when someone you know comes to IRC or leaves from IRC. Traditionally notify list can handle only a list of nicks, no nick masks etc. I lost interest to traditional notify lists long time ago, since the people I know are in IRC all the time. So I made a bit more featureful notify list:</p>
+<pre><code>/NOTIFY [-list] [-away] [-idle [minutes]] &lt;mask&gt; [network [network...]]</code></pre>
+
+<table class="data">
+<tr>
+<td><code>-away</code></td>
+<td>Notifies about away-status changes</td>
+</tr>
+<tr>
+<td><code>-idle</code></td>
+<td>Notifies if idle time is first larger than &lt;minutes&gt; (default is hour) and then it drops down.</td>
+</tr>
+<tr>
+
+<td><code>-list</code></td>
+<td>Lists the notify list entries with all their settings &lt;mask&gt;: Either a simple &#8220;nick&#8221; or &#8220;nick!*@*blah.org&#8221;. The nick can&#8217;t contain wildcards, but the user/host can.</td>
+</tr>
+</table>
+<pre><code>/UNNOTIFY &lt;mask&gt;</code></pre>
+
+<p><code>/NOTIFY</code> without any arguments displays if the people in notify list are online or offline.</p>
+<h3 id="manual-9">9. Text highlighting</h3>
+<p>Irssi supports highlighting lines that match the specified pattern. You can also change the color of the nicks that match specified nick mask, so you could for example show your friends&#8217; nicks with different color.</p>
+<pre><code>/HILIGHT [-mask | -regexp | -word] [-nick] [-color &lt;color&gt;]
+	 [-level &lt;level&gt;] [-channels &lt;channels&gt;] &lt;text&gt;</code></pre>
+
+<p><code>-mask</code>: Match only for nick, <code>&lt;text&gt;</code> is a nick mask<br />
+<code>-regexp</code>: <code>&lt;text&gt;</code> is a regular expression<br />
+<code>-word</code>: <code>&lt;text&gt;</code> must match to full words<br />
+
+<code>-nick</code>: Hilight only the nick, not the whole line<br />
+<code>-color</code>: Print the reply with <code>&lt;color&gt;</code>. color is in <code>%code</code> format (see docs/formats.txt)<br />
+<code>-level</code>: Match only for <code>&lt;level&gt;</code> messages, default is publics,msgs,notices,actions<br />
+
+<code>-channels</code>: Match only in <code>&lt;channels&gt;</code></p>
+<pre><code>/DEHILIGHT &lt;ref#&gt; | &lt;text&gt;</code></pre>
+<p><code>/HILIGHT</code> without any arguments displays list of the hilights.</p>
+<p>If <code>&lt;color&gt;</code> is a number, Irssi will treat it as a MIRC color code. You can also use bolds (^B), underlines (^_) etc. as <code>&lt;color&gt;</code> if you like.</p>
+
+<h3 id="manual-10">10. Ignoring</h3>
+<h4>10.1 Manual ignoring</h4>
+<p>Irssi&#8217;s ignoring options should be enough for everyone <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+<pre><code>/IGNORE [-regexp | -word] [-pattern &lt;pattern&gt;] [-replies] [-except]
+	[-channels &lt;channel&gt;] &lt;mask&gt; &lt;levels&gt; &lt;^levels&gt;</code></pre>
+
+<p><code>-regexp</code>: <code>&lt;pattern&gt;</code> is a regular expression<br />
+<code>-word</code>: <code>&lt;pattern&gt;</code> must match to full words<br />
+<code>-pattern</code>: <code>&lt;pattern&gt;</code> must match to the message&#8217;s text<br />
+
+<code>-replies</code>: Ignore replies to nick in channels. For example &#8220;<code>/IGNORE -replies *!*@*.fi PUBLIC</code>&#8221; ignores everyone from Finland, but also anyone sending message &#8220;tofinnishnick: blahblah&#8221;.<br />
+<code>-except</code>: <strong>DON&#8217;T</strong> ignore<br />
+<code>-channels</code>: Ignore only in channels<br />
+
+<code>&lt;mask&gt;</code>: Either a nick mask or list of channels<br />
+<code>&lt;levels&gt;</code>: List of levels to ignore<br />
+<code>&lt;^levels&gt;</code>: List of levels to NOT ignore (<code>/ignore -except nick notices = /ignore nick ^notices</code>)</p>
+<pre><code>/UNIGNORE &lt;ref#&gt; | &lt;mask&gt;</code></pre>
+
+<p><code>/IGNORE</code> without any arguments displays list of ignores.</p>
+<p>The best match always wins, so you can have:</p>
+<pre><code>/IGNORE * CTCPS
+/IGNORE -except *!*@host.org CTCPS</code></pre>
+<h4>10.2 Automatic ignoring</h4>
+<p>Irssi can automatically set ignores for people who flood you. Currently you can autoignore MSGS, NOTICES, CTCPS and PUBLIC. Actions are placed to either MSGS or PUBLIC. See section 3.3 for definition of the flood.</p>
+<p><code>/SET autoignore_time &lt;seconds&gt;</code> specifies how long to ignore the user.</p>
+
+<p><code>/SET autoignore_levels &lt;levels&gt;</code> specifies what levels to ignore automatically, default is to ignore only CTCPS.</p>
+<h3 id="manual-11">11. Logging</h3>
+<h4>11.1 Basic logging</h4>
+<pre><code>/LOG OPEN [-noopen] [-autoopen] [-targets &lt;targets&gt;]
+	  [-window] &lt;filename&gt; [&lt;levels&gt;]</code></pre>
+
+<p><code>-noopen</code>: Create the entry to log list, but don&#8217;t start logging<br />
+<code>-autoopen</code>: Automatically open this log file at startup<br />
+<code>-targets</code>: Log only in specified channels/nicks<br />
+<code>-window</code>: Log the active window<br />
+<code>&lt;filename&gt;</code>: File name where to log, it is parsed with <code>strftime()</code>, so <code>%d=day</code>, etc. see &#8220;<kbd>man strftime</kbd>&#8221; for more info. Irssi will automatically check every hour if log should be rotated.<br />
+
+<code>&lt;levels&gt;</code>: Defaults to ALL</p>
+<p><code>/LOG CLOSE &lt;ref#&gt; | &lt;fname&gt;</code> - Close log and remove from log list<br />
+<code>/LOG START &lt;ref#&gt; | &lt;fname&gt;</code> - Start logging to file<br />
+
+<code>/LOG STOP &lt;ref#&gt; | &lt;fname&gt;</code> - Stop logging to file<br />
+<code>/LOG</code> without any arguments displays the log list</p>
+<p><code>/SET log_create_mode &lt;mode&gt;</code> - Specifies what file mode to use with the created log files. Default is 0644.</p>
+
+<p>All of these are parsed with <code>strftime()</code>:<br />
+<code>/SET log_timestamp &lt;text&gt;</code> - Specifies the time stamp format. Default is &#8220;<code>%H:%M</code>&#8220;.<br />
+<code>/SET log_open_string &lt;text&gt;</code> - Text written to log when it&#8217;s opened<br />
+
+<code>/SET log_close_string &lt;text&gt;</code> - Text written to log when it&#8217;s closed<br />
+<code>/SET log_day_changed &lt;text&gt;</code> - Text written to log when day changes</p>
+<p><strong>NOTE</strong>: Log files are locked after opened, so two Irssis can&#8217;t accidentally try to write to the same log file.</p>
+<p>Examples:</p>
+
+<pre><code>/LOG OPEN -targets cras ~/irclogs/cras.log MSGS</code></pre>
+<p>- Logs all messages from/to nick `cras&#8217;</p>
+<pre><code>/LOG OPEN -targets #linux ~/irclogs/linux/linux-%Y-%m-%d</code></pre>
+<p>- Logs all messages in channel #linux. Log is rotated daily, so logs in 1. May 2000 goes to file &#8220;linux-2000-05-01&#8243;, when the day is changed, Irssi closes the log and starts logging to &#8220;linux-2000-05-02&#8243; etc.</p>
+<h4>11.2 Window logging</h4>
+<pre><code>/WINDOW LOG ON|OFF|TOGGLE [&lt;filename&gt;]</code></pre>
+
+<p>Start/stop logging the active window. This works exactly like /LOG OPEN -window.</p>
+<pre><code>/WINDOW LOGFILE &lt;filename&gt;</code></pre>
+<p>Sets the default log file to use in the window, it can be overridden with specifying the file name in <code>/WINDOW LOG</code>. If no file name isn&#8217;t given, Irssi defaults to ~/irc.log.&lt;windowname&gt; or ~/irc.log.Window&lt;ref#&gt; if window doesn&#8217;t have name.</p>
+
+<p>Creates the entry to log list, same as <code>/LOG OPEN -window -noopen</code>. Also, if <code>/WINDOW LOG ON</code> is used it starts logging to this file.</p>
+<h4>11.3 Automatic logging</h4>
+<p>This is the logging method that I had been asked to implement for ages, and it is really simple to use too. It logs only messages that have &#8220;targets&#8221;, ie. private messages and channel specific messages (msgs, modes, topics, etc). <code>WHOIS</code> replies and such aren&#8217;t logged. If you with to log them too, use the <code>/LOG</code> command.</p>
+
+<p>So, when for example a private messages comes to you from &#8220;guy&#8221; nick, Irssi creates a log file ~/irclogs/guy.log for it. After few minutes of inactivity, the log file is closed.</p>
+<p><code>/SET AUTOLOG ON|OFF|TOGGLE</code> - Enable/disable autolog.</p>
+<p><code>/SET AUTOLOG_LEVEL &lt;level&gt;</code> - Specifies what levels to log, default is ALL.</p>
+<p><code>/SET AUTOLOG_PATH &lt;path&gt;</code> - expandos (see special_vars.txt) can be used, $0 is the target. If you are using multiple servers, it makes sense to use the server tag as part of the file name, for example ~/irclogs/$tag/$0.log (this is the default). The directories are created automatically.</p>
+
+<h4>11.4 Awaylog</h4>
+<p>Irssi logs specified messages when you&#8217;re away. After you set yourself unaway, Irssi will display all the messages in the awaylog.</p>
+<p><code>/SET awaylog_level &lt;level></code> - Default is <code>MSGS HILIGHT</code><br />
+<code>/SET awaylog_file &lt;filename></code> - Default is ~/.irssi/away.log</p>
+<p>You can disable this feature by setting awaylog_level to NONE.</p>
+
+<p><em>&#8230; no, the docs end here, I got bored of writing these after a few days and haven&#8217;t touched these since then.</em></p>
+
+
+  
+<?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>
+

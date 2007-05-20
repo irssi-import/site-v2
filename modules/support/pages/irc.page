@@ -1,0 +1,28 @@
+<div id="main-content">
+
+
+		<h2>irc</h2>
+
+		<h3>#irssi</h3>
+<p>Official international channels:</p>
+<ul>
+<li><strong>#irssi</strong> at IRCnet - English only</li>
+<li><strong>#irssi</strong> at EFnet - English only</li>
+
+</ul>
+<p>Non-English channels:</p>
+<ul>
+<li><strong>#irssi.fi</strong> at IRCnet - Finnish</li>
+<li><strong>#irssi.de</strong> at IRCnet - German</li>
+<li><strong>#irssi.pl</strong> at IRCnet - Polish</li>
+</ul>
+
+<p>There are also some active non-official channels in other networks, eg. QuakeNet.</p>
+<p>If you have something to ask, <strong>please JUST ASK instead of asking if you can ask or if someone can help or if anyone is there</strong>.</p>
+<h3>Servers</h3>
+<p>Most IRCnet servers aren&#8217;t open for everyone, so if you&#8217;re having trouble finding one, use <code>open.ircnet.net</code> which resolves to a number of open IRCnet servers that you should be able to use.</p>
+<p>For EFNet, use <code>irc.efnet.net</code>. Most countries have an <code>irc.efnet.TLD</code>.</p>
+
+
+<?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>
+

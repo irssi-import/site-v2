@@ -1,0 +1,22 @@
+<div id="main-content">
+		<h2>Support</h2>
+
+		<ul>
+<li><a href="/documentation/faq">FAQ</a></li>
+<li><a href="/documentation/startup">Startup-HOWTO</a></li>
+<li><a href="/support/mailinglists">Mailing Lists</a></li>
+<li><a href="/support/irc">#irssi</a></li>
+</ul>
+
+<h3>Bugs, crashes</h3>
+<p>If your irssi crashes, it&#8217;s always a bug. Please read <a href="http://irssi.org/documentation/crash">bugreporting howto</a> and send one. For other type of bugs, it would still be nice to hear of them, but chances are that it&#8217;s already known. You could check the TODO file which comes with irssi if it&#8217;s already there. Send all bugreports to irssi&#8217;s <a href="http://bugs.irssi.org/">bug reporting system</a>.</p>
+<h3>Compiling problems</h3>
+<p>Read the INSTALL file that comes with irssi, it explains the most common problems.</p>
+
+<h3>Still problems?</h3>
+<p>Read <a href="http://irssi.org/documentation/faq">FAQ</a> before asking anything. <a href="http://irssi.org/documentation/startup">Startup-HOWTO</a> is quite useful as well. And if you just want to know about some setting, you could very well guess it yourself too, like if you want to change something related to windows, try /SET window.</p>
+<p>If you still haven&#8217;t found what you&#8217;re looking for, you can send mail to <a href="http://irssi.org/support/mailinglists">mailing lists</a>, or join to <a href="http://irssi.org/">#irssi</a>.</p>
+
+
+<?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>
+

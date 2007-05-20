@@ -1,0 +1,274 @@
+<div id="main-content">
+
+
+		<h2>Signals</h2>
+
+		<p>List of signals irssi emits - see design.txt for more information about signals.</p>
+<h3>core</h3>
+<p><strong>Requires to work properly:</strong></p>
+<pre><code>"gui exit"
+"gui dialog", char *type, char *text
+"send command", char *command, SERVER_REC, WI_ITEM_REC</code></pre>
+<p>Provides signals:</p>
+
+<h4>chat-protocols.c</h4>
+<pre><code>"chat protocol created", CHAT_PROTOCOL_REC
+"chat protocol updated", CHAT_PROTOCOL_REC
+"chat protocol destroyed", CHAT_PROTOCOL_REC</code></pre>
+<h4>channels.c</h4>
+<pre><code>"channel created", CHANNEL_REC, int automatic
+"channel destroyed", CHANNEL_REC</code></pre>
+<h4>chatnets.c</h4>
+<pre><code>"chatnet created", CHATNET_REC
+"chatnet destroyed", CHATNET_REC</code></pre>
+<h4>commands.c</h4>
+<pre><code>"commandlist new", COMMAND_REC
+"commandlist remove", COMMAND_REC
+"error command", int err, char *cmd
+
+"send command", char *args, SERVER_REC, WI_ITEM_REC
+"send text", char *line, SERVER_REC, WI_ITEM_REC
+"command "&lt;cmd&gt;, char *args, SERVER_REC, WI_ITEM_REC
+"default command", char *args, SERVER_REC, WI_ITEM_REC</code></pre>
+
+<h4>ignore.c</h4>
+<pre><code>"ignore created", IGNORE_REC
+"ignore destroyed", IGNORE_REC
+"ignore changed", IGNORE_REC</code></pre>
+<h4>log.c</h4>
+<pre><code>"log new", LOG_REC
+"log remove", LOG_REC
+"log create failed", LOG_REC
+"log locked", LOG_REC
+"log started", LOG_REC
+"log stopped", LOG_REC
+"log rotated", LOG_REC
+"log written", LOG_REC, char *line</code></pre>
+<h4>modules.c</h4>
+<pre><code>"module loaded", MODULE_REC, MODULE_FILE_REC
+"module unloaded", MODULE_REC, MODULE_FILE_REC
+"module error", int error, char *text, char *rootmodule, char *submodule</code></pre>
+<h4>nicklist.c</h4>
+<pre><code>"nicklist new", CHANNEL_REC, NICK_REC
+"nicklist remove", CHANNEL_REC, NICK_REC
+"nicklist changed", CHANNEL_REC, NICK_REC, char *old_nick
+"nicklist host changed", CHANNEL_REC, NICK_REC
+"nicklist gone changed", CHANNEL_REC, NICK_REC
+"nicklist serverop changed", CHANNEL_REC, NICK_REC</code></pre>
+<h4>pidwait.c</h4>
+
+<pre><code>"pidwait", int pid, int status</code></pre>
+<h4>queries.c</h4>
+<pre><code>"query created", QUERY_REC, int automatic
+"query destroyed", QUERY_REC
+"query nick changed", QUERY_REC, char *orignick
+"window item name changed", WI_ITEM_REC
+"query address changed", QUERY_REC
+"query server changed", QUERY_REC, SERVER_REC</code></pre>
+<h4>rawlog.c</h4>
+<pre><code>"rawlog", RAWLOG_REC, char *data</code></pre>
+<h4>server.c</h4>
+<pre><code>"server looking", SERVER_REC
+"server connected", SERVER_REC
+"server connecting", SERVER_REC, ulong *ip
+"server connect failed", SERVER_REC
+"server disconnected", SERVER_REC
+"server quit", SERVER_REC, char *msg
+"server sendmsg", SERVER_REC, char *target, char *msg, int target_type</code></pre>
+<h4>settings.c</h4>
+<pre><code>"setup changed"
+"setup reread", char *fname
+"setup saved", char *fname, int autosaved</code></pre>
+
+<h3>IRC core</h3>
+<p><strong>Provides signals:</strong></p>
+<h4>bans.c</h4>
+<pre><code>"ban type changed", char *bantype</code></pre>
+<h4>channels, nicklist</h4>
+<pre><code>"channel joined", CHANNEL_REC
+"channel wholist", CHANNEL_REC
+"channel sync", CHANNEL_REC
+
+"channel topic changed", CHANNEL_REC</code></pre>
+<h4>ctcp.c</h4>
+<pre><code>"ctcp msg", SERVER_REC, char *args, char *nick, char *addr, char *target
+"ctcp msg "&lt;cmd&gt;, SERVER_REC, char *args, char *nick, char *addr, char *target
+"default ctcp msg", SERVER_REC, char *args, char *nick, char *addr, char *target
+"ctcp reply", SERVER_REC, char *args, char *nick, char *addr, char *target
+"ctcp reply "&lt;cmd&gt;, SERVER_REC, char *args, char *nick, char *addr, char *target
+"default ctcp reply", SERVER_REC, char *args, char *nick, char *addr, char *target
+"ctcp action", SERVER_REC, char *args, char *nick, char *addr, char *target</code></pre>
+
+<h4>irc-log.c</h4>
+<pre><code>"awaylog show", LOG_REC, int away_msgs, int filepos</code></pre>
+<h4>irc-nicklist.c</h4>
+<pre><code>"server nick changed", SERVER_REC</code></pre>
+<h4>irc-servers.c</h4>
+<pre><code>"event connected", SERVER_REC</code></pre>
+<h4>irc.c</h4>
+<pre><code>"server event", SERVER_REC, char *data, char *sender_nick, char *sender_address
+"event "&lt;cmd&gt;, SERVER_REC, char *args, char *sender_nick, char *sender_address
+"default event", SERVER_REC, char *data, char *sender_nick, char *sender_address
+"whois default event", SERVER_REC, char *args, char *sender_nick, char *sender_address
+
+"server incoming", SERVER_REC, char *data
+
+(for perl parser..)
+"redir "&lt;cmd&gt;, SERVER_REC, char *args, char *sender_nick, char *sender_address</code></pre>
+
+<h4>lag.c</h4>
+<pre><code>"server lag", SERVER_REC
+"server lag disconnect", SERVER_REC</code></pre>
+<h4>massjoin.c</h4>
+<pre><code>"massjoin", CHANNEL_REC, GSList of NICK_RECs</code></pre>
+<h4>mode-lists.c</h4>
+<pre><code>"ban new", CHANNEL_REC, BAN_REC
+"ban remove", CHANNEL_REC, BAN_REC, char *setby</code></pre>
+<h4>modes.c</h4>
+<pre><code>"channel mode changed", CHANNEL_REC, char *setby
+"nick mode changed", CHANNEL_REC, NICK_REC, char *setby, char *mode, char *type
+"user mode changed", SERVER_REC, char *old
+"away mode changed", SERVER_REC</code></pre>
+<h4>netsplit.c</h4>
+
+<pre><code>"netsplit server new", SERVER_REC, NETSPLIT_SERVER_REC
+"netsplit server remove", SERVER_REC, NETSPLIT_SERVER_REC
+"netsplit new", NETSPLIT_REC
+"netsplit remove", NETSPLIT_REC</code></pre>
+<h3>IRC modules</h3>
+<p><strong>Provides signals:</strong></p>
+<h4>dcc*.c</h4>
+<pre><code>"dcc ctcp "&lt;cmd&gt;, char *args, DCC_REC
+"default dcc ctcp", char *args, DCC_REC
+"dcc unknown ctcp", char *args, char *sender, char *sendaddr
+
+"dcc reply "&lt;cmd&gt;, char *args, DCC_REC
+"default dcc reply", char *args, DCC_REC
+"dcc unknown reply", char *args, char *sender, char *sendaddr
+
+"dcc chat message", DCC_REC, char *msg
+
+"dcc created", DCC_REC
+"dcc destroyed", DCC_REC
+"dcc connected", DCC_REC
+"dcc rejecting", DCC_REC
+"dcc closed", DCC_REC
+"dcc request", DCC_REC, char *sendaddr
+"dcc request send", DCC_REC
+"dcc chat message", DCC_REC, char *msg
+"dcc transfer update", DCC_REC
+"dcc get receive", DCC_REC
+"dcc error connect", DCC_REC
+"dcc error file create", DCC_REC, char *filename
+"dcc error file open", char *nick, char *filename, int errno
+"dcc error get not found", char *nick
+"dcc error send exists", char *nick, char *filename
+"dcc error unknown type", char *type
+"dcc error close not found", char *type, char *nick, char *filename</code></pre>
+<h4>autoignore.c</h4>
+<pre><code>"autoignore new", SERVER_REC, AUTOIGNORE_REC
+"autoignore remove", SERVER_REC, AUTOIGNORE_REC</code></pre>
+
+<h4>flood.c</h4>
+<pre><code>"flood", SERVER_REC, char *nick, char *host, int level, char *target</code></pre>
+<h4>notifylist.c</h4>
+<pre><code>"notifylist new", NOTIFYLIST_REC
+"notifylist remove", NOTIFYLIST_REC
+"notifylist joined", SERVER_REC, char *nick, char *user, char *host, char *realname, char *awaymsg
+"notifylist away changed", SERVER_REC, char *nick, char *user, char *host, char *realname, char *awaymsg
+"notifylist unidle", SERVER_REC, char *nick, char *user, char *host, char *realname, char *awaymsg
+"notifylist left", SERVER_REC, char *nick, char *user, char *host, char *realname, char *awaymsg</code></pre>
+<h4>proxy/listen.c</h4>
+<pre><code>"proxy client connected", CLIENT_REC
+"proxy client disconnected", CLIENT_REC</code></pre>
+<h3>FE common</h3>
+<p><strong>Requires to work properly:</strong></p>
+<pre><code>"gui print text", WINDOW_REC, int fg, int bg, int flags, char *text, TEXT_DEST_REC</code></pre>
+
+<p>(Can be used to determine when all &#8220;gui print text&#8221;s are sent (not required))</p>
+<pre><code>"gui print text finished", WINDOW_REC</code></pre>
+<p><strong>Provides signals:</strong></p>
+<h4>completion.c</h4>
+<pre><code>"complete word", GList * of char*, WINDOW_REC, char *word, char *linestart, int *want_space</code></pre>
+<h4>fe-common-core.c</h4>
+<pre><code>"irssi init read settings"</code></pre>
+<h4>fe-exec.c</h4>
+
+<pre><code>"exec new", PROCESS_REC
+"exec remove", PROCESS_REC, int status
+"exec input", PROCESS_REC, char *text</code></pre>
+<h4>fe-messages.c</h4>
+<pre><code>"message public", SERVER_REC, char *msg, char *nick, char *address, char *target
+"message private", SERVER_REC, char *msg, char *nick, char *address
+"message own_public", SERVER_REC, char *msg, char *target
+"message own_private", SERVER_REC, char *msg, char *target, char *orig_target
+"message join", SERVER_REC, char *channel, char *nick, char *address
+"message part", SERVER_REC, char *channel, char *nick, char *address, char *reason
+"message quit", SERVER_REC, char *nick, char *address, char *reason
+"message kick", SERVER_REC, char *channel, char *nick, char *kicker, char *address, char *reason
+"message nick", SERVER_REC, char *newnick, char *oldnick, char *address
+"message own_nick", SERVER_REC, char *newnick, char *oldnick, char *address
+"message invite", SERVER_REC, char *channel, char *nick, char *address
+"message topic", SERVER_REC, char *channel, char *topic, char *nick, char *address</code></pre>
+<h4>keyboard.c</h4>
+<pre><code>"keyinfo created", KEYINFO_REC
+"keyinfo destroyed", KEYINFO_REC</code></pre>
+<h4>printtext.c</h4>
+<pre><code>"print text", TEXT_DEST_REC *dest, char *text, char *stripped</code></pre>
+<h4>themes.c</h4>
+<pre><code>"theme created", THEME_REC
+"theme destroyed", THEME_REC</code></pre>
+
+<h4>window-activity.c</h4>
+<pre><code>"window hilight", WINDOW_REC
+"window activity", WINDOW_REC, int old_level
+"window item hilight", WI_ITEM_REC
+"window item activity", WI_ITEM_REC, int old_lvel</code></pre>
+<h4>window-items.c</h4>
+<pre><code>"window item new", WINDOW_REC, WI_ITEM_REC
+"window item remove", WINDOW_REC, WI_ITEM_REC
+"window item changed", WINDOW_REC, WI_ITEM_REC
+"window item server changed", WINDOW_REC, WI_ITEM_REC</code></pre>
+<h4>windows.c</h4>
+<pre><code>"window created", WINDOW_REC
+"window destroyed", WINDOW_REC
+"window changed", WINDOW_REC, WINDOW_REC old
+"window changed automatic", WINDOW_REC
+"window server changed", WINDOW_REC, SERVER_REC
+"window refnum changed", WINDOW_REC, int old
+"window name changed", WINDOW_REC
+"window history changed", WINDOW_REC, char *oldname
+"window level changed", WINDOW_REC</code></pre>
+<h3>FE IRC</h3>
+<h4>fe-irc-messages.c</h4>
+<pre><code>"message irc op_public", SERVER_REC, char *msg, char *nick, char *address, char *target
+"message irc own_wall", SERVER_REC, char *msg, char *target
+"message irc own_action", SERVER_REC, char *msg, char *target
+"message irc action", SERVER_REC, char *msg, char *nick, char *address, char *target
+"message irc own_notice", SERVER_REC, char *msg, char *target
+"message irc notice", SERVER_REC, char *msg, char *nick, char *address, char *target
+"message irc own_ctcp", SERVER_REC, char *cmd, char *data, char *target
+"message irc ctcp", SERVER_REC, char *cmd, char *data, char *nick, char *address, char *target</code></pre>
+
+<h4>fe-modes.c</h4>
+<pre><code>"message irc mode", SERVER_REC, char *channel, char *nick, char *addr, char *mode</code></pre>
+<h4>dcc/fe-dcc-chat-messages.c</h4>
+<pre><code>"message dcc own", DCC_REC *dcc, char *msg
+"message dcc own_action", DCC_REC *dcc, char *msg
+"message dcc own_ctcp", DCC_REC *dcc, char *cmd, char *data
+"message dcc", DCC_REC *dcc, char *msg
+"message dcc action", DCC_REC *dcc, char *msg
+"message dcc ctcp", DCC_REC *dcc, char *cmd, char *data</code></pre>
+<h3>Text FE</h3>
+<h4>gui-readline.c</h4>
+<pre><code>"gui key pressed", int key</code></pre>
+<h4>gui-printtext.c</h4>
+<pre><code>"beep"</code></pre>
+
+<h3>Perl</h3>
+<pre><code>"script error", PERL_SCRIPT_REC, char *errormsg</code></pre>
+
+
+
+<?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>
+

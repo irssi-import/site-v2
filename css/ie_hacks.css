@@ -1,0 +1,47 @@
+/*
+-------------------------------------------------------------------
+Irssi - irssi.org
+IE Hacks Stylesheet
+By Prabhath Sirisena - http://nidahas.com
+-------------------------------------------------------------------
+*/
+
+/* Center the stuff on old IE */
+body { text-align: center; }
+div#wrap { text-align: left; }
+
+/* Heading font sizes fix */
+h2 { font-size: 150%; }
+h3 { font-size: 125%; }
+h4 { font-size: 110%; }
+h5 { font-size: 90%; }
+
+/* Inject some sense and make the liquid layout work */
+div#wrapper { width: 100%; width:expression(document.body.clientWidth < 771? "770px" : document.body.clientWidth > 1101? "1100px" : "100%"); }
+div#access { zoom: 1; }
+div#header h1 { text-align: left; }
+div#wrapper { text-align: left; }
+
+/* Contain the nav links */
+div#navigation { zoom: 1; }
+
+/* Contain floats */
+div#description { zoom: 1; }
+
+/* Contain floats */
+div#content { zoom: 1; }
+
+/* Margin weirdness */
+blockquote { zoom: 1; }
+
+body#home div#main-content, body#home div#sub-content { display: inline; }
+
+/* Peekaboo bug */
+ul#sub-menu li { zoom: 1; width: 100%; float: left; }
+ul#sub-menu li a { zoom: 1; }
+
+div#footer ul { margin-top: 10px; }
+
+/* Tables clear the floated elements, for some weird reason.
+   So we float these. No harm, as they're 100% wide anyway */
+table.data { float: left; }
