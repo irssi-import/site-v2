@@ -1,36 +1,37 @@
-<div id="main-content">
+<h2>Documentation</h2>
 
-
-		<h2>Documentation</h2>
-
-		<ul>
-<li><a href="/documentation/startup">Startup HOWTO</a></li>
-<li><a href="/documentation/faq">Frequently Asked Questions</a></li>
-<li><a href="/documentation/bugs">Writing good bug reports</a></li>
-<li><a href="/documentation/design">Design</a></li>
-
-<li><a href="/documentation/manual">Manual</a></li>
-</ul>
-<h3 id="Miscellaneous">Miscellaneous</h3>
 <ul>
-<li><a href="/documentation/tips">Tips &amp; Tricks</a></li>
-<li><a href="/documentation/proxy">Irssi Proxy</a></li>
-<li><a href="/documentation/formats">Color Formats</a></li>
+	<li><a href="/documentation/startup">Startup HOWTO</a></li>
+	<li><a href="/documentation/faq">Frequently Asked Questions</a></li>
+	<li><a href="/documentation/bugs">Writing good bug reports</a></li>
+	<li><a href="/documentation/design">Design</a></li>
+	<li><a href="/documentation/manual">Manual</a></li>
+</ul>
+
+<h3 id="Miscellaneous">Miscellaneous</h3>
+
+<ul>
+	<li><a href="/documentation/tips">Tips &amp; Tricks</a></li>
+	<li><a href="/documentation/features">Irssi Features</a></li>
+	<li><a href="/documentation/proxy">Irssi Proxy</a></li>
+	<li><a href="/documentation/formats">Color Formats</a></li>
 </ul>
 
 <h3 id="Tutorials">Tutorials</h3>
-<ul>
-<li><a href="http://f0rked.com/articles/irssi">General guide to Irssi and GNU screen</a></li>
-<li><a href="http://f0rked.com/articles/irssisplit">Split windows handling</a></li>
-<li><a href="http://wouter.coekaerts.be/site/irssi/split">Split windows handling Addendum</a></li>
-<li><a href="http://wouter.coekaerts.be/site/irssi/wclf">Showing events in different windows</a></li>
-</ul>
-<h3 id="Scripting">Scripting</h3>
-<ul>
-<li><a href="http://juerd.nl/site.plp/irssiscripttut">Scripting Tutorial, by Juerd</a></li>
 
-<li><a href="/documentation/scripting">Perl Scripting Reference</a></li>
-<li><a href="/documentation/signals">Signals</a></li>
+<ul>
+	<li><a href="http://f0rked.com/articles/irssi">General guide to Irssi and GNU screen</a></li>
+	<li><a href="http://f0rked.com/articles/irssisplit">Split windows handling</a></li>
+	<li><a href="http://wouter.coekaerts.be/site/irssi/split">Split windows handling Addendum</a></li>
+	<li><a href="http://wouter.coekaerts.be/site/irssi/wclf">Showing events in different windows</a></li>
+</ul>
+
+<h3 id="Scripting">Scripting</h3>
+
+<ul>
+	<li><a href="http://juerd.nl/site.plp/irssiscripttut">Scripting Tutorial, by Juerd</a></li>
+	<li><a href="/documentation/scripting">Perl Scripting Reference</a></li>
+	<li><a href="/documentation/signals">Signals</a></li>
 </ul>
 
 <?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>

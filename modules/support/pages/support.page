@@ -1,7 +1,6 @@
-<div id="main-content">
-		<h2>Support</h2>
+<h2>Support</h2>
 
-		<ul>
+<ul>
 <li><a href="/documentation/faq">FAQ</a></li>
 <li><a href="/documentation/startup">Startup-HOWTO</a></li>
 <li><a href="/support/mailinglists">Mailing Lists</a></li>
@@ -19,4 +18,3 @@
 
 
 <?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>
-

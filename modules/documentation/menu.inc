@@ -1,34 +1,40 @@
+</div>
 
+<div id="sub-content">
+	<ul id="sub-menu">
+<?php
 
-	</div><!-- /main-content -->
+/*
+ * Make sure we do not print the closing div!
+ */
 
-	<div id="sub-content">
+$sc=1;
 
-<!-- TOODODODODODODO
+$items = array(
+    'startup'   => 'Startup HOWTO',
+    'faq'       => 'FAQ',
+    'bugs'      => 'Writing good bug reports',
+    'design'    => 'Design',
+    'manual'    => 'Manual',
+    'tips'      => 'Tips &#038; Tricks',
+    'features'  => 'Irssi Features',
+    'proxy'     => 'Irssi Proxy',
+    'formats'   => 'Colour Formats',
+    'variables' => 'Special Variables',
+    'scripting' => 'Perl Scripting Reference',
+    'signals'   => 'Signals'
+);
 
-<li id="sub-menuactive"><a id="sub-menucurrent"
-
--->	
-		
-		<ul id="sub-menu">
-			<li><a href="/documentation/startup" title="Startup HOWTO">Startup HOWTO</a></li>
-
-			<li><a href="/documentation/faq" title="FAQ">FAQ</a></li>
-			<li><a href="/documentation/bugs" title="Writing good bug reports">Writing good bug reports</a></li>
-			<li><a href="/documentation/design" title="Design">Design</a></li>
-			<li><a href="/documentation/manual" title="Manual">Manual</a></li>
-			<li><a href="/documentation/tips" title="Tips &#038; Tricks">Tips &amp; Tricks</a></li>
-			<li><a href="/documentation/proxy" title="Irssi Proxy">Irssi Proxy</a></li>
-
-			<li><a href="/documentation/formats" title="Color Formats">Color Formats</a></li>
-			<li><a href="/documentation/variables" title="Special Variables">Special Variables</a></li>
-			<li><a href="/documentation/scripting" title="Perl Scripting Reference">Perl Scripting Reference</a></li>
-			<li><a href="/documentation/signals" title="Signals">Signals</a></li>
-		</ul>
-
-		<div id="download">
-		  <p class="intro">Download Irssi</p>
-		  <p class="version"><em><a href="#" class="release">version 0.8.1</a></em></p>
-		</div>
+foreach ($items as $key => $value) {
+	    
+	if ($_REQUEST['action'] == $key) {
+		$html = '<li id="sub-menuactive"><a id="sub-menucurrent" ';
+	} else {
+		$html = '<li><a ';
+	}
 	
-	
+	print $html . 'href="/documentation/' . $key . '" title="' . $value . '">' . $value . '</a></li>';
+}
+
+?>
+	</ul>

@@ -1,16 +1,16 @@
-<div id="content">
-    <div class="blogentry">
-        <h1>Page not found</h1>
-        <p>Unfortunately, the page you were trying to retrieve does not exist on
-        the Irssi project site. You can use the menu on the top or on your right
-        hand side to browse through the website. If you were sent to this page
-        from a link on this site, please <a href="mailto:staff@irssi.org">report
-            the broken link</a>. You can always enjoy the official 404 poem, the
-        best poem ever written!</p>
+<h1>Page not found</h1>
 
-        <blockquote>
-            <b>The 404 poem:</b><br/>
-            <pre>
+<p>Unfortunately, the page you were trying to retrieve does not exist on
+   the Irssi project site. You can use the menu on the top or on your right
+   hand side to browse through the website. If you were sent to this page
+   from a link on this site, please <a href="mailto:staff@irssi.org">report
+   the broken link</a>. You can always enjoy the official 404 poem, the
+   best poem ever written!
+</p>
+
+<blockquote>
+	<b>The 404 poem:</b><br/>
+	<pre>
 
   It is said, "To err is human,"
   That quote from alt.times.lore,
@@ -50,7 +50,6 @@
   Remember Poe, insane with longing
   For his tragically lost Lenore.
   Instead, you quest for files.
-  Quoth the Raven, "404!"</pre>
-        </blockquote>
-    </div>
-</div>
+  Quoth the Raven, "404!"
+	</pre>
+</blockquote>

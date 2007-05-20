@@ -1,9 +1,6 @@
-<div id="main-content">
+<h2>Writing good bug reports</h2>
 
-
-		<h2>Writing good bug reports</h2>
-
-		<h3>How to submit a good bug report?</h3>
+<h3>How to submit a good bug report?</h3>
 <p>Send them to bug reporting system in <a href="http://bugs.irssi.org/">http://bugs.irssi.org/</a></p>
 <p>First you should give the following information:</p>
 <ul>
@@ -55,8 +52,4 @@ Program terminated with signal 11, Segmentation fault.
 (gdb)
 </code></pre>
 
-
-
-
 <?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>
-

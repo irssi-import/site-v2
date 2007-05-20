@@ -1,9 +1,6 @@
-<div id="main-content">
+<h2>FAQ</h2>
 
-
-		<h2>FAQ</h2>
-
-		<h3>Q: Why doesn&#8217;t irssi display colors even when ircii etc. displays them?</h3>
+<h3>Q: Why doesn&#8217;t irssi display colors even when ircii etc. displays them?</h3>
 <p>A: They force ANSI colors even if terminal doesn&#8217;t support them. By default, irssi uses colors only if terminfo/termcap so says. The correct way to fix this would be to change your TERM environment to a value where colors work, like xterm-color or color_xterm (eg. <code>TERM=xterm-color irssi</code>). If this doesn&#8217;t help, then use the evil way of <code>/SET<br />
 
 term_force_colors ON</code>.</p>
@@ -27,7 +24,7 @@ The other way is to remove all the reconnections with</p>
 <p><code>MODE +b</code> still works fine though.</p>
 
 <h3>Q: Where&#8217;s the GUI version?</h3>
-<p>A: Read <a href="http://irssi.org/about">http://irssi.org/about</a></p>
+<p>A: Read <a href="/about">http://www.irssi.org/about</a></p>
 <h3>Q: How do I autorejoin channels after being kicked?</h3>
 <p>A: That&#8217;s evil and you shouldn&#8217;t do it. If you get kicked, you should stay out, at least until the channel forgot you existed <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> Most channels I&#8217;ve joined just ban you if you autorejoin after kick. If you&#8217;re joined to channels who kick people for fun, try changing channels or something.</p>
 <p>Anyway, if you REALLY want to do that, and you understand that you&#8217;re doing evilness, you can use the autorejoin.pl script that comes with irssi. You&#8217;ll still need to specify the channels you wish to rejoin with <code>/SET autorejoin_channels #chan1 #chan2 ...</code></p>
@@ -57,4 +54,3 @@ The other way is to remove all the reconnections with</p>
 <p>A: Modify the window-line in statusbar section in config file to <code>window = "{sb $winref:$tag/$T{sbmode $M}}";</code></p>
 
 <?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>
-

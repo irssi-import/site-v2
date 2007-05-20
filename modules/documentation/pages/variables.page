@@ -1,9 +1,6 @@
-<div id="main-content">
+<h2>Special Variables</h2>
 
-
-		<h2>Special Variables</h2>
-
-		<p>NOTE: This is just a slightly modified file taken from EPIC&#8217;s help.</p>
+<p>NOTE: This is just a slightly modified file taken from EPIC&#8217;s help.</p>
 <h3>Special Variables and Expandos</h3>
 <p>Irssi supports a number of reserved, dynamic variables, sometimes referred to as expandos.  They are special in that the client is constantly updating their values automatically.  There are also numerous variable modifiers available.</p>
 <table class="data">
@@ -315,6 +312,4 @@ character given after number (default is space). The value is truncated to speci
 /eval echo foo${N}foo               /* ${N} returns current nickname */
 fooYourNickfoo                      /* returned by above command */</code></pre>
 
-
 <?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>
-

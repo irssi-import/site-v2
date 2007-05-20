@@ -1,9 +1,6 @@
-<div id="main-content">
+<h2>Startup HOWTO</h2>
 
-
-		<h2>Startup HOWTO</h2>
-
-		<h3>To new Irssi users (not to new IRC users&#8230;)</h3>
+<h3>To new Irssi users (not to new IRC users&#8230;)</h3>
 <p>Copyright (c) 2000-2002 by Timo Sirainen, release under <a href="http://www.gnu.org/licenses/fdl.html">GNU FDL</a> 1.1 license.</p>
 <p>Index with some FAQ questions that are answered in the chapter:</p>
 
@@ -469,8 +466,5 @@ topic                          root   top       1        always</code></pre>
 /STATUSBAR &lt;name&gt; REMOVE &lt;item&gt;</code></pre>
 
 <p>The item name with statusbar scripts is usually same as the script&#8217;s name. Script&#8217;s documentation should tell if this isn&#8217;t the case. So, to add mail.pl before the window activity item (see the list with <code>/STATUSBAR</code> window), use: <code>/STATUSBAR window ADD -before act mail</code>.</p>
-
-
  
 <?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>
-

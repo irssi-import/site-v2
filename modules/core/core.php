@@ -54,7 +54,7 @@ Class IrssiCore {
     # Variables to store instances of other core classes.
     ##
 
-    var $Session, $SQL, $core;
+    var $Session, $SQL, $core, $Config;
 
     ##
     # Prohibited user modules which can't be loaded from the web.
@@ -87,7 +87,7 @@ Class IrssiCore {
 
     function IrssiCore () {
         $this->Session =& new CoreSession($this);
-        $this->SQL     =& new CoreSQL(@parse_ini_file(BASEDIR . 'config.ini'));
+        $this->SQL     =& new CoreSQL($this, @parse_ini_file(BASEDIR . 'config.ini'));
         $this->core    =& $this;
     }
 

@@ -1,81 +1,93 @@
-<div id="description">
-	<p id="heya">Irssi is a feature-rich, popular terminal based IRC client for UNIX systems which also supports SILC and ICB protocols via plugins. <span>|</span> <a href="#">More about Irssi</a></p>
-
+	<h2 class="section" title="The hottest news from Irssi">Latest News</h2>
 	
-	<div id="download">
-	  <p class="intro">Download Irssi</p>
-	  <p class="version"><em><a href="#" class="release">version 0.8.1</a></em></p>
-	</div>
-</div><!-- /description -->
-
-<div id="main-content">
-<h2 class="section" title="The hottest news from Irssi">Latest News</h2>
-
-					
-		<div class="entry"><h3><a href="http://dev.irssi.org/?p=3" title="View post Lorem ipsum dolor sit amet">Lorem ipsum dolor sit amet</a></h3><h4 class="date">2007.01.23</h4>
-
-		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi at turpis eu dui tempus vehicula. Donec velit mi, porta vitae, dapibus id, imperdiet in, nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Duis sit amet eros. Phasellus lorem. Donec non turpis eget justo adipiscing malesuada. Maecenas ultrices. Sed vitae sem et arcu ultrices consectetuer. Vestibulum ante quam, cursus ut, consequat quis, pulvinar non, orci. Suspendisse porttitor.</p>
-<p>Integer mollis aliquam risus. Integer faucibus commodo lacus. Morbi porta blandit nisl. Quisque venenatis elementum nisi. Nunc molestie. Duis sagittis libero nec turpis volutpat auctor. Proin aliquet euismod nulla. Donec tincidunt, urna at interdum dictum, nisi urna bibendum lectus, sed condimentum metus nibh ac velit. Nulla et augue. Praesent erat. Quisque porttitor convallis libero.</p>
-<p>Ut aliquet enim a lectus. Etiam justo ipsum, vestibulum in, pulvinar lobortis, bibendum elementum, metus. Sed felis. Sed rutrum. Sed aliquam venenatis nibh. Quisque nibh enim, elementum eget, mattis et, condimentum a, nibh. Fusce purus libero, posuere et, fermentum non, egestas a, arcu. Donec hendrerit, nisi nec aliquam adipiscing, felis lectus vulputate purus, posuere semper quam elit nec erat. Donec nulla. Maecenas facilisis vestibulum arcu. Curabitur dignissim nisl vitae elit. Aenean vestibulum est id mi. Mauris nonummy condimentum est. Aliquam ultricies. Morbi sit amet magna. Sed consectetuer orci et augue.</p>
-<ul class="meta"><li class="permalink"><a href="http://dev.irssi.org/?p=3" title="Permanent Link to this post">Permanent Link</a></li>
-		<li class="author">Posted by <a href="http://dev.irssi.org/?author=1" title="Posts by admin">admin</a></li></ul></div>
-<div class="entry"><h3><a href="http://dev.irssi.org/?p=1" title="View post Hello world!">Hello world!</a></h3><h4 class="date">2007.01.23</h4>
-		<p>Welcome to WordPress. This is your first post. Edit or delete it, then start blogging!</p>
-
-<ul class="meta"><li class="permalink"><a href="http://dev.irssi.org/?p=1" title="Permanent Link to this post">Permanent Link</a></li>
-		<li class="author">Posted by <a href="http://dev.irssi.org/?author=1" title="Posts by admin">admin</a></li></ul></div>
-
-<h2 class="section" title="Slightly older news from Irssi">Recently</h2>
-	<dl id="recently">
-	
-			</dl>
-
-	
-	</div><!-- /main-content -->
-
-	<div id="sub-content">
-
+	<div class="entry">
+		<h3><a href="#" title="View post: New website!">New website!</a></h3>
+		<h4 class="date">June 1st 2007</h4>
 		
-					
+		<p>XXXX</p>
+		
+		<ul class="meta">
 			
-			<div class="feature">
-				<h2>Featured Theme</h2>
-				<h3><a href="#">fluxmod</a></h3>
-				<h4 class="author">Theme by <a href="#">ikaro</a></h4>
-				<p class="floatleft"><img src="http://dev.irssi.org/wp-content/themes/irssi/assets/images/thumbnail.png" alt="Thumbnail of theme screenshot" /></p>
-
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam et velit id neque vehicula molestie. Fusce scelerisque. Suspendisse potenti. 
-				Fusce sem elit, rutrum ut, eleifend quis, eleifend in, nunc. Phasellus et nulla. Sed ante nulla, lacinia in, viverra non, pharetra eu, lacus. Duis vitae eros.</p>
-				<ul class="more">
-					<li class="all"><a href="#">More Themes</a></li>
-					<li class="add"><a href="#">Add Yours</a></li>
-				</ul>
-			</div>
+			<li class="permalink">
+		    		<a href="#" title="Permanent Link to this post">Permanent Link</a>
+			</li>
+			
+			<li class="author">
+				Posted by <a href="mailto:geert@irssi.org">Geert</a>
+			</li>
+		</ul>
+	</div>
+	
+	<div class="entry">
+		<h3><a href="#" title="View post: Irssi 0.8.11 released">Irssi 0.8.11 released</a></h3>
+		<h4 class="date">April 25th 2007</h4>
 		
-			<div class="feature">
-
-				<h2>Featured Script</h2>
-				<h3><a href="#">accountname.pl</a></h3>
-				<h4 class="author">Script by <a href="#">Chris</a></h4>
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam et velit id neque vehicula molestie. Fusce scelerisque. Suspendisse potenti. 
-				Fusce sem elit, rutrum ut, eleifend quis, eleifend in, nunc. Phasellus et nulla. Sed ante nulla, lacinia in, viverra non, pharetra eu, lacus. Duis vitae eros.</p>
-				<ul class="more">
-					<li class="all"><a href="#">More Scripts</a></li>
-
-					<li class="add"><a href="#">Add Yours</a></li>
-				</ul>
-			</div>
+		<p>Please welcome the new Irssi 0.8.11 release, check the <a href="/news/ChangeLog">NEWS file</a> for all changes!</p>
+		<p>It can be downloaded from <a href="/files/irssi-0.8.11.tar.gz">http://www.irssi.org/files/irssi-0.8.11.tar.gz</a></p>
+		<p>This release was made possible by the help of the Irssi core team. We also welcome a new developer <strong>Emanuele Giaquinta (exg)</strong> who has joined the Irssi staff!</p>
 		
-			<div class="feature">
-				<h2>Tricks and Tips</h2>
-				<h3><a href="#">Here goes a trick</a></h3>
-				<h4 class="author">Tip by <a href="#">Christel</a></h4>
+<pre><code><strong>The Irssi Core Team:</strong>
 
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam et velit id neque vehicula molestie. Fusce scelerisque. Suspendisse potenti. 
-				Fusce sem elit, rutrum ut, eleifend quis, eleifend in, nunc. Phasellus et nulla. Sed ante nulla, lacinia in, viverra non, pharetra eu, lacus. Duis vitae eros.</p>
-				<ul class="more">
-					<li><a href="#">All Tricks and Tips</a></li>
-				</ul>
-			</div>
+    Geert Hauwaerts        <a href="mailto:geert@irssi.org">Geert</a>      Lead Project Oversight
+    Wouter Coekaerts       <a href="mailto:coekie@irssi.org">coekie</a>     Lead Core Developer
+    Valentin Batz          <a href="mailto:senneth@irssi.org">senneth</a>    Core Developer
+    Jochen Eisinger        <a href="mailto:c0ffee@irssi.org">c0ffee</a>     Core Developer
+    Emanuele Giaquinta     <a href="mailto:exg@irssi.org">exg</a>        Core Developer
+    Christel Dahlskjaer    <a href="mailto:christel@irssi.org">christel</a>   Community Co-ordinator
+</code></pre>
 		
+		<p>With that, we release Irssi v0.8.11 into the wild and we hope you enjoy it as much as we have enjoyed working on it!</p>
+		<p>The Irssi Team</p>
 		
+		<ul class="meta">
+			
+			<li class="permalink">
+		    		<a href="#" title="Permanent Link to this post">Permanent Link</a>
+			</li>
+			
+			<li class="author">
+				Posted by <a href="mailto:geert@irssi.org">Geert</a>
+			</li>
+		</ul>
+	</div>
+	
+	<h2 class="section" title="Slightly older news from Irssi">Recently</h2>
+	
+	<dl id="recently">
+	</dl>
+</div>
+
+<div id="sub-content">
+	
+	<div class="feature">
+		<h2>Featured Theme</h2>
+		<h3><a href="#">fluxmod</a></h3>
+		<h4 class="author">Theme by <a href="#">ikaro</a></h4>
+		<p class="floatleft"><img src="/images/thumbnail.png" alt="Thumbnail of theme screenshot" /></p>
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam et velit id neque vehicula molestie. Fusce scelerisque. Suspendisse potenti. Fusce sem elit, rutrum ut, eleifend quis, eleifend in, nunc. Phasellus et nulla. Sed ante nulla, lacinia in, viverra non, pharetra eu, lacus. Duis vitae eros.</p>
+		<ul class="more">
+			<li class="all"><a href="/themes">More Themes</a></li>
+			<li class="add"><a href="/account/themeadd">Add Yours</a></li>
+		</ul>
+	</div>
+	
+	<div class="feature">
+		<h2>Featured Script</h2>
+		<h3><a href="#">accountname.pl</a></h3>
+		<h4 class="author">Script by <a href="#">Chris</a></h4>
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam et velit id neque vehicula molestie. Fusce scelerisque. Suspendisse potenti. Fusce sem elit, rutrum ut, eleifend quis, eleifend in, nunc. Phasellus et nulla. Sed ante nulla, lacinia in, viverra non, pharetra eu, lacus. Duis vitae eros.</p>
+		<ul class="more">
+			<li class="all"><a href="/scripts">More Scripts</a></li>
+			<li class="add"><a href="/account/scriptadd">Add Yours</a></li>
+		</ul>
+	</div>
+	
+	<div class="feature">
+		<h2>Tricks and Tips</h2>
+		<h3><a href="#">Here goes a trick</a></h3>
+		<h4 class="author">Tip by <a href="#">Christel</a></h4>
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam et velit id neque vehicula molestie. Fusce scelerisque. Suspendisse potenti. Fusce sem elit, rutrum ut, eleifend quis, eleifend in, nunc. Phasellus et nulla. Sed ante nulla, lacinia in, viverra non, pharetra eu, lacus. Duis vitae eros.</p>
+		<ul class="more">
+			<li><a href="/documentation/tips">All Tricks and Tips</a></li>
+		</ul>
+	</div>

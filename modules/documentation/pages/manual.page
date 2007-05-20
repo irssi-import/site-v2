@@ -1,9 +1,6 @@
-<div id="main-content">
+<h2>Manual</h2>
 
-
-		<h2>Manual</h2>
-
-		<p>Copyright(c) 2000 Timo Sirainen &lt;<a href="mailto:cras@irssi.org">cras@irssi.org</a>&gt;</p>
+<p>Copyright(c) 2000 Timo Sirainen &lt;<a href="mailto:cras@irssi.org">cras@irssi.org</a>&gt;</p>
 <h3>Index</h3>
 <ol>
 <li value="0"><a href="#manual-0">Generic babbling</a></li>
@@ -716,8 +713,5 @@ Custom [nick] [user] [host] [domain]
 <p>You can disable this feature by setting awaylog_level to NONE.</p>
 
 <p><em>&#8230; no, the docs end here, I got bored of writing these after a few days and haven&#8217;t touched these since then.</em></p>
-
-
   
 <?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>
-

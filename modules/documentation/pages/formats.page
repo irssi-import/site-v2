@@ -1,9 +1,6 @@
-<div id="main-content">
+<h2>Color Formats</h2>
 
-
-		<h2>Color Formats</h2>
-
-		<p>Irssi&#8217;s colors that you can use in text formats, hilights, etc.:</p>
+<p>Irssi&#8217;s colors that you can use in text formats, hilights, etc.:</p>
 <table class="data">
 <thead>
 <tr>
@@ -296,6 +293,4 @@
 <p>&lt;Ctrl-C&gt;3&lt;Ctrl-V&gt;FOO&lt;Ctrl-V&gt;BAR</p>
 <p>creates black on green FOO followed by a green on black BAR.</p>
 
-
 <?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>
-

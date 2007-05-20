@@ -1,7 +1,4 @@
-<div id="main-content">
-
-
-		<h2>irc</h2>
+<h2>irc</h2>
 
 		<h3>#irssi</h3>
 <p>Official international channels:</p>
@@ -25,4 +22,3 @@
 
 
 <?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>
-

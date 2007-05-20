@@ -1,9 +1,6 @@
-<div id="main-content">
+<h2>Tips &#038; Tricks</h2>
 
-
-		<h2>Tips &#038; Tricks</h2>
-
-		<h4>zsh completion for irssi options.</h4>
+<h4>zsh completion for irssi options.</h4>
 <p>You can download/see it <a href="http://cvs.sourceforge.net/viewcvs.py/*checkout*/zsh/zsh/Completion/Unix/Command/_irssi?rev=HEAD">here</a></p>
 <p>the extensions in included in default zsh distribution since 2002-03-07 (should be version 4.0.1)</p>
 <h4>hide aliases</h4>
@@ -169,7 +166,4 @@ ios = { value = "http://irssi.org/scripts/"; };
 <p>you can use <kbd>/redraw</kbd>. on most terminals pressing <kbd>ctrl+l</kbd> (in screen <kbd>ctrl+a l</kbd>) should do the same.<br />
 of course you can bind it in irssi aswell: <kbd>/bind ^L redraw</kbd>.</p>
 
-
-
 <?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>
-

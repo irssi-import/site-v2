@@ -51,9 +51,9 @@ Class CoreSQL {
     # Irssi Core SQL constructor.
     ##
 
-    function CoreSQL ($config) {
+    function CoreSQL (&$core, $config) {
         $this->core =& $core;
-        #$this->Connect($config);
+        $this->Connect($config);
     }
 
 
@@ -88,6 +88,13 @@ Class CoreSQL {
         PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
         $this->LoadQueries();
+	
+	
+	/*
+	 * Save the configuration for later usage.
+	 */
+	
+	$this->core->Config = $config;
     }
 
 

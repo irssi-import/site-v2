@@ -1,9 +1,6 @@
-<div id="main-content">
+<h2>Design</h2>
 
-
-		<h2>Design</h2>
-
-		<p>Irssi&#8217;s hierarchy is something like this:</p>
+<p>Irssi&#8217;s hierarchy is something like this:</p>
 <pre>
          sub1 sub2
             \  /
@@ -117,6 +114,4 @@ signal_add("mysignal", (SIGNAL_FUNC) sig_mysignal);
 
 </ul>
 
-
 <?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>
-

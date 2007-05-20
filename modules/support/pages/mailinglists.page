@@ -1,9 +1,6 @@
-<div id="main-content">
+<h2>Mailing Lists</h2>
 
-
-		<h2>Mailing Lists</h2>
-
-		<h3>irssi-users</h3>
+<h3>irssi-users</h3>
 <ul>
 <li><a href="mailto:irssi-users-request@dragoncat.net?subject=subscribe">Subscribe</a> sending mail to <strong>irssi-users-request@dragoncat.net</strong> with subject<br />
 
@@ -42,4 +39,3 @@
 </ul>
 
 <?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>
-

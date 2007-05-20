@@ -1,9 +1,6 @@
-<div id="main-content">
+<h2>Signals</h2>
 
-
-		<h2>Signals</h2>
-
-		<p>List of signals irssi emits - see design.txt for more information about signals.</p>
+<p>List of signals irssi emits - see design.txt for more information about signals.</p>
 <h3>core</h3>
 <p><strong>Requires to work properly:</strong></p>
 <pre><code>"gui exit"
@@ -268,7 +265,4 @@
 <h3>Perl</h3>
 <pre><code>"script error", PERL_SCRIPT_REC, char *errormsg</code></pre>
 
-
-
 <?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>
-
