@@ -217,5 +217,20 @@ Class IrssiCore {
 	function SendMail ($to, $subject, $message) {
 		mail($to, $subject, $message, "From: The Irssi Project<no-reply@irssi.org>\nReturn-path: no-reply@irssi.org");
 	}
+	
+	
+	/*
+	 * Irssi Core GetModuleInformation() function.
+	 *
+	 *    This function will return an array containing the core information
+	 *    of the requested module.
+	 */
+	
+	function GetModuleInformation ($moduleStr) {
+		
+		if (file_exists(BASEDIR . 'modules/' . $moduleStr . '/info.ini')) {
+			return @parse_ini_file(BASEDIR . 'modules/' . $moduleStr . '/info.ini');
+		}
+	}
 }
 ?>
