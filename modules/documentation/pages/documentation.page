@@ -33,5 +33,3 @@
 	<li><a href="/documentation/scripting">Perl Scripting Reference</a></li>
 	<li><a href="/documentation/signals">Signals</a></li>
 </ul>
-
-<?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>

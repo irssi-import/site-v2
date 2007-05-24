@@ -113,5 +113,3 @@ signal_add("mysignal", (SIGNAL_FUNC) sig_mysignal);
 <li>Printing infomation of some events</li>
 
 </ul>
-
-<?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>

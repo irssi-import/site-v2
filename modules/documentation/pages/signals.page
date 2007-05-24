@@ -264,5 +264,3 @@
 
 <h3>Perl</h3>
 <pre><code>"script error", PERL_SCRIPT_REC, char *errormsg</code></pre>
-
-<?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>

@@ -808,5 +808,3 @@ notice - send text with /notice, not /msg if target is set<br />
 silent - don&#8217;t print &#8220;process exited with level xx&#8221;<br />
 
 </p>
-
-<?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>

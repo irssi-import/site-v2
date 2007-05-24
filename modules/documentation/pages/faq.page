@@ -52,5 +52,3 @@ The other way is to remove all the reconnections with</p>
 
 <h3>Q: How do I add the active network to the statusbar</h3>
 <p>A: Modify the window-line in statusbar section in config file to <code>window = "{sb $winref:$tag/$T{sbmode $M}}";</code></p>
-
-<?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>

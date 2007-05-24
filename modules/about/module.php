@@ -47,11 +47,12 @@ Class IrssiAbout {
 	
 	
 	/*
-	 * Load the module
+	 * Irssi About load() function.
+	 *
+	 *    This function will load the Irssi about pages.
 	 */
 	
 	function load () {
-	
 		require_once(HTMLDIR . 'header.inc');
 		require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "about.page");
 		require_once(HTMLDIR . 'footer.inc');

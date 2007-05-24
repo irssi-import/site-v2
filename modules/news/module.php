@@ -24,7 +24,7 @@
 /*
  * Irssi News module.
  *
- *    This module will display the main page of the Irssi site containing the news items.
+ *    This module will display the news page of Irssi.
  */
 
 Class IrssiNews {
@@ -47,11 +47,12 @@ Class IrssiNews {
 	
 	
 	/*
-	 * Load the module
+	 * Irssi News load() function.
+	 *
+	 *    This function will load the Irssi news pages.
 	 */
 	
 	function load () {
-	
 		require_once(HTMLDIR . 'header.inc');
 		require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "news.page");
 		require_once(HTMLDIR . 'footer.inc');

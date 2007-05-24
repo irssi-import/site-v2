@@ -22,6 +22,13 @@
 
 
 /*
+ * Start the page generation timer.
+ */
+
+define ('PAGEGEN', microtime());
+
+
+/*
  * The global BASEDIR variable used to include and require files.
  */
 
@@ -35,6 +42,7 @@ define('BASEDIR', getcwd() . DIRECTORY_SEPARATOR);
 define('MODULESDIR', BASEDIR . 'modules'   . DIRECTORY_SEPARATOR);
 define('HTMLDIR',    BASEDIR . 'html'      . DIRECTORY_SEPARATOR);
 define('GENDIR',     HTMLDIR . 'generator' . DIRECTORY_SEPARATOR);
+define('SQLDIR',     BASEDIR . 'sql'       . DIRECTORY_SEPARATOR);
 
 
 /*

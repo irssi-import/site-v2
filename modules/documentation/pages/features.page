@@ -29,4 +29,3 @@ X
 
 X
 </pre>
-<?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>

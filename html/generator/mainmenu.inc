@@ -62,11 +62,11 @@ foreach ($this->core->GetAllModules() as $module) {
 	}
 	
 	if (isset($sortedModuleList[$infoArray['position']])) {
-    		
+		
 		$max = max(array_keys($sortedModuleList));
 		
 		for ($i = $max; $i >= $infoArray['position']; --$i) {
-    			
+			
 			if (isset($sortedModuleList[$i])) {
 				$sortedModuleList[$i + 1] = $sortedModuleList[$i];
 			} else {

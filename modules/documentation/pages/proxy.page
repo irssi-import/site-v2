@@ -14,5 +14,3 @@ cp .libs/libproxy.so ~/.irssi/modules/</code></pre>
 <p>Then you&#8217;ll need to configure the ports/ircnets the proxy listens in, something like:</p>
 <pre><code>/SET irssiproxy_ports ircnet=2777 efnet=2778 freenode=2779</code></pre>
 <p>There we have 3 different irc networks answering in 3 ports. Note that you&#8217;ll have to make the correct /IRCNET ADD and /SERVER ADD commands to make it work properly.</p>
-
-<?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>

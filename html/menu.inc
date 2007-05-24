@@ -10,20 +10,19 @@
 
 $sc=1;
 
-$items = array(
-    'mailinglists'   => 'Mailing Lists',
-    'irc'            => 'IRC',
-);
+/*
+ * Print the sub-menu.
+ */
 
 foreach ($items as $key => $value) {
-	    
+	
 	if ($_REQUEST['action'] == $key) {
 		$html = '<li id="sub-menuactive"><a id="sub-menucurrent" ';
 	} else {
 		$html = '<li><a ';
 	}
 	
-	print $html . 'href="/support/' . $key . '" title="' . $value . '">' . $value . '</a></li>';
+	print $html . "href='/" . $this->core->CurrentUserModule . "/" . $key . "' title='" . $value . "'>" . $value . "</a></li>\n";
 }
 
 ?>

@@ -311,5 +311,3 @@ character given after number (default is space). The value is truncated to speci
 <pre><code>/eval echo foo$Nfoo                 /* breaks, looks for $nfoo */
 /eval echo foo${N}foo               /* ${N} returns current nickname */
 fooYourNickfoo                      /* returned by above command */</code></pre>
-
-<?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>

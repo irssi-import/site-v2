@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Db flnm="irssi" nm="irssi" ver="1.3.4">
+  <VerLbl/>
+  <VerNotes/>
+  <DefTblOpts/>
+  <DocFolder>/IRSSI/sql</DocFolder>
+  <Sch Cm="" nm="schemaA">
+    <Tbl UsSo="1" nm="gn_passwd">
+      <TblOpts>ENGINE=InnoDB DEFAULT CHARSET=utf8</TblOpts>
+      <Pk ClNs="id" nm="pkgn_passwd"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="username" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="30" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="password" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="32" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="email" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="60" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="account_created" nu="0">
+        <DT ds="DateTime" en="" id="700" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="account_modified" nu="0">
+        <DT ds="DateTime" en="" id="700" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="account_lastlogin" nu="1">
+        <DT ds="DateTime" en="" id="700" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="account_lastip" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="39" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="administrator" nu="0">
+        <DT ds="TinyInt" en="" id="-6" ln="null" sc="null" sg="0"/>
+      </Cl>
+      <Idx clu="0" nm="gn_passwd_email_Idx" unq="1">
+        <ClNs>email</ClNs>
+      </Idx>
+      <Idx clu="0" nm="gn_passwd_username_Idx" unq="1">
+        <ClNs>username</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="wp_categories">
+      <TblOpts>ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="cat_ID" nm="pkwp_categories"/>
+      <Cl au="1" df="" nm="cat_ID" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="cat_name" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="55" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="category_nicename" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="200" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="category_description" nu="0">
+        <DT ds="LongText" en="" id="712" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="category_parent" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="category_count" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="link_count" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="posts_private" nu="0">
+        <DT ds="TinyInt" en="" id="-6" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="links_private" nu="0">
+        <DT ds="TinyInt" en="" id="-6" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Idx clu="0" nm="category_nicename" unq="0">
+        <ClNs>category_nicename</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="wp_comments">
+      <TblOpts>ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="comment_ID" nm="pkwp_comments"/>
+      <Cl au="1" df="" nm="comment_ID" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="comment_post_ID" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="comment_author" nu="0">
+        <DT ds="TinyText" en="" id="710" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="comment_author_email" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="100" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="comment_author_url" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="200" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="comment_author_IP" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="100" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0000-00-00 00:00:00" nm="comment_date" nu="0">
+        <DT ds="DateTime" en="" id="700" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0000-00-00 00:00:00" nm="comment_date_gmt" nu="0">
+        <DT ds="DateTime" en="" id="700" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="comment_content" nu="0">
+        <DT ds="Text" en="" id="703" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="comment_karma" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="1" nm="comment_approved" nu="0">
+        <DT ds="Enum" en="'0','1','spam'" id="706" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="comment_agent" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="comment_type" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="20" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="comment_parent" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="user_id" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Idx clu="0" nm="comment_approved" unq="0">
+        <ClNs>comment_approved</ClNs>
+      </Idx>
+      <Idx clu="0" nm="comment_post_ID" unq="0">
+        <ClNs>comment_post_ID</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="wp_link2cat">
+      <TblOpts>ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="rel_id" nm="pkwp_link2cat"/>
+      <Cl au="1" df="" nm="rel_id" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="link_id" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="category_id" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Idx clu="0" nm="link_id" unq="0">
+        <ClNs>link_id, category_id</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="wp_links">
+      <TblOpts>ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="link_id" nm="pkwp_links"/>
+      <Cl au="1" df="" nm="link_id" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="link_url" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="link_name" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="link_image" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="link_target" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="25" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="link_category" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="link_description" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="Y" nm="link_visible" nu="0">
+        <DT ds="Enum" en="'Y','N'" id="706" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="1" nm="link_owner" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="link_rating" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0000-00-00 00:00:00" nm="link_updated" nu="0">
+        <DT ds="DateTime" en="" id="700" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="link_rel" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="link_notes" nu="0">
+        <DT ds="MedText" en="" id="711" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="link_rss" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Idx clu="0" nm="link_category" unq="0">
+        <ClNs>link_category</ClNs>
+      </Idx>
+      <Idx clu="0" nm="link_visible" unq="0">
+        <ClNs>link_visible</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="wp_options">
+      <TblOpts>ENGINE=MyISAM AUTO_INCREMENT=95 DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="option_id, blog_id, option_name" nm="pkwp_options"/>
+      <Cl au="1" df="" nm="option_id" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="blog_id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="option_name" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="64" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="Y" nm="option_can_override" nu="0">
+        <DT ds="Enum" en="'Y','N'" id="706" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="1" nm="option_type" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="option_value" nu="0">
+        <DT ds="LongText" en="" id="712" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="20" nm="option_width" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="8" nm="option_height" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="option_description" nu="0">
+        <DT ds="TinyText" en="" id="710" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="1" nm="option_admin_level" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="yes" nm="autoload" nu="0">
+        <DT ds="Enum" en="'yes','no'" id="706" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Idx clu="0" nm="option_name" unq="0">
+        <ClNs>option_name</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="wp_post2cat">
+      <TblOpts>ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="rel_id" nm="pkwp_post2cat"/>
+      <Cl au="1" df="" nm="rel_id" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="post_id" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="category_id" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Idx clu="0" nm="post_id" unq="0">
+        <ClNs>post_id, category_id</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="wp_postmeta">
+      <TblOpts>ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="meta_id" nm="pkwp_postmeta"/>
+      <Cl au="1" df="" nm="meta_id" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="post_id" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="meta_key" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="meta_value" nu="1">
+        <DT ds="LongText" en="" id="712" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Idx clu="0" nm="meta_key" unq="0">
+        <ClNs>meta_key</ClNs>
+      </Idx>
+      <Idx clu="0" nm="post_id" unq="0">
+        <ClNs>post_id</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="wp_posts">
+      <TblOpts>ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="ID" nm="pkwp_posts"/>
+      <Cl au="1" df="" nm="ID" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="post_author" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0000-00-00 00:00:00" nm="post_date" nu="0">
+        <DT ds="DateTime" en="" id="700" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0000-00-00 00:00:00" nm="post_date_gmt" nu="0">
+        <DT ds="DateTime" en="" id="700" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="post_content" nu="0">
+        <DT ds="LongText" en="" id="712" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="post_title" nu="0">
+        <DT ds="Text" en="" id="703" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="post_category" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="post_excerpt" nu="0">
+        <DT ds="Text" en="" id="703" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="publish" nm="post_status" nu="0">
+        <DT ds="Enum" en="'publish','draft','private','static','object','attachment','inherit','future'" id="706" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="open" nm="comment_status" nu="0">
+        <DT ds="Enum" en="'open','closed','registered_only'" id="706" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="open" nm="ping_status" nu="0">
+        <DT ds="Enum" en="'open','closed'" id="706" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="post_password" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="20" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="post_name" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="200" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="to_ping" nu="0">
+        <DT ds="Text" en="" id="703" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="pinged" nu="0">
+        <DT ds="Text" en="" id="703" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0000-00-00 00:00:00" nm="post_modified" nu="0">
+        <DT ds="DateTime" en="" id="700" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0000-00-00 00:00:00" nm="post_modified_gmt" nu="0">
+        <DT ds="DateTime" en="" id="700" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="post_content_filtered" nu="0">
+        <DT ds="Text" en="" id="703" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="post_parent" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="guid" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="menu_order" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="post" nm="post_type" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="20" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="post_mime_type" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="100" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="comment_count" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Idx clu="0" nm="post_name" unq="0">
+        <ClNs>post_name</ClNs>
+      </Idx>
+      <Idx clu="0" nm="type_status_date" unq="0">
+        <ClNs>post_type, post_status, post_date, ID</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="wp_stickymenu">
+      <TblOpts>ENGINE=MyISAM DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="id" nm="pkwp_stickymenu"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="55" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="link" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="menu" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="55" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="class" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="55" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="weight" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="disabled" nu="0">
+        <DT ds="TinyInt" en="" id="-6" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="wp_usermeta">
+      <TblOpts>ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="umeta_id" nm="pkwp_usermeta"/>
+      <Cl au="1" df="" nm="umeta_id" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="user_id" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="meta_key" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="meta_value" nu="1">
+        <DT ds="LongText" en="" id="712" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Idx clu="0" nm="meta_key" unq="0">
+        <ClNs>meta_key</ClNs>
+      </Idx>
+      <Idx clu="0" nm="user_id" unq="0">
+        <ClNs>user_id</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="wp_users">
+      <TblOpts>ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="ID" nm="pkwp_users"/>
+      <Cl au="1" df="" nm="ID" nu="0">
+        <DT ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_login" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="60" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_pass" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="64" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_nicename" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="50" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_email" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="100" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_url" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="100" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0000-00-00 00:00:00" nm="user_registered" nu="0">
+        <DT ds="DateTime" en="" id="700" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_activation_key" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="60" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="0" nm="user_status" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="display_name" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="250" sc="null" sg="1"/>
+      </Cl>
+      <Idx clu="0" nm="user_login_key" unq="0">
+        <ClNs>user_login</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+  </Sch>
+  <Dgm nm="diagramA">
+    <RnCf FtSz="9" lkStgy="OffsetDirect" zm="1.0">
+      <VbCfg>
+        <Fg ky="Auto Number" vl="0"/>
+        <Fg ky="Check" vl="0"/>
+        <Fg ky="Comment" vl="0"/>
+        <Fg ky="Data Type" vl="1"/>
+        <Fg ky="Default" vl="0"/>
+        <Fg ky="ENUM Values" vl="0"/>
+        <Fg ky="Length" vl="1"/>
+        <Fg ky="Name" vl="1"/>
+        <Fg ky="Nullable" vl="0"/>
+        <Fg ky="Schema Name" vl="0"/>
+        <Fg ky="Signed" vl="0"/>
+      </VbCfg>
+    </RnCf>
+    <TbGl bkCl="ffffffe6" sch="schemaA" tbl="gn_passwd" x="234" y="160"/>
+  </Dgm>
+  <RnmMgr NxRnmId="1"/>
+  <DbDocOptionMgr>
+    <BasicOptionMgr>
+      <Name>db.doc.option.mgr</Name>
+      <BoolOpt lbl="Diagrams" nm="doc.diagrams" on="1" spl="0"/>
+      <BoolOpt lbl="Foreign Keys" nm="doc.fks" on="1" spl="0"/>
+      <BoolOpt lbl="Indexes" nm="doc.indexes" on="1" spl="0"/>
+      <BoolOpt lbl="Overwrite CSS File" nm="doc.overwrite.css" on="1" spl="0"/>
+      <BoolOpt lbl="Procedures" nm="doc.procs" on="1" spl="0"/>
+      <BoolOpt lbl="Schemas" nm="doc.schemas" on="1" spl="0"/>
+      <BoolOpt lbl="Sequences" nm="doc.sequences" on="1" spl="0"/>
+      <BoolOpt lbl="Tables" nm="doc.tables" on="1" spl="0"/>
+      <BoolOpt lbl="Triggers" nm="doc.triggers" on="1" spl="0"/>
+      <BoolOpt lbl="Views" nm="doc.views" on="1" spl="0"/>
+    </BasicOptionMgr>
+  </DbDocOptionMgr>
+</Db>

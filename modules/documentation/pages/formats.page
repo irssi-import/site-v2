@@ -292,5 +292,3 @@
 <p>To reset a mode set it again, f.e.</p>
 <p>&lt;Ctrl-C&gt;3&lt;Ctrl-V&gt;FOO&lt;Ctrl-V&gt;BAR</p>
 <p>creates black on green FOO followed by a green on black BAR.</p>
-
-<?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>

@@ -21,12 +21,12 @@
  */
 
 /*
- * Irssi Documentation module.
+ * Irssi Account module.
  *
- *    This module will display the Irssi docs.
+ *    This module will display the Irssi account pages.
  */
 
-Class IrssiDocumentation {
+Class IrssiAccount {
 	
 	
 	/*
@@ -37,16 +37,16 @@ Class IrssiDocumentation {
 	
 	
 	/*
-         * Irssi Documentation constructor.
+         * Irssi Account constructor.
 	 */
 	
-	function IrssiDocumentation (&$core) {
+	function IrssiAccount (&$core) {
 		$this->core =& $core;
 	}
 	
 	
 	/*
-	 * Irssi Documentation load() function.
+	 * Irssi Account load() function.
 	 *
 	 *    This function will load the Irssi documentation pages.
 	 */
@@ -59,7 +59,7 @@ Class IrssiDocumentation {
 		 */
 		
 		if (empty($_REQUEST['action'])) {
-			$_REQUEST['action'] = 'documentation';
+			$_REQUEST['action'] = 'login';
 		}
 		
 		if (file_exists(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . $_REQUEST['action'] . ".page")) {
@@ -78,19 +78,10 @@ Class IrssiDocumentation {
 		 */
 		
 		$items = array(
-			'documentation' => 'Documentation Index',
-			'startup'       => 'Startup HOWTO',
-			'faq'           => 'FAQ',
-			'bugs'          => 'Writing good bug reports',
-			'design'        => 'Design',
-			'manual'        => 'Manual',
-			'tips'          => 'Tips &#038; Tricks',
-			'features'      => 'Irssi Features',
-			'proxy'         => 'Irssi Proxy',
-			'formats'       => 'Colour Formats',
-			'variables'     => 'Special Variables',
-			'scripting'     => 'Perl Scripting Reference',
-			'signals'       => 'Signals'
+			'login'    => 'Sign IN',
+			'register' => 'Register an account',
+			'recover'  => 'Recover your password',
+			'validate' => 'Validate your registration',
 		);
 		
 		
