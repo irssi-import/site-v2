@@ -1,0 +1,2 @@
+<h2>Error!</h2>
+<p>The username given does not exist in our system. Please check if the information is correct.  If you forgot your username or password, you may <a href="/account/recover">request a new password</a> for your account.</p>

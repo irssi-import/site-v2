@@ -1,0 +1,168 @@
+<?php
+
+/*
+ *  License disclaimer.
+ *
+ *    For bugreports and other improvements contact The Irssi Project <staff@irssi.org>
+ *
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this script; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+
+
+/*
+ * Irssi Account module login page.
+ *
+ *    This page will display the Irssi login page.
+ */
+
+
+/*
+ * This is a list of all the required fields to have an easy
+ * way of marking a field as 'error'.
+ */
+
+$field_error = array("username"  => 0,
+		     "password"  => 0,
+		    );
+
+
+/*
+ * Check if the user has submitted the login form or not.
+ */
+
+if (!$_REQUEST['submit']) {
+	
+	
+	/*
+	 * Display the welcome text and the login form.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "login_form.inc");
+	
+	
+/*
+ * Check if the user supplied a username and a password.
+ */
+
+} elseif (($_REQUEST['username'] == "") || ($_REQUEST['password'] == "")) {
+	
+	
+	/*
+	 * Go through al lthe possible error fields and mark error
+	 * when required.
+	 */
+	
+	foreach (array_keys($field_error) as $key) {
+		
+		
+		/*
+		 * Mark the error.
+		 */
+		
+		if (!$_REQUEST[$key]) {
+			$field_error[$key] = 1;
+		}
+	}
+	
+	
+	/*
+	 * Display the missing field text and the login form.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "login_allfields.inc");
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "login_form.inc");
+	
+	
+/*
+ * Check if the username exists.
+ */
+
+} elseif (!$this->core->SQL->Handler->getOne(LOGIN_EXISTS, array($_REQUEST['username']))) {
+	
+	
+	/*
+	 * Remove the bad username from the URI and mark the error field
+	 */
+	
+	unset($_REQUEST['username']);
+	$field_error['username'] = 1;
+	
+	
+	/*
+	 * Display the missing field text and the login form.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "login_user_notexists.inc");
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "login_form.inc");
+	
+	
+/*
+ * Check if the supplied password is correct.
+ */
+
+} elseif (md5($_REQUEST['password']) != $this->core->SQL->Handler->getOne(USER_PASSWORD, array($_REQUEST['username']))) {
+	
+	
+	/*
+	 * Mark the error field
+	 */
+	
+	$field_error['password'] = 1;
+	
+	
+	/*
+	 * Display the missing field text and the login form.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "login_wrong_pass.inc");
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "login_form.inc");
+	
+	
+/*
+ * All verification suceeded. Go to the logged in page.
+ */
+
+} else {
+	
+	
+	/*
+	 * Set the username in the session
+	 */
+	
+	$this->core->Session->set("session", "username", $_REQUEST['username']);
+	
+	
+	/*
+	 * Update the login time and IP adddress
+	 */
+	
+	if ($error = $this->core->SQL->IsError($this->core->SQL->Handler->execute($this->core->SQL->Handler->prepare(UPDATE_LOGIN), array($this->core->Session->get("session", "ip"), $this->core->Session->get("session", "username"))))) {
+		$this->core->SendMail("staff@irssi.org", "Module error - " . str_replace(BASEDIR, '', __FILE__) . " [" . __LINE__ . "]", $error->userinfo);
+	}
+	
+	
+	/*
+	 * Show the account overview page.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "user" . DIRECTORY_SEPARATOR . "status.page");
+	
+	
+	/*
+	 * Display the new menu.
+	 */
+	
+	$items = $this->menu_user;
+}

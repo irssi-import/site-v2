@@ -109,7 +109,29 @@ Class CoreSession {
 	 */
 	
 	function start () {
+		
+		
+		/*
+		 * Start the PHP session.
+		 */
+		
 		session_start();
+		
+		
+		/*
+		 * Put the user IP into the session if it isn't specified yet.
+		 */
+		
+		if (!$this->get("session", "ip")) {
+			
+			
+			/*
+			 * Put the user IP in the session for tracking and debugging
+			 * purposes.
+			 */
+			
+			$this->set("session", "ip", preg_replace("/^::ffff:/", "", $_SERVER["REMOTE_ADDR"]));
+		}
 	}
 }
 ?>

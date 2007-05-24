@@ -19,6 +19,3 @@
 <h3>Servers</h3>
 <p>Most IRCnet servers aren&#8217;t open for everyone, so if you&#8217;re having trouble finding one, use <code>open.ircnet.net</code> which resolves to a number of open IRCnet servers that you should be able to use.</p>
 <p>For EFNet, use <code>irc.efnet.net</code>. Most countries have an <code>irc.efnet.TLD</code>.</p>
-
-
-<?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>

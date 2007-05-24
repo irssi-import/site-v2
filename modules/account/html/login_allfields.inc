@@ -1,0 +1,2 @@
+<h2>Error!</h2>
+<p>Please provide your username and password. Both fields generate a unique identification to our Irssi account. If you forgot your username or password, you may <a href="/account/recover">request a new password</a> for your account.</p>

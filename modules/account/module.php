@@ -37,6 +37,23 @@ Class IrssiAccount {
 	
 	
 	/*
+	 * Create the normal, user and admin menus.
+	 */
+	
+	var $menu_normal = array(
+		'login'    => 'Sign IN',
+		'register' => 'Register an account',
+		'recover'  => 'Recover your password',
+		'validate' => 'Validate your registration',
+	);
+	
+	var $menu_user = array(
+		'status' => 'Account Overview',
+		'logout' => 'Sign OUT',
+	);
+	
+	
+	/*
          * Irssi Account constructor.
 	 */
 	
@@ -55,34 +72,68 @@ Class IrssiAccount {
 		
 		
 		/*
-		 * Display the correct requested pages.
+		 *  Check if the user is authenciated.
 		 */
 		
-		if (empty($_REQUEST['action'])) {
-			$_REQUEST['action'] = 'login';
-		}
-		
-		if (file_exists(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . $_REQUEST['action'] . ".page")) {
-			require_once(HTMLDIR . 'header.inc');
-			require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . $_REQUEST['action'] . ".page");
-		} else {
-			header("HTTP/1.0 404 Not Found");
+		if (!$this->core->Session->get("session", "username")) {
 			
-			require_once(HTMLDIR . 'header.inc');
-			require_once(HTMLDIR . '404.inc');
+			
+			/*
+			 * Display the correct requested pages.
+			 */
+			
+			if (empty($_REQUEST['action'])) {
+				$_REQUEST['action'] = 'login';
+			}
+			
+			if (file_exists(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "normal" . DIRECTORY_SEPARATOR . $_REQUEST['action'] . ".page")) {
+				require_once(HTMLDIR . 'header.inc');
+				require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "normal" . DIRECTORY_SEPARATOR . $_REQUEST['action'] . ".page");
+			} else {
+				header("HTTP/1.0 404 Not Found");
+				
+				require_once(HTMLDIR . 'header.inc');
+				require_once(HTMLDIR . '404.inc');
+			}
+			
+			
+			/*
+			 * The items in the sub-menu.
+			 */
+			
+			if (!isset($items)) {
+				$items = $this->menu_normal;
+			}
+		} else {
+			
+			
+			/*
+			 * Display the correct requested pages.
+			 */
+			
+			if (empty($_REQUEST['action'])) {
+				$_REQUEST['action'] = 'status';
+			}
+			
+			if (file_exists(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "user" . DIRECTORY_SEPARATOR . $_REQUEST['action'] . ".page")) {
+				require_once(HTMLDIR . 'header.inc');
+				require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "user" . DIRECTORY_SEPARATOR . $_REQUEST['action'] . ".page");
+			} else {
+				header("HTTP/1.0 404 Not Found");
+				
+				require_once(HTMLDIR . 'header.inc');
+				require_once(HTMLDIR . '404.inc');
+			}
+			
+			
+			/*
+			 * The items in the sub-menu.
+			 */
+			
+			if (!isset($items)) {
+				$items = $this->menu_user;
+			}
 		}
-		
-		
-		/*
-		 * The items in the sub-menu.
-		 */
-		
-		$items = array(
-			'login'    => 'Sign IN',
-			'register' => 'Register an account',
-			'recover'  => 'Recover your password',
-			'validate' => 'Validate your registration',
-		);
 		
 		
 		/*

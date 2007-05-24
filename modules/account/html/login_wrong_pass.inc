@@ -1,0 +1,2 @@
+<h2>Error!</h2>
+<p>The password given does not match the one in our database. Please check that caps-lock is turned off and the num-lock key is turned on. If you forgot your username or password, you may <a href="/account/recover">request a new password</a> for your account.</p>

@@ -37,5 +37,3 @@
 
 <li><a href="http://www.dragoncat.net/lists/irssi-dev">irssi-dev</a></li>
 </ul>
-
-<?php include(BASEDIR . "modules/" . $this->core->CurrentUserModule . "/menu.inc"); ?>

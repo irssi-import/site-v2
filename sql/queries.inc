@@ -22,41 +22,10 @@
 
 
 /*
- * Start the page generation timer.
+ * Irssi Account SQL queries.
  */
 
-define ('PAGEGEN', microtime());
-
-
-/*
- * The global BASEDIR variable used to include and require files.
- */
-
-define('BASEDIR', getcwd() . DIRECTORY_SEPARATOR);
-
-
-/*
- * Define the location of some ControlPanel directories.
- */
-
-define('MODULESDIR', BASEDIR . 'modules'   . DIRECTORY_SEPARATOR);
-define('HTMLDIR',    BASEDIR . 'html'      . DIRECTORY_SEPARATOR);
-define('GENDIR',     HTMLDIR . 'generator' . DIRECTORY_SEPARATOR);
-define('SQLDIR',     BASEDIR . 'sql'       . DIRECTORY_SEPARATOR);
-define('MODHTMLDIR',           'html'      . DIRECTORY_SEPARATOR);
-
-
-/*
- * Load the Irssi Core module.
- */
-
-require(MODULESDIR . 'core' . DIRECTORY_SEPARATOR . 'core.php');
-
-
-/*
- * Create the Irssi Core constructor.
- */
-
-$site =& new IrssiCore();
-$site->load();
+define("LOGIN_EXISTS",  "SELECT id       FROM gn_passwd WHERE username = ?");
+define("USER_PASSWORD", "SELECT password FROM gn_passwd WHERE username = ?");
+define("UPDATE_LOGIN",  "UPDATE gn_passwd SET account_lastlogin = NOW(), account_lastip = ? WHERE username = ?");
 ?>

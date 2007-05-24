@@ -79,15 +79,10 @@ Class CoreSQL {
 		
 		
 		/*
-		 * Note: I'm using the PEAR_ERROR_DIE statement which affects Pear::DB error handling.
-		 *       When new queries are added please check the query for every possible result and
-		 *       try to emulate every possible error. Some functions return '1' or an object upon
-		 *       errors. Do not blindly use if !$SQL->statement();
+		 * Connect to the database and load the queries.
 		 */
 		
 		$this->Handler =& DB::connect($dsn);
-		PEAR::setErrorHandling(PEAR_ERROR_DIE);
-		
 		$this->LoadQueries();
 		
 		
@@ -126,7 +121,7 @@ Class CoreSQL {
 	
 	function LoadQueries () {
 		
-		$defFile = SQLDIR . 'queries.php';
+		$defFile = SQLDIR . 'queries.inc';
 		
 		if (!file_exists($defFile)) {
 			return 0;

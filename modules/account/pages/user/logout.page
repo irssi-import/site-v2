@@ -1,0 +1,49 @@
+<?php
+
+/*
+ *  License disclaimer.
+ *
+ *	For bugreports and other improvements contact The Irssi Project <staff@irssi.org>
+ *
+ *	This program is free software; you can redistribute it and/or modify
+ *	it under the terms of the GNU General Public License as published by
+ *	the Free Software Foundation; either version 2 of the License, or
+ *	(at your option) any later version.
+ *
+ *	This program is distributed in the hope that it will be useful,
+ *	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *	GNU General Public License for more details.
+ *
+ *	You should have received a copy of the GNU General Public License
+ *	along with this script; if not, write to the Free Software
+ *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+
+/*
+ * Irssi Account module logout page.
+ *
+ *    This page will display the Irssi logout page.
+ */
+
+
+/*
+ * Unset some session elements required to logout a user.
+ */
+
+$this->core->Session->uset("session", "username");
+
+
+/*
+ * Display the logout text.
+ */
+
+require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "logout.inc");
+
+
+/*
+ * Switch to the non-logged in menu.
+ */
+
+$items = $this->menu_normal;
+?>
