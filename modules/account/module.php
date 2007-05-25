@@ -44,7 +44,6 @@ Class IrssiAccount {
 		'login'    => 'Sign IN',
 		'register' => 'Register an account',
 		'recover'  => 'Recover your password',
-		'validate' => 'Validate your registration',
 	);
 	
 	var $menu_user = array(

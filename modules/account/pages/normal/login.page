@@ -56,7 +56,7 @@ if (!$_REQUEST['submit']) {
  * Check if the user supplied a username and a password.
  */
 
-} elseif (($_REQUEST['username'] == "") || ($_REQUEST['password'] == "")) {
+} elseif (empty($_REQUEST['username']) || empty($_REQUEST['password'])) {
 	
 	
 	/*

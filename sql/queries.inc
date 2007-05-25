@@ -28,4 +28,6 @@
 define("LOGIN_EXISTS",  "SELECT id       FROM gn_passwd WHERE username = ?");
 define("USER_PASSWORD", "SELECT password FROM gn_passwd WHERE username = ?");
 define("UPDATE_LOGIN",  "UPDATE gn_passwd SET account_lastlogin = NOW(), account_lastip = ? WHERE username = ?");
+define("EMAIL_EXISTS",  "SELECT id       FROM gn_passwd WHERE email = ?");
+define("INSERT_USER",   "INSERT INTO gn_passwd (username, password, email, account_created, account_modified, administrator) VALUES (?, ?, ?, NOW(), NOW(), 0)");
 ?>

@@ -1,8 +1,8 @@
-<h2>Sign IN</h2>
+<h2>Register an account</h2>
 
-<p>Please enter your username and password to access your Irssi account.</p>
+<p>Please enter your username, password and e-mail address to register your Irssi account.</p>
 
-<form id="form" method="post" action="/account/login&amp;submit=yes">
+<form id="form" method="post" action="/account/register&amp;submit=yes">
 	<fieldset>
 		<legend>Login</legend>
 		
@@ -12,7 +12,9 @@
 				<input type="text" name="username" value="<?php echo $_REQUEST['username']; ?>" />
 			<label <?php if ($field_error['password']) { echo "class='error'"; } ?>>Password:</label>
 				<input type="password" name="password" />
-			<input type="submit" class="submit" value="Sign IN" />
+			<label <?php if ($field_error['email']) { echo "class='error'"; } ?>>E-Mail:</label>
+				<input type="text" name="email" value="<?php echo $_REQUEST['email']; ?>" />
+			<input type="submit" class="submit" value="Register" />
 		</div>
 	</fieldset>
 </form>

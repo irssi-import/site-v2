@@ -1,0 +1,2 @@
+<h2>Error!</h2>
+<p>Please provide your username, password and e-mail address. They generate a unique identification to our Irssi account. If you have registered in the past and forgot your username or password, you may <a href="/account/recover">request a new password</a> for your old account.</p>

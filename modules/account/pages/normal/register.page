@@ -1,0 +1,202 @@
+<?php
+
+/*
+ *  License disclaimer.
+ *
+ *    For bugreports and other improvements contact The Irssi Project <staff@irssi.org>
+ *
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this script; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+
+
+/*
+ * Irssi Account module register page.
+ *
+ *    This page will display the Irssi register page.
+ */
+
+
+/*
+ * This is a list of all the required fields to have an easy
+ * way of marking a field as 'error'.
+ */
+
+$field_error = array("username"  => 0,
+		     "password"  => 0,
+		     "email"     => 0, 
+		    );
+
+
+/*
+ * Check if the user has submitted the login form or not.
+ */
+
+if (!$_REQUEST['submit']) {
+	
+	
+	/*
+	 * Display the welcome text and the login form.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "register_info.inc");
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "register_form.inc");
+	
+	
+/*
+ * Check if the user supplied a username, password and an e-mail address.
+ */
+
+} elseif (empty($_REQUEST['username']) || empty($_REQUEST['password']) || empty($_REQUEST['email'])) {
+	
+	
+	/*
+	 * Go through al lthe possible error fields and mark error
+	 * when required.
+	 */
+	
+	foreach (array_keys($field_error) as $key) {
+		
+		
+		/*
+		 * Mark the error.
+		 */
+		
+		if (!$_REQUEST[$key]) {
+			$field_error[$key] = 1;
+		}
+	}
+	
+	
+	/*
+	 * Display the missing field text and the login form.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "register_allfields.inc");
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "register_form.inc");
+	
+	
+/*
+ * Check if the username is less than 30 characters.
+ */
+
+} elseif (strlen($_REQUEST['username']) > 30) {
+	
+	
+	/*
+	 * Remove the bad username from the URI and mark the error field
+	 */
+	
+	unset($_REQUEST['username']);
+	$field_error['username'] = 1;
+	
+	
+	/*
+	 * Display the missing field text and the login form.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "register_user_toolong.inc");
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "register_form.inc");
+	
+	
+/*
+ * Check if the username exists.
+ */
+
+} elseif ($this->core->SQL->Handler->getOne(LOGIN_EXISTS, array($_REQUEST['username']))) {
+	
+	
+	/*
+	 * Remove the bad username from the URI and mark the error field
+	 */
+	
+	unset($_REQUEST['username']);
+	$field_error['username'] = 1;
+	
+	
+	/*
+	 * Display the missing field text and the login form.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "register_user_exists.inc");
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "register_form.inc");
+	
+	
+/*
+ * Check if the email exists.
+ */
+
+} elseif ($this->core->SQL->Handler->getOne(EMAIL_EXISTS, array($_REQUEST['email']))) {
+	
+	
+	/*
+	 * Remove the bad email from the URI and mark the error field
+	 */
+	
+	unset($_REQUEST['email']);
+	$field_error['email'] = 1;
+	
+	
+	/*
+	 * Display the missing field text and the login form.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "register_email_exists.inc");
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "register_form.inc");
+	
+	
+/*
+ * Check if the supplied email is correct.
+ */
+
+} elseif (!preg_match('/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.([a-zA-Z]{2,4})$/', $_REQUEST['email']) || (strlen($_REQUEST['email']) > 60)) {
+	
+	
+	/*
+	 * Mark the error field
+	 */
+	
+	$field_error['email'] = 1;
+	
+	
+	/*
+	 * Display the missing field text and the login form.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "register_wrong_email.inc");
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "register_form.inc");
+	
+	
+/*
+ * All verification suceeded. Go to the final page.
+ */
+
+} else {
+	
+	
+	/*
+	 * Add the new user in the databases.
+	 */
+	
+	if ($error = $this->core->SQL->IsError($this->core->SQL->Handler->execute($this->core->SQL->Handler->prepare(INSERT_USER), array($_REQUEST['username'], md5($_REQUEST['password']), $_REQUEST['email'])))) {
+		$this->core->SendMail("staff@irssi.org", "Module error - " . str_replace(BASEDIR, '', __FILE__) . " [" . __LINE__ . "]", $error->userinfo);
+	}
+	
+	
+	/*
+	 * Show the registered page.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "registered.inc");
+}

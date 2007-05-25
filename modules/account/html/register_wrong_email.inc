@@ -1,0 +1,2 @@
+<h2>Error!</h2>
+<p>The E-Mail address is incorrect. Please supply a correct one. If you have registered in the past and forgot your username or password, you may <a href="/account/recover">request a new password</a> for your old account.</p>

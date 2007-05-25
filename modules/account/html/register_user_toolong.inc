@@ -1,0 +1,2 @@
+<h2>Error!</h2>
+<p>The username given is too long. Please make sure your username is less than 30 characters. If you have registered in the past and forgot your username or password, you may <a href="/account/recover">request a new password</a> for your old account.</p>
