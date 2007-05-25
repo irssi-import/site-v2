@@ -1,0 +1,153 @@
+<?php
+
+/*
+ *  License disclaimer.
+ *
+ *    For bugreports and other improvements contact The Irssi Project <staff@irssi.org>
+ *
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this script; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+
+
+/*
+ * Irssi Account module recover page.
+ *
+ *    This page will display the Irssi recover page.
+ */
+
+
+/*
+ * This is a list of all the required fields to have an easy
+ * way of marking a field as 'error'.
+ */
+
+$field_error = array("username"  => 0);
+
+
+/*
+ * Check if the user has submitted the login form or not.
+ */
+
+if (!$_REQUEST['submit']) {
+	
+	
+	/*
+	 * Display the welcome text and the recover form.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "recover_form.inc");
+	
+	
+/*
+ * Check if the user supplied a username, password and an e-mail address.
+ */
+
+} elseif (empty($_REQUEST['username'])) {
+	
+	
+	/*
+	 * Go through al lthe possible error fields and mark error
+	 * when required.
+	 */
+	
+	foreach (array_keys($field_error) as $key) {
+		
+		
+		/*
+		 * Mark the error.
+		 */
+		
+		if (!$_REQUEST[$key]) {
+			$field_error[$key] = 1;
+		}
+	}
+	
+	
+	/*
+	 * Display the missing field text and the login form.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "recover_allfields.inc");
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "recover_form.inc");
+	
+	
+/*
+ * Check if the username or e-mail exists.
+ */
+
+} elseif (!$this->core->SQL->Handler->getOne(UM_EXISTS, array($_REQUEST['username'], $_REQUEST['username']))) {
+	
+	
+	/*
+	 * Remove the bad username from the URI and mark the error field
+	 */
+	
+	unset($_REQUEST['username']);
+	$field_error['username'] = 1;
+	
+	
+	/*
+	 * Display the non-existent e-mail or username and the recover form.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "recover_user_notexists.inc");
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "recover_form.inc");
+	
+	
+} else {
+	
+	
+	/*
+	 * Create a random generated password.
+	 */
+	
+	$salt = "abcdefghijklmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ123456789";
+	srand((double)microtime()*1000000);
+	
+	for ($i=0;$i<5;$i++) {
+		$password = $password . substr ($salt, rand() % strlen($salt), 1);
+	}
+	
+	
+	/*
+	 * Get the users e-mail address and username.
+	 */
+	
+	$email    = $this->core->SQL->Handler->getOne(UM_EXISTS,     array($_REQUEST['username'], $_REQUEST['username']));
+	$username = $this->core->SQL->Handler->getOne(EMAIL_TO_USER, array($email));
+	
+	
+	/*
+	 * Add the new password in the databases.
+	 */
+	
+	if ($error = $this->core->SQL->IsError($this->core->SQL->Handler->execute($this->core->SQL->Handler->prepare(UPDATE_PASS), array(md5($password), $email)))) {
+		$this->core->SendMail("staff@irssi.org", "Module error - " . str_replace(BASEDIR, '', __FILE__) . " [" . __LINE__ . "]", $error->userinfo);
+	}
+	
+	
+	/*
+	 * Mail the user his new password.
+	 */
+	
+	$this->core->SendMail($email, "Irssi - Your new password", "You can use the following to log in your Irssi account:\n\n\tUsername: " . $username ."\n\tPassword: " . $password . "\n\nThank you for using Irssi!");
+	
+	
+	/*
+	 * Show the recovered page.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "recovered.inc");
+}

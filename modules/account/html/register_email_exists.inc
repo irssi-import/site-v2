@@ -1,2 +1,2 @@
 <h2>Error!</h2>
-<p>The E-Mail address given already exists. Please choose another E-Mail address. If you have registered in the past and forgot your username or password, you may <a href="/account/recover">request a new password</a> for your old account.</p>
+<p>The e-mail address given already exists. Please choose another e-mail address. If you have registered in the past and forgot your username or password, you may <a href="/account/recover">request a new password</a> for your old account.</p>

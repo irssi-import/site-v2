@@ -1,0 +1,2 @@
+<h2>Recovered!</h2>
+<p>You have successfully recovered your Irssi account. Your new password has been mailed to <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>. Please use the <a href="/account/login">Sign IN</a> page to access your Irssi account.</p>

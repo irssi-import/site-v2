@@ -157,6 +157,7 @@ if (!$_REQUEST['submit']) {
 	 * Show the account overview page.
 	 */
 	
+	$_REQUEST['action'] = 'status';
 	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "user" . DIRECTORY_SEPARATOR . "status.page");
 	
 	

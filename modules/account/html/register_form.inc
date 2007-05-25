@@ -4,7 +4,7 @@
 
 <form id="form" method="post" action="/account/register&amp;submit=yes">
 	<fieldset>
-		<legend>Login</legend>
+		<legend>Register</legend>
 		
 		<div><img src="/images/security.jpg" alt="" /></div>
 		<div>

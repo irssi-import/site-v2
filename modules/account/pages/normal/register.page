@@ -40,14 +40,14 @@ $field_error = array("username"  => 0,
 
 
 /*
- * Check if the user has submitted the login form or not.
+ * Check if the user has submitted the register form or not.
  */
 
 if (!$_REQUEST['submit']) {
 	
 	
 	/*
-	 * Display the welcome text and the login form.
+	 * Display the welcome text and the register form.
 	 */
 	
 	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "register_info.inc");
