@@ -162,6 +162,8 @@ ul#sub-menu li { margin: 0; line-height: 2.5em; }
 ul#sub-menu li ul { margin: 0; list-style: none; }
 ul#sub-menu li a { padding: 0 10px; display: block; color: #036; text-decoration: none; border-bottom: #CCC 1px dotted; }
 ul#sub-menu li a#sub-menucurrent, ul#sub-menu li a#sub-menuhighlight { font-weight: bold; color: #C83100; }
+ul#sub-menu li a.sub-menusub { text-indent: 10px; font-weight: normal; font-size: 80% }
+ul#sub-menu li a.sub-menusubcur { text-indent: 10px; font-weight: bold; color: #C83100; font-size: 80% }
 ul#sub-menu li a:hover { text-decoration: underline; background-color: #FFC; }
 ul#sub-menu li ul a { padding: 0 20px; font-size: 90%; }
 

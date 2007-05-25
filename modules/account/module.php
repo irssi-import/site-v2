@@ -33,23 +33,7 @@ Class IrssiAccount {
 	 * Variables to store instances of this module and other core classes.
          */
 	
-	var $core;
-	
-	
-	/*
-	 * Create the normal, user and admin menus.
-	 */
-	
-	var $menu_normal = array(
-		'login'    => 'Sign IN',
-		'register' => 'Register an account',
-		'recover'  => 'Recover your password',
-	);
-	
-	var $menu_user = array(
-		'status' => 'Account Overview',
-		'logout' => 'Sign OUT',
-	);
+	var $core, $menu_manage, $menu_normal, $menu_user;
 	
 	
 	/*
@@ -68,6 +52,29 @@ Class IrssiAccount {
 	 */
 	
 	function load () {
+		
+		
+		/*
+		 * The normal user menu.
+		 */
+		
+		$this->menu_normal = array(
+			'login'    => 'Sign IN',
+			'register' => 'Register an account',
+			'recover'  => 'Recover your password',
+		);
+		
+		
+		/*
+		 * The registered user menu.
+		 */
+		
+		$this->menu_user = array(
+			'status'      => 'Account Overview',
+			'manage'      => 'Manage your scripts &amp; themes',
+			'preferences' => 'Preferences',
+			'logout'      => 'Sign OUT',
+		);
 		
 		
 		/*
@@ -115,7 +122,11 @@ Class IrssiAccount {
 			}
 			
 			if (file_exists(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "user" . DIRECTORY_SEPARATOR . $_REQUEST['action'] . ".page")) {
-				require_once(HTMLDIR . 'header.inc');
+				
+				if (!is_dir(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "user" . DIRECTORY_SEPARATOR . $_REQUEST['action'])) {
+					require_once(HTMLDIR . 'header.inc');
+				}
+				
 				require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "user" . DIRECTORY_SEPARATOR . $_REQUEST['action'] . ".page");
 			} else {
 				header("HTTP/1.0 404 Not Found");
