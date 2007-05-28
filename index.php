@@ -39,11 +39,20 @@ define('BASEDIR', getcwd() . DIRECTORY_SEPARATOR);
  * Define the location of some ControlPanel directories.
  */
 
-define('MODULESDIR', BASEDIR . 'modules'   . DIRECTORY_SEPARATOR);
-define('HTMLDIR',    BASEDIR . 'html'      . DIRECTORY_SEPARATOR);
-define('GENDIR',     HTMLDIR . 'generator' . DIRECTORY_SEPARATOR);
-define('SQLDIR',     BASEDIR . 'sql'       . DIRECTORY_SEPARATOR);
-define('MODHTMLDIR',           'html'      . DIRECTORY_SEPARATOR);
+define('MODULESDIR',   BASEDIR . 'modules'   . DIRECTORY_SEPARATOR);
+define('HTMLDIR',      BASEDIR . 'html'      . DIRECTORY_SEPARATOR);
+define('GENDIR',       HTMLDIR . 'generator' . DIRECTORY_SEPARATOR);
+define('SQLDIR',       BASEDIR . 'sql'       . DIRECTORY_SEPARATOR);
+define('MODHTMLDIR',            'html'      . DIRECTORY_SEPARATOR);
+define('SCRIPTS_RAW',  BASEDIR . '_files'    . DIRECTORY_SEPARATOR . 'scripts_plain' . DIRECTORY_SEPARATOR);
+define('SCRIPTS_HTML', BASEDIR . '_files'    . DIRECTORY_SEPARATOR . 'scripts_html' . DIRECTORY_SEPARATOR);
+
+
+/*
+ * The location to Perltidy.
+ */
+
+define('PERLTIDY', '/usr/bin/perltidy');
 
 
 /*

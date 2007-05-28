@@ -232,5 +232,23 @@ Class IrssiCore {
 			return @parse_ini_file(BASEDIR . 'modules/' . $moduleStr . '/info.ini');
 		}
 	}
+	
+	
+	/*
+	 * Irssi Core do_trim() function.
+	 *
+	 *    This code is donated by Tijmen Ruizendaal.
+	 */
+	
+	function do_trim ($str) {
+		
+		$str = str_replace("'","",$str);
+		$str = str_replace("\t","",$str);
+		$str = str_replace('"','',$str);
+	        $str = str_replace(';','',$str);
+		$str = str_replace("\n",'',$str);
+		
+	        return $str;
+	}
 }
 ?>

@@ -9,7 +9,7 @@
       <TblOpts>ENGINE=InnoDB DEFAULT CHARSET=utf8</TblOpts>
       <Pk ClNs="id" nm="pkgn_passwd"/>
       <Cl au="1" df="" nm="id" nu="0">
-        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="0"/>
       </Cl>
       <Cl au="0" df="" nm="username" nu="0">
         <DT ds="VarChar" en="" id="12" ln="30" sc="null" sg="1"/>
@@ -40,6 +40,135 @@
       </Idx>
       <Idx clu="0" nm="gn_passwd_username_Idx" unq="1">
         <ClNs>username</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="licenses">
+      <TblOpts>ENGINE=InnoDB DEFAULT CHARSET=utf8</TblOpts>
+      <Pk ClNs="id" nm="pklicenses"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="license" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="100" sc="null" sg="1"/>
+      </Cl>
+      <Idx clu="0" nm="licenses_license_Idx" unq="1">
+        <ClNs>license</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="scrip_comments">
+      <TblOpts>ENGINE=InnoDB DEFAULT CHARSET=utf8</TblOpts>
+      <Pk ClNs="id" nm="pkscrip_comments"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fk_passwd" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fk_script" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="post_date" nu="0">
+        <DT ds="DateTime" en="" id="700" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="post_comment" nu="0">
+        <DT ds="Text" en="" id="703" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_scrip_comments_gn_passwd" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="gn_passwd" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="scrip_comments" oe="1" sch="schemaA" zr="1"/>
+        <ClPr cdCl="fk_passwd" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_scrip_comments_scripts_archive" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="scripts_archive" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="scrip_comments" oe="1" sch="schemaA" zr="1"/>
+        <ClPr cdCl="fk_script" prCl="id"/>
+      </Fk>
+      <Idx clu="0" nm="fk_scrip_comments_gn_passwd" unq="0">
+        <ClNs>fk_passwd</ClNs>
+      </Idx>
+      <Idx clu="0" nm="fk_scrip_comments_scripts_archive" unq="0">
+        <ClNs>fk_script</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="scripts_archive">
+      <TblOpts>ENGINE=InnoDB DEFAULT CHARSET=utf8</TblOpts>
+      <Pk ClNs="id" nm="pkscripts_archive"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name_script" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="100" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="name_file" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="100" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="description" nu="0">
+        <DT ds="Text" en="" id="703" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="fk_license" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_added" nu="0">
+        <DT ds="DateTime" en="" id="700" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="download_counter" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fk_passwd" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_scripts_archive_gn_passwd" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="gn_passwd" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="scripts_archive" oe="1" sch="schemaA" zr="1"/>
+        <ClPr cdCl="fk_passwd" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_scripts_archive_licenses" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="licenses" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="scripts_archive" oe="1" sch="schemaA" zr="1"/>
+        <ClPr cdCl="fk_license" prCl="id"/>
+      </Fk>
+      <Idx clu="0" nm="fk_scripts_archive_gn_passwd" unq="0">
+        <ClNs>fk_passwd</ClNs>
+      </Idx>
+      <Idx clu="0" nm="fk_scripts_archive_licenses" unq="0">
+        <ClNs>fk_license</ClNs>
+      </Idx>
+      <Idx clu="0" nm="scripts_archive_name_file_Idx" unq="1">
+        <ClNs>name_file</ClNs>
+      </Idx>
+      <Idx clu="0" nm="scripts_archive_name_script_Idx" unq="1">
+        <ClNs>name_script</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="scripts_history">
+      <TblOpts>ENGINE=InnoDB DEFAULT CHARSET=utf8</TblOpts>
+      <Pk ClNs="id" nm="pkscripts_history"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fk_script" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="version" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="10" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="changes" nu="1">
+        <DT ds="Text" en="" id="703" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="submit_date" nu="0">
+        <DT ds="DateTime" en="" id="700" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_scripts_history_scripts_archive" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="scripts_archive" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="scripts_history" oe="1" sch="schemaA" zr="1"/>
+        <ClPr cdCl="fk_script" prCl="id"/>
+      </Fk>
+      <Idx clu="0" nm="scripts_history_fk_script_version_Idx" unq="1">
+        <ClNs>fk_script, version</ClNs>
       </Idx>
       <SchTrHis/>
     </Tbl>
@@ -457,22 +586,31 @@
     </Tbl>
   </Sch>
   <Dgm nm="diagramA">
-    <RnCf FtSz="9" lkStgy="OffsetDirect" zm="1.0">
+    <RnCf FtSz="9" lkStgy="KeyToKeyStrategy" zm="1.0">
       <VbCfg>
-        <Fg ky="Auto Number" vl="0"/>
+        <Fg ky="Auto Number" vl="1"/>
         <Fg ky="Check" vl="0"/>
-        <Fg ky="Comment" vl="0"/>
+        <Fg ky="Comment" vl="1"/>
         <Fg ky="Data Type" vl="1"/>
-        <Fg ky="Default" vl="0"/>
-        <Fg ky="ENUM Values" vl="0"/>
+        <Fg ky="Default" vl="1"/>
+        <Fg ky="ENUM Values" vl="1"/>
         <Fg ky="Length" vl="1"/>
         <Fg ky="Name" vl="1"/>
-        <Fg ky="Nullable" vl="0"/>
+        <Fg ky="Nullable" vl="1"/>
         <Fg ky="Schema Name" vl="0"/>
-        <Fg ky="Signed" vl="0"/>
+        <Fg ky="Signed" vl="1"/>
       </VbCfg>
     </RnCf>
-    <TbGl bkCl="ffffffe6" sch="schemaA" tbl="gn_passwd" x="234" y="160"/>
+    <TbGl bkCl="ffffffe6" sch="schemaA" tbl="gn_passwd" x="456" y="149"/>
+    <TbGl bkCl="ffffffe6" sch="schemaA" tbl="scripts_archive" x="531" y="341"/>
+    <TbGl bkCl="ffffffe6" sch="schemaA" tbl="licenses" x="106" y="412"/>
+    <TbGl bkCl="ffffffe6" sch="schemaA" tbl="scrip_comments" x="65" y="233"/>
+    <TbGl bkCl="ffffffe6" sch="schemaA" tbl="scripts_history" x="435" y="492"/>
+    <FkGl bkCl="ff000000" nm="schemaA.scrip_comments.fk_scrip_comments_gn_passwd"/>
+    <FkGl bkCl="ff000000" nm="schemaA.scrip_comments.fk_scrip_comments_scripts_archive"/>
+    <FkGl bkCl="ff000000" nm="schemaA.scripts_archive.fk_scripts_archive_gn_passwd"/>
+    <FkGl bkCl="ff000000" nm="schemaA.scripts_archive.fk_scripts_archive_licenses"/>
+    <FkGl bkCl="ff000000" nm="schemaA.scripts_history.fk_scripts_history_scripts_archive"/>
   </Dgm>
   <RnmMgr NxRnmId="1"/>
   <DbDocOptionMgr>

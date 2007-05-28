@@ -25,12 +25,24 @@
  * Irssi Account SQL queries.
  */
 
-define("LOGIN_EXISTS",  "SELECT id       FROM gn_passwd WHERE username = ?");
+define("LOGIN_EXISTS",  "SELECT id FROM gn_passwd WHERE username = ?");
 define("USER_PASSWORD", "SELECT password FROM gn_passwd WHERE username = ?");
 define("UPDATE_LOGIN",  "UPDATE gn_passwd SET account_lastlogin = NOW(), account_lastip = ? WHERE username = ?");
-define("EMAIL_EXISTS",  "SELECT id       FROM gn_passwd WHERE email = ?");
+define("EMAIL_EXISTS",  "SELECT id FROM gn_passwd WHERE email = ?");
 define("INSERT_USER",   "INSERT INTO gn_passwd (username, password, email, account_created, account_modified, administrator) VALUES (?, ?, ?, NOW(), NOW(), 0)");
 define("UM_EXISTS",     "SELECT email FROM gn_passwd WHERE email = ? OR username = ?");
 define("UPDATE_PASS",   "UPDATE gn_passwd SET password = ? WHERE email = ?");
 define("EMAIL_TO_USER", "SELECT username FROM gn_passwd WHERE email = ?");
+
+
+/*
+ * Irssi Manage Script SQL queries.
+ */
+
+define("FIND_LICENSE", "SELECT id FROM licenses WHERE license = ?");
+define("ADD_LICENSE",  "INSERT INTO licenses (license) VALUES (?)");
+define("GET_SCRIPT",   "SELECT id FROM scripts_archive WHERE name_file = ?");
+define("ADD_SCRIPT",   "INSERT INTO scripts_archive (name_script, name_file, description, fk_license, date_added, download_counter, fk_passwd) VALUES (?, ?, ?, ?, NOW(), '0', ?)");
+define("ADD_HISTORY",  "INSERT INTO scripts_history (fk_script, version, submit_date) VALUES (?, ?, NOW())");
+define("CHECK_EXISTS", "SELECT id FROM scripts_archive WHERE name_file = ? OR name_script = ?");
 ?>

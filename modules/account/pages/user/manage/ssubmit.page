@@ -1,0 +1,241 @@
+<?php
+
+/*
+ *  License disclaimer.
+ *
+ *    For bugreports and other improvements contact The Irssi Project <staff@irssi.org>
+ *
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this script; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+
+
+/*
+ * Irssi Account module script submit page.
+ *
+ *    This page will display the Irssi script submit page.
+ */
+
+
+/*
+ * Check if the user has submitted the login form or not.
+ */
+
+if (!$_REQUEST['submit']) {
+	
+	
+	/*
+	 * Display the welcome text and the recover form.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "script_intro.inc");
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "script_submit.inc");
+	
+	
+/*
+ * Check if the user submitted something.
+ */
+
+} elseif (empty($_FILES['file']['name'])) {
+	
+	
+	/*
+	 * Display the missing field text and the login form.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "script_no_file.inc");
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "script_submit.inc");
+	
+	
+/*
+ * Check if the user submitted something.
+ */
+
+} elseif (empty($_REQUEST['descr'])) {
+    
+	
+	/*
+	 * Display the missing field text and the login form.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "script_no_descr.inc");
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "script_submit.inc");
+	
+	
+/*
+ * Check if it's a perl script...
+ */
+
+} elseif (substr($_FILES['file']['name'], -3) != '.pl') {
+	
+	
+	/*
+	 * Display the missing field text and the login form.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "script_no_perl.inc");
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "script_submit.inc");
+	
+	
+/*
+ * Check if the script already exists.
+ */
+
+} elseif ($this->core->SQL->Handler->getOne(CHECK_EXISTS, array($_FILES['file']['name'], $_REQUEST['descr']))) {
+    
+	
+	/*
+	 * Display the missing field text and the login form.
+	 */
+	
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "script_exists.inc");
+	require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "script_submit.inc");
+	
+	
+/*
+ * Try to parse the %IRSSI header.
+ */
+
+} else {
+	
+	
+	/*
+	 * This code is donated by Tijmen Ruizendaal
+	 */
+	
+	$sa             = array();
+	$sa['filename'] = $_FILES['file']['name'];
+	$lines          = file($_FILES['file']['tmp_name']);
+	
+	$do = 0;
+	$i = 0;
+	
+	foreach ($lines as $line) {
+		
+		if (preg_match('/^\$VERSION/', $line)) {
+			list($var, $is, $value) = preg_split('/ +/', $this->core->do_trim($line));
+			$sa['version'] = $value;
+		} elseif (preg_match('/^%IRSSI/', $line)) {
+			
+			$do = 1;
+			
+			while ($do) {
+				
+				$line = $this->core->do_trim($lines[$i]);
+				
+				if (preg_match('/^\);/', $lines[$i])) {
+					$do = 0;
+				} else {
+					
+					list($var, $value) = preg_split('/=>/', $line);
+					
+					$var   = str_replace(' ', '', $var);
+					$value = preg_replace('/^ /', '', $value);
+					$value = preg_replace('/,$/', '', $value);
+					
+					$sa[$var] = $value;
+					$i++;
+				}
+			}
+		}
+		
+		$i++;
+	}
+	
+	/*
+	 * Check if all the required fiels are present.
+	 */
+	
+	$error   = 0;
+	$missing = "";
+	
+	$script_error = array("version"     => 0,
+			      "authors"     => 0,
+			      "contact"     => 0,
+			      "name"        => 0,
+			      "description" => 0,
+			      "license"      => 0
+			     );
+	
+	foreach (array_keys($script_error) as $key) {
+		
+		
+		/*
+		 * Mark the error.
+		 */
+		
+		if (empty($sa[$key])) {
+			$script_error[$key] = 1;
+			$error++;
+			
+			if ($key == "version") {
+				$missing .= "\$VERSION, ";
+			} else {
+				$missing .= $key . ", ";
+			}
+		}
+	}
+	
+	if ($error) {
+		
+		
+		/*
+		 * Dynamic text!
+		 */
+		
+		if ($error > 1) {
+			$var_text = " variables";
+		} else {
+			$var_text = " variable";
+		}
+		
+		
+		/*
+		 * Display the missing field text and the submit form.
+		 */
+		
+		require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "script_no_version.inc");
+		require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "script_template.inc");
+		require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "script_submit.inc");
+	} else {
+		
+		
+		$license = $this->core->SQL->Handler->getOne(FIND_LICENSE, array($sa['license']));
+		
+		if (!$license) {
+			
+			if ($error = $this->core->SQL->IsError($this->core->SQL->Handler->execute($this->core->SQL->Handler->prepare(ADD_LICENSE), array($sa['license'])))) {
+				$this->core->SendMail("staff@irssi.org", "Module error - " . str_replace(BASEDIR, '', __FILE__) . " [" . __LINE__ . "]", $error->userinfo);
+			} else {
+				$license = $this->core->SQL->Handler->getOne(FIND_LICENSE, array($sa['license']));
+			}
+		}
+		
+		if ($error = $this->core->SQL->IsError($this->core->SQL->Handler->execute($this->core->SQL->Handler->prepare(ADD_SCRIPT), array($_REQUEST['descr'], $_FILES['file']['name'], $sa['description'], $license, $this->core->Session->get("session", "uid"))))) {
+			$this->core->SendMail("staff@irssi.org", "Module error - " . str_replace(BASEDIR, '', __FILE__) . " [" . __LINE__ . "]", $error->userinfo);
+		} else {
+			
+			$script = $this->core->SQL->Handler->getOne(GET_SCRIPT, array($_FILES['file']['name']));
+			
+			if ($error = $this->core->SQL->IsError($this->core->SQL->Handler->execute($this->core->SQL->Handler->prepare(ADD_HISTORY), array($script, $sa['version'])))) {
+				$this->core->SendMail("staff@irssi.org", "Module error - " . str_replace(BASEDIR, '', __FILE__) . " [" . __LINE__ . "]", $error->userinfo);
+			} else {
+				
+				rename($_FILES['file']['tmp_name'], SCRIPTS_RAW . $script);
+				system(PERLTIDY . " --html " . SCRIPTS_RAW . $script . " -o " . SCRIPTS_HTML . $script);
+				require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "script_submitted.inc");
+			}
+		}
+	}
+}

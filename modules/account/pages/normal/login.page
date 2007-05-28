@@ -138,10 +138,11 @@ if (!$_REQUEST['submit']) {
 	
 	
 	/*
-	 * Set the username in the session
+	 * Set the username and uid in the session
 	 */
 	
 	$this->core->Session->set("session", "username", $_REQUEST['username']);
+	$this->core->Session->set("session", "uid",      $this->core->SQL->Handler->getOne(LOGIN_EXISTS, array($_REQUEST['username'])));
 	
 	
 	/*

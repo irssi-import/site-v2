@@ -1,0 +1,24 @@
+<h2>Manage your Scripts &amp; Themes</h2>
+
+<h3>Scripts</h3>
+
+<ul>
+	<li><a href="/account/manage/ssubmit">Submit a new script</a></li>
+	<li><a href="/account/manage/supgrade">Upgrade a script</a></li>
+	<li><a href="/account/manage/sdelete">Delete a script</a></li>
+</ul>
+
+<h3>Themes</h3>
+
+<ul>
+	<li><a href="/account/manage/tsubmit">Submit a new theme</a></li>
+	<li><a href="/account/manage/tupgrade">Upgrade a theme</a></li>
+	<li><a href="/account/manage/tdelete">Delete a theme</a></li>
+</ul>
+
+<h3>Script &amp; Theme ownership</h3>
+
+<ul>
+	<li><a href="/account/manage/sclaim">Claim a script</a></li>
+	<li><a href="/account/manage/tclaim">Claim a theme</a></li>
+</ul>
