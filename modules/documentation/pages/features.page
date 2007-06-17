@@ -1,31 +1,163 @@
-<pre>
-XXXXXXXXXx
-X
-X
-X
-X
-X
-X
+<p>Here is a list of the most useful features of <a href="http://irssi.org/">Irssi</a> written by Garion.</p>
+<table>
+  <tbody>
+    <tr>
+      <td>perl scripting</td>
+      <td>Irssi supports perl scripting. This means very flexible and powerful scripts. The interaction with Irssi events and properties are very intuitive. Also, there are <a href="http://irssi.org/scripts/">many existing scripts</a> which provide both useful extra features and the required assistance to make your own Irssi scripts.</td>
 
-XX
-X
-X
-X
-X
-X
-X
-X
-X
-X
-X
-XX
-X
-X
-X
-X
-X
-X
-X
+    </tr>
+    <tr>
+      <td>defaults</td>
+      <td>unlike some other clients, Irssi has very sensible default settings. No auto-rejoin when you're kicked, no public  (auto-)away-crap, no bold messages, no reconnecting without delay. </td>
+    </tr>
+    <tr>
+      <td>non bloated</td>
 
-X
-</pre>
+      <td>unlike some other clients, Irssi doesn't put everything, standard or non-standard, in its core; everything non-standard is done via the perl scripts. So you can choose yourself which extra functionality you want to have.</td>
+    </tr>
+    <tr>
+      <td>bitchx theme</td>
+      <td>for all you BitchX lovers out there. With this theme Irssi will look just like BitchX.</td>
+    </tr>
+    <tr>
+
+      <td>regular expression hilights</td>
+      <td>By default, Irssi uses a different colour in the  [Act:] bar for hilights than for normal text. You can add hilights in any colour for any regexp though, for example /hilight -regexp -actcolor %R gaa+r+i+o+n. This will create a bright red Act: number if someone says  &quot;gaaaaaaariooooooooon&quot; in a channel.</td>
+    </tr>
+    <tr>
+      <td>regular expression ignores</td>
+      <td>by typing /ignore -regexp -pattern &quot;COMPLETELY FREE&quot; * MSGS Irssi will ignore all messages to you with &quot;COMPLETELY FREE&quot; in them, regardless of who sends them.</td>
+
+    </tr>
+    <tr>
+      <td>lastlog searching</td>
+      <td>this makes searching in the backbuffer of any window very easy. Searching for all the times somebody triggered a hilight is done by /lastlog -hilight and finding all mode changes to a user goes with /lastlog -mode [user]. You can also look for words or regular expressions.</td>
+    </tr>
+    <tr>
+      <td>scrollback skipping</td>
+
+      <td>the scrollback command is very useful. Most often the goto functionality is used: /scrollback goto [time|line]. A lot easier than pressing pageup for 10 seconds. Also, use /sb home|end for skipping to the beginning or the end of a log.</td>
+    </tr>
+    <tr>
+      <td>multi-server support</td>
+      <td>nothing new here; many clients have this. Still, Irssi's multiple server support is excellent. Connections to a server are not bound to any windows, and many commands have a flag to determine which network they are to be issued on.</td>
+    </tr>
+    <tr>
+
+      <td>mode merging</td>
+      <td>when 3 people give ops to the same person within a short timespan, Irssi shows just 1 line, instead of 3.</td>
+    </tr>
+    <tr>
+      <td>netsplit detection<br />
+        <a href="http://www.garion.org/Irssi/screenshots/netsplit.gif" title="screenshot of netsplit">[screenshot]</a></td>
+      <td>gotten tired of those pages full of netsplit crap? Irssi detect the netsplit and shows all the people who quit or join on one single line.</td>
+
+    </tr>
+    <tr>
+      <td>tab-completion</td>
+      <td>Irssi features tab-completion for almost  anything. Commands, nicknames, channels, servers, you name it. And you can add more via simple perl scripts.</td>
+    </tr>
+    <tr>
+      <td>self-defined completions</td>
+
+      <td>and if there aren't enough pre-defined tabcompletions for you, you can define your own completions for terms or phrases you use often. Then just type the short version, and the tab key, and it's expanded to the long version. Not just commands, but anything can be completed in this way.</td>
+    </tr>
+    <tr>
+      <td>completions</td>
+      <td>this is a user defined list of automatic completions, mostly used to automatically correct any typos you make or to expand text to longer text.</td>
+    </tr>
+    <tr>
+
+      <td>configurable keybindings</td>
+      <td>it's very easy to bind any key or key combination to any built-in or self-defined function.</td>
+    </tr>
+    <tr>
+      <td>plugins</td>
+      <td>Irssi features some useful <a href="http://irssi.org/?page=plugins">plugins</a>, for example a WAP plugin, an ICQ plugin and a <a href="http://www.silcnet.org/">SILC</a> plugin.</td>
+
+    </tr>
+    <tr>
+      <td>upgrade</td>
+      <td>when you've installed a newer version of the Irssi binary, it's not necessary to quit Irssi and restart it. Just do  /upgrade and the new binary will be loaded, maintaining all connections to all irc servers.</td>
+    </tr>
+    <tr>
+      <td>statusbars</td>
+
+      <td>Irssi features multiple very easy to configure statusbars, to which you can add statusbar items from scripts. For example, add an extra statusbar with the amount of mail you have in each of your mailboxes.</td>
+    </tr>
+    <tr>
+      <td>formats and themes</td>
+      <td>easy yet powerful and consistent way to  customise the client's look and feel. This formatting is modular; in other words, you just change the appearance of the 'nick' object, and the  appearance of the nickname will change in all the formats that use that nick object.</td>
+    </tr>
+    <tr>
+
+      <td>autologging</td>
+      <td>Irssi can automatically log any channels and/or queries that you want. Logs will be separated per irc network, and even logrotation is supported.</td>
+    </tr>
+    <tr>
+      <td>paste detection</td>
+      <td>Irssi tries to detect when you're pasting large amounts of text, by looking at the speed that characters are entered. If such pasting is detected, [tab] characters are sent as-is instead of replaced by /msg somenick, and lines starting with a / are not executed but sent. </td>
+    </tr>
+
+    <tr>
+      <td>ssl</td>
+      <td>Irssi supports ssl client-server connections.</td>
+    </tr>
+    <tr>
+      <td>Irssi-proxy</td>
+      <td>Irssi-proxy is (obviously) an irc proxy, but it's much more than just a bouncer. <a href="http://www.garion.org/Irssi/Irssi-proxy.php">Read the full explanation of  Irssi-proxy</a>.</td>
+
+    </tr>
+  </tbody>
+</table>
+<p>Ok, I think that it's time to start mentioning some of the very best scripts, that seem to be used by many people using Irssi. All these scripts can be found on <a href="http://scripts.irssi.org/"> the Irssi script archive (scripts.irssi.org)</a>, or on <a href="http://ratings.Irssi.de/">the Irssi scripts rating page</a>.  Here is a short list:</p>
+<table width="100%">
+  <tbody>
+    <tr>
+
+      <td><a href="http://scripts.irssi.org/scripts/scriptassist.pl">scriptassist</a></td>
+      <td>The mother of all scripts. This is for Irssi what apt is for debian, and ports are for FreeBSD. Using this script you can fetch any other script, check for versions, upgrade scripts, toggle autorunning of scripts, and much more.</td>
+    </tr>
+    <tr>
+      <td><a href="http://scripts.irssi.org/scripts/trackbar.pl">trackbar</a><br />
+        <a href="http://www.garion.org/Irssi/screenshots/trackbar.png" title="screenshot of trackbar">[screenshot]</a></td>
+      <td>This script keeps track of what the last thing in a certain window was when you switched away from it. Then, when you switch back to that window, the trackbar will be directly below the line you last saw. There is one trackbar per window. </td>
+
+    </tr>
+    <tr>
+      <td><a href="http://scripts.irssi.org/scripts/usercount.pl">usercount</a></td>
+      <td>Adds a statusbar item that keeps track of the number of opers, ops, voices and normal users in a channel. Most people use a display like [45&nbsp;users&nbsp;(*1&nbsp;@9&nbsp;+4&nbsp;32)] but personally I prefer using colours instead of the symbols *, @ and +. See in the bottom left of <a href="http://www.garion.org/Irssi/usercount.gif" title="usercount example">the usercount example  image</a>. Blue is opers, green is ops, yellow is voices.</td>
+
+    </tr>
+    <tr>
+      <td><a href="http://scripts.irssi.org/scripts/mail.pl">mail</a></td>
+      <td>Adds a statusbar item that shows how many new emails you have in each of your mailboxes/maildirs. Works only if your Irssi runs on the same machine as your mail client. Shows a message like  [Mail:&nbsp;main-4,work-2,debian-3].</td>
+    </tr>
+    <tr>
+      <td><a href="http://scripts.irssi.org/scripts/keepnick.pl">keepnick</a></td>
+
+      <td>Simple script to keep 'your' nickname.</td>
+    </tr>
+    <tr>
+      <td><a href="http://scripts.irssi.org/scripts/splitlong.pl">splitlong</a></td>
+      <td>When pasting long lines, this script makes sure your lines don't exceed the maximum length ircd allows, and splits them over multiple lines.</td>
+    </tr>
+    <tr>
+
+      <td><a href="http://scripts.irssi.org/scripts/niq.pl">niq</a><br />
+        <a href="http://www.garion.org/Irssi/screenshots/niq.png" title="screenshot of niq">[screenshot]</a></td>
+      <td>When tab-completing nicknames, this script will show a list of available nicknames in the statusbar, if the tabbing is not unique. </td>
+    </tr>
+    <tr>
+      <td><a href="http://scripts.irssi.org/scripts/chanact.pl">chanact</a></td>
+      <td>Allows a configurable Activity statusbar item. So instead of [Act:&nbsp;1,2,5,7] you could see [Act:&nbsp;#ch1,#ch2,query,#ch3].</td>
+
+    </tr>
+    <tr>
+      <td><a href="http://scripts.irssi.org/scripts/dccstat.pl">dccstat</a><br />
+        <a href="http://www.garion.org/Irssi/screenshots/dccstat.png" title="screenshot of dccstat">[screenshot]</a></td>
+      <td>Shows verbose or short information of dcc send/gets  on statusbar (speed, size, ETA etc.).</td>
+    </tr>
+  </tbody>
+
+</table>

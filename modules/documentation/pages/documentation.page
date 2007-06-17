@@ -12,7 +12,7 @@
 
 <ul>
 	<li><a href="/documentation/tips">Tips &amp; Tricks</a></li>
-	<li><a href="/documentation/features">Irssi Features</a></li>
+	<li><a href="/documentation/features">Irssi Features, by Garion</a></li>
 	<li><a href="/documentation/proxy">Irssi Proxy</a></li>
 	<li><a href="/documentation/formats">Color Formats</a></li>
 </ul>
@@ -29,7 +29,7 @@
 <h3 id="Scripting">Scripting</h3>
 
 <ul>
-	<li><a href="http://juerd.nl/site.plp/irssiscripttut">Scripting Tutorial, by Juerd</a></li>
+	<li><a href="/documentation/scriptorial">Perl Scripting Tutorial, by Juerd</a></li>
 	<li><a href="/documentation/scripting">Perl Scripting Reference</a></li>
 	<li><a href="/documentation/signals">Signals</a></li>
 </ul>

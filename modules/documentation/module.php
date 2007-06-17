@@ -85,11 +85,13 @@ Class IrssiDocumentation {
 			'design'        => 'Design',
 			'manual'        => 'Manual',
 			'tips'          => 'Tips &#038; Tricks',
+			'settings'      => 'Irssi settings',
 			'features'      => 'Irssi Features',
 			'proxy'         => 'Irssi Proxy',
 			'formats'       => 'Colour Formats',
 			'variables'     => 'Special Variables',
 			'scripting'     => 'Perl Scripting Reference',
+			'scriptorial'   => 'Perl Scripting Tutorial',
 			'signals'       => 'Signals'
 		);
 		

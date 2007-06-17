@@ -1,0 +1,125 @@
+<h2>Scripting Irssi 0.8.6+</h2>
+
+<h3>Introduction</h3>
+
+<p>This is a very simple tutorial to get used to <a href="http://juerd.nl/site.plp/irssi">Irssi</a>'s <a href="http://juerd.nl/site.plp/perl">Perl</a> scripting. This is in no way a Perl tutorial or a guide for beginning programmers. Don't expect this tutorial to be a complete reference, and please understand that I didn't talk about everything Irssi can do. Some Perl knowledge is required to understand this tutorial. Only simple subjects are explained in here. To find out everything there is to know, read existing scripts! </p>
+
+<h3>Learning Perl</h3>
+<p>There is no point in scripting Irssi if you don't know Perl.</p>
+
+<p>If you do not already know Perl, learn it first. Perl is a very powerful language that gets things done in a minimum amount of time. But without reading proper  documentation, the language is very hard to learn. </p>
+
+<p>I recommend <a title="Off-site link: http://learn.perl.org/library/beginning_perl/" href="http://juerd.nl/elsewhere.plp?href=http://learn.perl.org/library/beginning_perl/" target="_blank">Beginning Perl</a> by Simon Cozens. Wrox Press released this book for free download, but you can also buy a paper copy. </p>
+
+<p>Official Perl documentation comes bundled with Perl, but if for some reason you do not have the <em>perldoc</em> utility, please refer to <a title="Off-site link: http://perldoc.com/" href="http://juerd.nl/elsewhere.plp?href=http://perldoc.com/" target="_blank">http://perldoc.com/</a> for  HTML versions of the same documentation. </p>
+
+<h3>Starting</h3>
+<p>Because Irssi scripts are embedded in Irssi and not executed from the console, they do not need to be executable. A permission mode setting of 600 is enough for scripts in your home directory, 644 is enough for system wide script installations.  The shebang line is not required, as this is only the case for executable scripts. </p>
+
+<p>You should, however, include some common things. Programming under the <code>strict</code> pragma is always a very good idea, and is recommended. Irssi scripts need to use the Irssi module to make use of the special Irssi commands. You do want to interact with Irssi, don't you? </p>
+
+<p>Irssi scripts can provide information about themselves. You should always use a version number (recommended: a string consisting of a digit, a dot and two more digits), and put that in the <code>$VERSION</code> global, which is common for Perl scripts and modules. When scripting Irssi, another important global arises: the hash called <code>%IRSSI</code>. In this hash, you define the script's name, your name, and some information related to the script. Its format is <a title="Off-site link: /files/irssi/headers.pod" href="http://juerd.nl/elsewhere.plp?href=/files/irssi/headers.pod" target="_blank">defined</a>, and some header values should not be skipped. </p>
+
+<p>Thus, a common script would start with:</p>
+
+<pre>use strict;
+use vars qw($VERSION %IRSSI);
+
+use Irssi;
+$VERSION = '1.00';
+%IRSSI = (
+    authors     => 'A. U. Thor',
+    contact     => 'author@far.away',
+    name        => 'My First Script',
+    description => 'This script allows ' .
+                   'you to print Hello ' .
+                   'World using a command.',
+    license     => 'Public Domain',
+);</pre>
+
+<p>There are more fields you can use, so have a look at the <a title="Off-site link: /files/irssi/headers.pod" href="http://juerd.nl/elsewhere.plp?href=/files/irssi/headers.pod" target="_blank">header definition</a> to know more. Please note that &quot;authors&quot; is supposed to be plural: it's not a mistake. </p>
+
+<h3>Interacting with Irssi</h3>
+
+<p>A script would be useless if it didn't interact with Irssi. Irssi scripts should load very fast, and the ideal situation would be where you don't have any non-Irssi commands in your script's body. Irssi works event based, and subs are called when events take place. Most commands that you can use to instruct Irssi are in the <code>Irssi::</code> namespace. </p>
+
+<p>Irssi has two types of events: signals and commands. Signals happen anyway, and happen all the time. There's a signal for when someone joins a channel, one for nickchanges, etcetera. Commands are user input. You can hook subs to signals and commands, and they will be executed when signals are emitted, or commands executed. This is the main way of Irssi's communication with the script: Irssi tells when a sub should be executed. To tell Irssi you want to use a signal or command, you have to use the <code>signal_add</code> or <code>command_bind</code> function. The first parameter is the signal or command itself, the second parameter is either the name of the sub that should be called, or a reference to a sub. Best is to always use references. A sub reference to your <code>foo()</code> sub can be made with <code>\&amp;foo</code>, but you can have a sub inlined in your code, that has no name of its own: <code>sub { code }</code>. </p>
+
+<pre>sub testing {
+    my ($data, $server, $witem) = @_;
+    return unless $witem;
+    # $witem (window item) may be undef.
+
+    $witem->print('It works!');
+}
+
+Irssi::command_bind test => \&amp;testing;
+Irssi::command_bind hello => sub {
+    print 'Hello, world!';
+};</pre>
+
+<p>Don't forget the semi-colon at the end. Everything you print is printed into Irssi's scrollbuffer, and automatically line terminated: you do NOT need \n. If you use \n, a blank line will appear. If you print using Perl's built-in <code>print</code>, the CLIENTCRAP messagelevel is used. You can pick another messagelevel by using it as if it were a Perl filehandle. When using a print <em>method</em>, you can add the messagelevel as the second argument, using a MSGLEVEL_ constant. </p>
+
+<pre>print CRAP 'Example';
+$witem->print('Example', MSGLEVEL_PUBLIC);</pre>
+
+<p>Of course, information is passed to your subs. They would not be very useful without information. That information can include the current server, or information about the signal. As with every Perl sub, the arguments are in @_, and can be assigned to named variables using a simple list assignment. </p>
+
+<h3>Cleaning up</h3>
+
+<p>After a while, you'll notice you have <code>Irssi::</code> commands all over the place, and if you're like me, you don't like it. Fortunately, the Irssi module can export its functions to your package. You tell it to do so by adding a list to the use statement. I use <code>qw()</code> for that, which is a Perl operator that creates a list of words separated by whitespace. <code>qw(a b c)</code> is just a convenient way to write <code>('a', 'b', 'c')</code>. </p>
+
+<pre>use Irssi qw(command_bind signal_add);
+...
+command_bind hello => sub {
+    print 'Hello, world!';
+};</pre>
+
+<h3>Configurability</h3>
+
+<p>The larger your script gets, the more you should make it configurable. That way, the user can use his own settings, and when users can change your script to what they like, your script will probably have more users. Settings are categorized, and always have defaults. It's common to use your script's name as the category, and have a reasonable default. </p>
+
+<p>Irssi has three types of settings: string, integer and boolean. Boolean settings can be toggled, and are represented as ON and OFF to the user, but as 1 and 0 to your script, so you can use them as normal Perl boolean expressions. To tell Irssi you want to register a certain setting, you have to use either <code>settings_add_str</code>, <code>settings_add_int</code> or <code>settings_bool</code>.  Their first argument is the category, the second is the setting name and the third is used to put in a default value. </p>
+
+<p>To retrieve a setting, use <code>settings_get_str</code>, <code>settings_get_int</code> or <code>settings_get_bool</code> with the setting name as its only argument. Don't mix data types! </p>
+
+<pre>use Irssi qw(
+    command_bind
+    settings_get_bool settings_add_bool
+    settings_get_str  settings_add_str
+);
+
+command_bind mycommand => sub {
+    my ($data, $server, $witem) = @_;
+    my $msg = settings_get_str('blah_msg');
+    $msg = "cC4$msg"
+        if settings_get_bool('blah_color');
+    $witem->print($msg);
+};
+
+settings_add_bool('blah', 'blah_color', 1);
+settings_add_str(
+    'blah', 'blah_msg', 'Hello!'
+);</pre>
+
+<h3>Learning more</h3>
+
+<p>You can do a lot more with Irssi. You can use the user's current theme to provide output in the colors and style he or she likes, you can stop and re-emit signals to effectively change them. I haven't discussed signals in great detail, but they are very important. The easiest way to learn them, is by looking at existing scripts. I encourage you to read existing scripts, and learn from them. </p>
+
+<h3>Script archive</h3>
+<p>At this time, a centralized script archive exists, and it's mirrored to irssi.org amongst other mirrors. That's where you can find existing scripts, that are very useful when learning to script Irssi yourself. If you have finished a script, think of how it might be useful to others, and consider submitting it for inclusion in the archive. This also has the advantage of automatic upgrades of your scripts, as long as you increase the version number each time, and the user uses an automated installer. </p>
+
+<p><a title="Off-site link: http://irssi.org/scripts" href="http://juerd.nl/elsewhere.plp?href=http://irssi.org/scripts" target="_blank">http://irssi.org/scripts</a></p>
+
+<h3>Asking for help</h3>
+<p>Please don't contact me with questions about Irssi. I don't have the time to help you adequately. Instead, join #irssi on IRCNet and ask your question there. </p>
+
+<p>Also, please do not use my <a href="http://juerd.nl/site.plp/guestbook">guestbook</a> to ask Irssi questions. Both questions and answers will be removed; it is not a forum. </p>
+
+<h3>Copyright</h3>
+<p>Please do not copy this document to other websites. Link instead, so your visitors always have the latest version, and I eventually get more <a href="http://juerd.nl/site.plp/guestbook">guestbook</a> entries ;) </p>
+
+<h3>Disclaimer</h3>
+<p>If you screw up, that's your problem. If you find your computer exploding after trying the examples provided here, that's your problem. I disclaim any responsibility, and Irssi scripting is always at your own risk. I promise nothing, and don't give any guarantees. This document provides information only, and that information has never been confirmed to be correct. </p>
+
+<p>Nevertheless, have fun :) </p>
