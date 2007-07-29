@@ -210,7 +210,6 @@ if (!$_REQUEST['submit']) {
 		require_once(MODULESDIR . $this->core->CurrentUserModule . DIRECTORY_SEPARATOR . MODHTMLDIR . "script_submit.inc");
 	} else {
 		
-		
 		$license = $this->core->SQL->Handler->getOne(FIND_LICENSE, array($sa['license']));
 		
 		if (!$license) {

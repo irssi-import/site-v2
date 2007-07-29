@@ -1,0 +1,19 @@
+<h2>FAQ</h2>
+
+<h3>Q: How do I run scripts?</h3>
+<p>A: Put them into ~/.irssi/scripts/ and in irssi do <code>/SCRIPT LOAD script.pl</code>. There is a default alias for <code>/SCRIPT LOAD</code> to <code><strong>/RUN</strong></code> in newer versions of irssi.</p>
+
+<h3>Q: How do I rerun scripts?</h3>
+<p>A: Just do <code>/SCRIPT LOAD script.pl</code>.</p>
+
+<h3>Q: How do I unload scripts?</h3>
+<p>A: Just do <code>/SCRIPT UNLOAD script.pl</code>.</p>
+
+<h3>Q: How do I run scripts automatically at startup?</h3>
+<p>A: Put them into the ~/.irssi/scripts/autorun/ directory.</p>
+
+<h3>Q: Is there an easy way of managing scripts?</h3>
+<p>A: Try scriptassist.pl, it can update and manage your scripts as well as install new ones and search the database.</p>
+
+<h3>Q: I discovered a real fabulous/ugly script. How can I spread the word?</h3>
+<p>A: You can reate scripts on the detailled script information page.</p>
