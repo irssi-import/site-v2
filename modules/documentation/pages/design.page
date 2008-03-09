@@ -29,7 +29,7 @@
 
 <p>Chat protocols and frontends are kept in separate modules. Common UI and GUI modules also have the common parts which don&#8217;t know anything about the chat protocols. This should allow implementing modules to whatever chat protocols and with whatever front-ends easily.</p>
 <h3>Signals</h3>
-<p>Communication between different modules are done with &#8220;signals&#8221;. They are not related to UNIX signals in any way, you could more like think of them as &#8220;events&#8221; - which might be a better name for them, but I don&#8217;t really want to change it anymore <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+<p>Communication between different modules are done with &#8220;signals&#8221;. They are not related to UNIX signals in any way, you could more like think of them as &#8220;events&#8221; - which might be a better name for them, but I don&#8217;t really want to change it anymore <img src='/images/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
 <p>So, you send signal with signal_emit() and it&#8217;s sent to all modules that have grabbed it by calling signal_add() in their init function. For example:</p>
 
 <pre><code>signal_emit("mysignal", 1, "hello");</code></pre>

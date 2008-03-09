@@ -16,7 +16,7 @@ or <code>/SERVER</code>?</h3>
 The other way is to remove all the reconnections with</p>
 <p><code>/RMRECONNS</code>, easier but may remove some connections you actually wanted to reconnect (if you used multiple servers..).</p>
 <h3>Q: How do I add seconds to timestamp?</h3>
-<p>A: <code>/FORMAT timestamp {timestamp %%H:%%M:%%S}</code> - and remember to add the trailing space <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+<p>A: <code>/FORMAT timestamp {timestamp %%H:%%M:%%S}</code> - and remember to add the trailing space <img src='/images/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
 <h3>Q: Why does irssi say &#8220;Irssi: Channel not fully synchronized yet, try again after a while&#8221; when I try to use /BAN etc?</h3>
 
 <p>A: Possibly a bug in irssi, or ircd you&#8217;re using does something that irssi didn&#8217;t really notice. The new code should make this happen far less often than before, but one known reason for this is when irssi doesn&#8217;t notice that you were unable to join some channel. Currently however I don&#8217;t know of any such events irssi doesn&#8217;t know about.</p>
@@ -26,7 +26,7 @@ The other way is to remove all the reconnections with</p>
 <h3>Q: Where&#8217;s the GUI version?</h3>
 <p>A: Read <a href="/about">http://www.irssi.org/about</a></p>
 <h3>Q: How do I autorejoin channels after being kicked?</h3>
-<p>A: That&#8217;s evil and you shouldn&#8217;t do it. If you get kicked, you should stay out, at least until the channel forgot you existed <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> Most channels I&#8217;ve joined just ban you if you autorejoin after kick. If you&#8217;re joined to channels who kick people for fun, try changing channels or something.</p>
+<p>A: That&#8217;s evil and you shouldn&#8217;t do it. If you get kicked, you should stay out, at least until the channel forgot you existed <img src='/images/icon_smile.gif' alt=':)' class='wp-smiley' /> Most channels I&#8217;ve joined just ban you if you autorejoin after kick. If you&#8217;re joined to channels who kick people for fun, try changing channels or something.</p>
 <p>Anyway, if you REALLY want to do that, and you understand that you&#8217;re doing evilness, you can use the autorejoin.pl script that comes with irssi. You&#8217;ll still need to specify the channels you wish to rejoin with <code>/SET autorejoin_channels #chan1 #chan2 ...</code></p>
 
 <h3>Q: How do I announce that I&#8217;m away/back in all channels I&#8217;ve joined? Or how do I change my nick when setting myself away/back?</h3>
@@ -39,7 +39,7 @@ The other way is to remove all the reconnections with</p>
 <p>A: Make sure your terminal supports UTF-8 (for example, <code>xterm -u8</code>). If you use screen, you may have to do <code>screen -U</code>. And in Irssi do <code>/SET term_charset utf-8</code>. (for 0.8.9 and older: <code>/SET term_type utf-8</code>)</p>
 
 <h3>Q: Will there be /DETACH-like feature?</h3>
-<p>A: Maybe. Detach code already is there, attach is just missing <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> But I don&#8217;t have much interest in coding it, <a href="http://www.gnu.org/software/screen/screen.html">screen</a> and <a href="http://dtach.sf.net/">dtach</a> can be used to do it just fine.</p>
+<p>A: Maybe. Detach code already is there, attach is just missing <img src='/images/icon_smile.gif' alt=':)' class='wp-smiley' /> But I don&#8217;t have much interest in coding it, <a href="http://www.gnu.org/software/screen/screen.html">screen</a> and <a href="http://dtach.sf.net/">dtach</a> can be used to do it just fine.</p>
 <h3>Q: How do I run scripts automatically at startup?</h3>
 <p>A: Put them into <code>~/.irssi/scripts/autorun/</code> directory. Or better would be if you placed them in <code>~/.irssi/scripts/</code> and created symlinks to autorun directory (eg. <code>cd ~/.irssi/scripts/autorun/ ; ln -s ../script.pl .</code>)</p>
 

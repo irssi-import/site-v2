@@ -32,11 +32,11 @@
 </ol>
 <h3 id="manual-0">0. Generic babbling</h3>
 <h4>0.1 History</h4>
-<p>Hello. I&#8217;m Timo Sirainen aka. cras, and I&#8217;m an IRC addict. <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+<p>Hello. I&#8217;m Timo Sirainen aka. cras, and I&#8217;m an IRC addict. <img src='/images/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
 <p>I&#8217;m actually quite new in IRC, I got my first internet connection sometimes around fall 1997 and I started actively IRCing around christmas. I used EPIC and BitchX mostly at the start, but soon found some nice KDE IRC client which name I can&#8217;t remember anymore. It&#8217;s author however stopped developing it after I had been using it a few months. And since it had bugs and all, I wanted another nice GUI IRC client. I didn&#8217;t find any. </p>
 
 <p>Since I&#8217;ve always been a coder and do-it-yourself guy (my own offline reader and BBS software in the BBS ages), I started my own IRC client at spring 1998. I called it yagIRC standing for &#8220;Yet another GTK IRC client&#8221;. GTK was in around version 1.0 back then, and it had a lot of features/bugs which I found all the time as I tried to do some &#8220;different&#8221; things than other people. These sometimes prevented me of doing something some feature I wanted.  </p>
-<p>So, in summer 1998 I went to army and I passed development of yagIRC to two guys, they did a few new features and released a version or two, but finally (in summer 1999?) they put a message to web page which told that they finally had stopped developing it entirely, also saying that my code was a total mess <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> (yes, it was a mess)</p>
+<p>So, in summer 1998 I went to army and I passed development of yagIRC to two guys, they did a few new features and released a version or two, but finally (in summer 1999?) they put a message to web page which told that they finally had stopped developing it entirely, also saying that my code was a total mess <img src='/images/icon_smile.gif' alt=':)' class='wp-smiley' /> (yes, it was a mess)</p>
 <p>I got out of the army 1.1.1999. I promised to myself that I wouldn&#8217;t do another IRC client, but after trying to use BitchX a while, I started dreaming about an IRC client which would have an excellent look and feel. After trying various things, I only came up with the GNOME panel applet which people still tell me that it&#8217;s a great feature. I was more like thinking some pretty little icons in some corner telling me about new messages and other stuff..</p>
 <p>I thought that I would keep Irssi a small project, just doing a few little features that *I* wanted, nothing for others. But after few versions and few interested people, I started coding it more and more generic&#8230;</p>
 
@@ -51,7 +51,7 @@ excellent.</p>
 <h4>0.3 Future</h4>
 <p>What about Irssi 1.0, what will it look like?</p>
 <p>I was thinking about the Linux kernel versioning and keeping Irssi 0.8 a stable version all the time while developing new features only to Irssi 0.9. After 0.9 is finished, it will be called 0.10 or 1.0 depending if I think it&#8217;s ready to be called 1.0.</p>
-<p>1.0&#8217;s goal is that it has all the possible features anyone will ever need. If not build-in, then in scripts or loadable modules. Not very small goal <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+<p>1.0&#8217;s goal is that it has all the possible features anyone will ever need. If not build-in, then in scripts or loadable modules. Not very small goal <img src='/images/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
 <h4>0.4 This documentation</h4>
 
 <p>Strange, I just created the index list and started writing this. I&#8217;ve never been too good at documentation and I usually don&#8217;t like writing it, but after coding so much recently and seeing that the NEWS file was getting *SO* large, I thought that I had to put all these features down somewhere so people (and me!) would find them.</p>
@@ -540,7 +540,7 @@ k &lt;key&gt; - Channel password (aka. key) - The channel can&#8217;t be joined 
 <p>l &lt;count&gt; - User limit - No more than &lt;count&gt; people can join to channel. This can be overridden with /INVITE with some	servers. This is usually used for protecting channel from join flooding, like some bot allows max. 5 users to join in one minute or so.</p>
 
 <p>a - Anonymous - No-one&#8217;s nick name, host or anything else can be seen. All messages, joins, parts, modes, etc. are seen as coming from nick &#8220;anonymous&#8221;, this could be pretty confusing but nice feature if you want total anonymity. This mode can only be set, never unset. This mode isn&#8217;t supported by all servers.</p>
-<p>NOTE: there is/was one bug <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> Channel operators can guess if some nick might be in the channel and try to kick it. If nick was in channel, everyone will see the nick that was kicked.</p>
+<p>NOTE: there is/was one bug <img src='/images/icon_smile.gif' alt=':)' class='wp-smiley' /> Channel operators can guess if some nick might be in the channel and try to kick it. If nick was in channel, everyone will see the nick that was kicked.</p>
 <p>r - Re-op - If channel becomes opless for longer than 45 (?) minutes, op everyone in the channel. This works only in !channels. This mode can only be set, not unset by channel creator.</p>
 <p>b - Set/remove ban. For example MODE #channel +b *!*@*.org bans everyone from .org domain.</p>
 <p>If someone from .org domain was already in channel before the ban was set, he/she couldn&#8217;t be able to write any messages to channel (doesn&#8217;t work with all servers).</p>
@@ -632,7 +632,7 @@ Custom [nick] [user] [host] [domain]
 
 <h3 id="manual-10">10. Ignoring</h3>
 <h4>10.1 Manual ignoring</h4>
-<p>Irssi&#8217;s ignoring options should be enough for everyone <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+<p>Irssi&#8217;s ignoring options should be enough for everyone <img src='/images/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
 <pre><code>/IGNORE [-regexp | -word] [-pattern &lt;pattern&gt;] [-replies] [-except]
 	[-channels &lt;channel&gt;] &lt;mask&gt; &lt;levels&gt; &lt;^levels&gt;</code></pre>
 

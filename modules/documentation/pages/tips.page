@@ -5,7 +5,7 @@
 <p>the extensions in included in default zsh distribution since 2002-03-07 (should be version 4.0.1)</p>
 <h4>hide aliases</h4>
 
-<p>sometimes i found it quite useful to have a much more quiet irssi <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+<p>sometimes i found it quite useful to have a much more quiet irssi <img src='/images/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
 <pre><kbd>/alias  hideadd          eval set activity_hide_targets $activity_hide_targets $-
 /alias  hideclear        set -c activity_hide_targets
 /alias  hidelevels.clear set -c activity_hide_level
@@ -46,7 +46,7 @@
 <h4>ssh/telnet alias</h4>
 <pre><kbd>/alias TELNET window new hidden;window name telnet;exec -name telnet -nosh -interactive -window telnet $-
 /alias SSH window new hidden;window name ssh;exec -name ssh -nosh -interactive -window ssh $-</kbd></pre>
-<p>happy mudding, telnetting <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+<p>happy mudding, telnetting <img src='/images/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
 
 <h4>icq client in irssi?:)</h4>
 <pre><kbd>/alias MICQ window new hidden;window name micq;exec -name micq -nosh -interactive -window micq $-</kbd></pre>
@@ -57,7 +57,7 @@
 <p>hmm now there is a script for this purpose too. checkout <a href="http://scripts.irssi.de/scripts/news.pl">news.pl</a> (<a href="http://scripts.irssi.de/html/news.pl.html">source</a>)</p>
 
 <h4>autocorrect feature in irssi?</h4>
-<p><strong>Of course. <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_wink.gif' alt=';)' class='wp-smiley' /> </strong></p>
+<p><strong>Of course. <img src='/images/icon_wink.gif' alt=';)' class='wp-smiley' /> </strong></p>
 <pre><code>replaces = (
 { text = ".)"; replace = ":)"; },
 { text = ":9"; replace = ":)"; }
@@ -111,7 +111,7 @@ ios = { value = "http://irssi.org/scripts/"; };
 
 <pre><kbd>/alias quit echo dont do this at home</kbd></pre>
 <p>if you like to close irssi for some reason use <kbd>//quit</kbd>.</p>
-<h4>my anti annoyance filters <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_wink.gif' alt=';)' class='wp-smiley' /> </h4>
+<h4>my anti annoyance filters <img src='/images/icon_wink.gif' alt=';)' class='wp-smiley' /> </h4>
 <pre><kbd>/ignore -channels #chan1,#chan2,#chan3 * JOINS PARTS QUITS NICKS
 /ignore -channels #chan1,#chan2,#chan3 -regexp -pattern (away|gone|back|playin|weg|wech|returned) * ACTIONS</kbd></pre>
 <p><em>Disclaimer: of course you will miss some stuff with this ignores. but for me it makes it more readable.</em></p>

@@ -28,7 +28,7 @@ Irssi::signal_stop() if ($text =~ /free.*porn/ || $nick =~ /idiot/);
 }
 
 Irssi::signal_add("event privmsg", "event_privmsg")</code></pre>
-<p>This will hide all public or private messages that match the regexp &#8220;free.*porn&#8221; or the sender&#8217;s nick contain the word &#8220;idiot&#8221;. Yes, you could use <kbd>/IGNORE</kbd> instead for both of these <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+<p>This will hide all public or private messages that match the regexp &#8220;free.*porn&#8221; or the sender&#8217;s nick contain the word &#8220;idiot&#8221;. Yes, you could use <kbd>/IGNORE</kbd> instead for both of these <img src='/images/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
 
 <p>You can also use <code>signal_add_last()</code> if you wish to let the Irssi&#8217;s internal functions be run before yours.</p>
 <p>A list of signals that irssi sends can be found from signals.txt file.</p>
@@ -80,9 +80,9 @@ CLIENTNOTICE, CLIENTCRAP, CLIENTERROR</code></pre>
 <pre><code>$server-&gt;print("#channel", 'Hello, world', MSGLEVEL_CLIENTCRAP);</code></pre>
 <p>Writes text to #channel window with <code>CLIENTCRAP</code> level.</p>
 <h3>Window items</h3>
-<p>Meaning of &#8220;window&#8221; should be pretty clear, but &#8220;window item&#8221; is something I couldn&#8217;t really figure out a better name for <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> They&#8217;re simply something that&#8217;s inside a window, a channel or a query usually. Windows can have multiple items inside them. It&#8217;s possible to create non-channel/query window items too, currently the third possible window item is created by <code>/EXEC -interactive</code>.</p>
+<p>Meaning of &#8220;window&#8221; should be pretty clear, but &#8220;window item&#8221; is something I couldn&#8217;t really figure out a better name for <img src='/images/icon_smile.gif' alt=':)' class='wp-smiley' /> They&#8217;re simply something that&#8217;s inside a window, a channel or a query usually. Windows can have multiple items inside them. It&#8217;s possible to create non-channel/query window items too, currently the third possible window item is created by <code>/EXEC -interactive</code>.</p>
 
-<p>In scripts, I think you can quite safely assume that the window item is query or channel if the script is intended to be run in one of them. Stupid users won&#8217;t probably have other window items, and smart users know where to run the script, or at least later figure out why it didn&#8217;t work <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+<p>In scripts, I think you can quite safely assume that the window item is query or channel if the script is intended to be run in one of them. Stupid users won&#8217;t probably have other window items, and smart users know where to run the script, or at least later figure out why it didn&#8217;t work <img src='/images/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
 <h3>Functions that you can use in Irssi&#8217;s Perl scripts</h3>
 <p>If there&#8217;s a &#8220;Xxxx::&#8221; text before the command, it means that it belongs to that package. Like &#8220;Server::command&#8221; means that you should either call it as Irssi::Server::command($server, $cmd);<br />
 

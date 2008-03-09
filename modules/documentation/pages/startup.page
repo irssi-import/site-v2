@@ -124,7 +124,7 @@ XTerm*metaSendsEscape: true</code></pre>
 <p>And how exactly do you set these X resources? For Debian, there&#8217;s <code>/etc/X11/Xresources/xterm</code> file where you can put them and it&#8217;s read automatically when X starts. <code>~/.Xresources</code> and <code>~/.Xdefaults</code> files might also work. If you can&#8217;t get anything else to work, just copy and paste those lines to <code>~/.Xresources</code> and directly call <code>xrdb -merge ~/.Xresources</code> in some xterm. The resources affect only the new xterms you start, not existing ones.</p>
 
 <p>Many windows SSH clients also don&#8217;t allow usage of ALT. One excellent client that does allow is putty, you can download it from <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/"> http://www.chiark.greenend.org.uk/~sgtatham/putty/</a>.</p>
-<p>Irssi also supports split windows, they&#8217;ve had some problems in past but I think they should work pretty well now <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> Here&#8217;s some commands related to them:</p>
+<p>Irssi also supports split windows, they&#8217;ve had some problems in past but I think they should work pretty well now <img src='/images/icon_smile.gif' alt=':)' class='wp-smiley' /> Here&#8217;s some commands related to them:</p>
 <pre><code>/WINDOW NEW                    - Create new split window
 /WINDOW NEW HIDE               - Create new hidden window
 /WINDOW CLOSE                  - Close split or hidden window
@@ -154,7 +154,7 @@ Split window 3: win#5 - efnet/#channel1, win#6 - efnet/#channel2</code></pre>
 /JOIN -window #channel
 /QUERY -window nick</code></pre>
 <h2 id="c3">3. Server and channel automation</h2>
-<p>Irssi&#8217;s multiple IRC network support is IMHO very good - at least compared to other clients <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> Even if you&#8217;re only in one IRC network you should group all your servers to be in the same IRC network as this helps with reconnecting if your primary server breaks and is probably useful in some other ways too <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> For information how to actually use irssi correctly with multiple servers see the chapter 6.</p>
+<p>Irssi&#8217;s multiple IRC network support is IMHO very good - at least compared to other clients <img src='/images/icon_smile.gif' alt=':)' class='wp-smiley' /> Even if you&#8217;re only in one IRC network you should group all your servers to be in the same IRC network as this helps with reconnecting if your primary server breaks and is probably useful in some other ways too <img src='/images/icon_smile.gif' alt=':)' class='wp-smiley' /> For information how to actually use irssi correctly with multiple servers see the chapter 6.</p>
 
 <p>First you need to have your IRC network set, use <code>/NETWORK</code> command to see if it&#8217;s already there. If it isn&#8217;t, use <code>/NETWORK ADD yournetwork</code>. If you want to execute some commands automatically when you&#8217;re connected to some network, use <code>-autosendcmd</code> option. (NOTE: use /IRCNET with 0.8.9 and older.) Here&#8217;s some examples:</p>
 <pre><code>/NETWORK ADD -autosendcmd '^msg bot invite' IRCnet
@@ -331,7 +331,7 @@ Ctrl-X                - set the next server in list active</code></pre>
 <p>Irssi contains it&#8217;s own proxy which you can build giving <code>--with-proxy</code> option to configure. You&#8217;ll still need to run irssi in a screen to use it though.</p>
 
 <p>Irssi proxy is a bit different than most proxies, normally proxies create a new connection to IRC server when you connect to it, but <strong>irssi proxy shares your existing IRC connection(s) to multiple clients</strong>. And even more clearly: <strong>You can use only one IRC server connection to IRC with as many clients as you want</strong>. Can<br />
-anyone figure out even more easier ways to say this, so I wouldn&#8217;t need to try to explain this thing for minutes every time? <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+anyone figure out even more easier ways to say this, so I wouldn&#8217;t need to try to explain this thing for minutes every time? <img src='/images/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
 <p>Irssi proxy supports sharing multiple server connections in different ports, like you can share network in port 2777 and efnet in port 2778.</p>
 <p>Usage in proxy side:</p>
 <pre><code>/LOAD proxy
@@ -439,7 +439,7 @@ anyone figure out even more easier ways to say this, so I wouldn&#8217;t need to
 <dl>
 <dt>/SET completion_auto OFF</dt>
 
-<dd>Automatically complete the nick if line begins with start of nick and the completion character. Learn to use the tab-completion instead, it&#8217;s a lot better <img src='http://dev.irssi.org/wp-includes/images/smilies/icon_wink.gif' alt=';)' class='wp-smiley' /> </dd>
+<dd>Automatically complete the nick if line begins with start of nick and the completion character. Learn to use the tab-completion instead, it&#8217;s a lot better <img src='/images/icon_wink.gif' alt=';)' class='wp-smiley' /> </dd>
 <dt>/SET completion_char :</dt>
 <dd>Completion character to use.</dd>
 </dl>
