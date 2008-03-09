@@ -46,10 +46,10 @@ foreach ($this->core->GetAllModules() as $module) {
 	 * If the requested module does not include an info.ini file we must
 	 * insert the module into an empty spot.
 	 */
-	
+
 	if (!@isset($infoArray['position'])) {
 	
-		$max = @max(array_keys($sortedModuleList));
+		$max = @max(array_keys($sortedModuleList)) + 10;
 		$pos = $max + 1;
 		
 		for ($i = 0; $i <= $max; ++$i) {
