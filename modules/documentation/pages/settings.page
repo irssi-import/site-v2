@@ -740,7 +740,7 @@ Vis::Hello(12);</code></pre>
 
 <dt>show_nickmode_empty = ON</dt>
 <dd>
-    If a person has no chanel modes, prefix their nickname with a
+    If a person has no channel modes, prefix their nickname with a
     blank space.  This keeps nicknames of normal people aligned with
     those of voiced, half-opped, and opped people.
 </dd>
